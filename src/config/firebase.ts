@@ -56,7 +56,7 @@ const app = initializeApp(resolvedFirebaseConfig);
 function getPreferredPersistence() {
     try {
         // Just accessing window.localStorage can throw a SecurityError
-        window.localStorage;
+        void window.localStorage;
         return [indexedDBLocalPersistence, browserLocalPersistence];
     } catch {
         return [inMemoryPersistence];

@@ -2,7 +2,7 @@
 import Constructora from "../../../models/constructora/Constructora.tsx";
 import Brickell from "../../areas/Brickell.tsx";
 import MiamiBeach from "../../areas/MiamiBeach.tsx";
-const lang: "en" | "es" = "es";
+export default function buildElla(lang: "es" | "en") {
 
 
 
@@ -133,4 +133,5 @@ const lang: "en" | "es" = "es";
                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                allowFullScreen></iframe>;
 
-export default EllaObject;
+  return EllaObject;
+}

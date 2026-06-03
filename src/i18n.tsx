@@ -2,9 +2,6 @@ import React, {createContext, ReactNode, useContext, useEffect, useMemo, useStat
 
 type Lang = "es" | "en";
 
-type Translations = {
-    [key: string]: string | string[] | Translations;
-};
 
 const translations: Record<Lang, any> = {
     es: {
@@ -1680,7 +1677,7 @@ export function TranslationProvider({children, defaultLang = "es" as Lang}: {
 
             // Priority 2: New session always starts with Spanish (as per requirement)
             // We ignore localStorage here to satisfy "if the session is new, start with spanish"
-        } catch (e) {
+        } catch {
             /* ignore */
         }
         return defaultLang;
@@ -1694,13 +1691,13 @@ export function TranslationProvider({children, defaultLang = "es" as Lang}: {
             // Also keep it in localStorage in case they actually wanted persistence,
             // but the initial logic above will favor the "new session -> spanish" rule.
             localStorage.setItem("scattolini_lang", lang);
-        } catch (e) {
+        } catch {
             // ignore
         }
         // update document lang attribute for SEO/accessibility
         try {
             document.documentElement.lang = lang;
-        } catch (e) {
+        } catch {
             // ignore (SSR or unavailable)
         }
     }, [lang]);

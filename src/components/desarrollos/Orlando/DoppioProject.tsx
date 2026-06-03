@@ -5,4 +5,4 @@ export default function DoppioProject  () {
     return (
         <ProjectTemplate desarrollo={Doppio}></ProjectTemplate>
     );
-};
+}

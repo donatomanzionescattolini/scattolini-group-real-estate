@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import MiamiBeach from "../../areas/MiamiBeach.tsx";
-const lang: "en" | "es" = "es";
+export default function buildSeventyTwoCarlyle(lang: "es" | "en") {
 
 
 
@@ -171,4 +171,5 @@ const lang: "en" | "es" = "es";
     };
 
 
-export default SeventyTwoCarlyleObject;
+  return SeventyTwoCarlyleObject;
+}

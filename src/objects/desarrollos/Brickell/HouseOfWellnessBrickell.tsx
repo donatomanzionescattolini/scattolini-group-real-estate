@@ -19,7 +19,8 @@ houseOfWellnessBrickell.estimatedCompletionYear = Number.parseInt(getLocalizedFi
 houseOfWellnessBrickell.numberOfFloors = Number.parseInt(getLocalizedField("numberOfFloors", "34"), 10) || 34;
 houseOfWellnessBrickell.numberOfUnits = Number.parseInt(getLocalizedField("numberOfUnits", "656"), 10) || 656;
 houseOfWellnessBrickell.typeOfUnits = getLocalizedField("typeOfUnits", "Studios, 1 & 2 Bedrooms");
-houseOfWellnessBrickell.numberOfImages = Number.parseInt(getLocalizedField("numberOfImages", "12"), 10) || 12;
+houseOfWellnessBrickell.numberOfImages = 18;
+houseOfWellnessBrickell.video = "https://pagina-mama.s3.amazonaws.com/assets2/desarrollos/house-of-wellness-brickell/video.mp4";
 houseOfWellnessBrickell.banner = getLocalizedField("banner", "true") === "true";
 
 houseOfWellnessBrickell.caracteristicas = {

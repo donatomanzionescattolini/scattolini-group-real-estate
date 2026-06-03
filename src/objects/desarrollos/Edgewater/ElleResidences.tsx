@@ -5,7 +5,7 @@ import Desarrollo from "../../../models/desarrollos/Desarrollo";
 import {getDesarrolloI18n} from "../useDesarrolloI18n";
 
 
-    const {getLocalizedField, getLocalizedArray} = getDesarrolloI18n("elle-residences", "es");
+    const {getLocalizedField} = getDesarrolloI18n("elle-residences", "es");
     const ElleResidencesObject = new Desarrollo(Edgewater);
     ElleResidencesObject.area = Edgewater;
 
@@ -26,7 +26,7 @@ import {getDesarrolloI18n} from "../useDesarrolloI18n";
             el estilo francés contemporáneo con un toque de lujo tropical, para darle un nuevo giro a la vida en el sur
             de Florida.</p>
             <ul>
-                <li>Planos de planta bien pensados ​​con techos altos y vistas al agua y al horizonte.</li>
+                <li>Planos de planta bien pensados con techos altos y vistas al agua y al horizonte.</li>
                 <li>Suites Grande en el piso superior con techos de 11 pies</li>
                 <li>Ventanas y puertas resistentes a impactos de piso a techo</li>
                 <li>Cocinas elegantes con el conjunto de electrodomésticos Miele</li>

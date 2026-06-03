@@ -34,7 +34,7 @@ export default function Footer() {
                                     {[...entry.des].map((item, idx) => {
                                         let des: any;
                                         if (typeof item === "function") {
-                                            des = item(lang);
+                                            des = (item as (lang: string) => any)(lang);
                                         } else {
                                             des = item;
                                         }

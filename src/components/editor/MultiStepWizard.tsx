@@ -66,6 +66,7 @@ export default function MultiStepWizard({
       }
     });
     return Array.from(unique.values());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [areaVersion]);
 
   // Helper to get localized value from an area

@@ -56,9 +56,9 @@ export function getDesarrolloI18n(desarrolloKey: string, lang: Lang) {
     const fallbackLang: Lang = lang === "es" ? "en" : "es";
 
     const recordsByLang: Record<Lang, Array<Record<string, unknown>>> = {
-        [lang]: [],
-        [fallbackLang]: [],
-    } as Record<Lang, Array<Record<string, unknown>>>;
+        en: [],
+        es: [],
+    };
 
     for (const candidate of keyCandidates) {
         const current = getDesarrolloData(candidate, lang);

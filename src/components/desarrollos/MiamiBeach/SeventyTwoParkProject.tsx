@@ -1,5 +1,5 @@
 ﻿import ProjectTemplate from "../ProjectTemplate.tsx";
-import SeventyTwoPark from "../../../objects/desarrollos/MiamiBeach/SeventyTwoPark.tsx";
+import buildSeventyTwoPark from "../../../objects/desarrollos/MiamiBeach/SeventyTwoPark.tsx";
 import {useTranslation} from "../../../i18n.tsx";
 
 export default function SeventyTwoParkProject() {
@@ -7,7 +7,7 @@ export default function SeventyTwoParkProject() {
     return (
         <ProjectTemplate
 
-            desarrollo={SeventyTwoPark}
+            desarrollo={buildSeventyTwoPark(lang)}
         />
     );
 }

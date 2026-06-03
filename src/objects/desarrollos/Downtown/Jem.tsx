@@ -4,7 +4,7 @@ import Downtown from "../../areas/Downtown";
 import {getDesarrolloI18n} from "../useDesarrolloI18n";
 
 
-    const {getLocalizedField, getLocalizedArray} = getDesarrolloI18n("jem", "es");
+    const {getLocalizedField} = getDesarrolloI18n("jem", "es");
     const Jem = new Desarrollo();
     Jem.nombre = getLocalizedField("nombre", "jem");
     Jem.titulo = "The Jem Miami Private Residences";

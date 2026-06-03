@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import Hollywood from "../../areas/Hollywood.tsx";
-const lang: "en" | "es" = "es";
+export default function buildSevenParkResidences(lang: "es" | "en") {
 
 
 
@@ -92,4 +92,5 @@ const lang: "en" | "es" = "es";
     SevenParkResidences.numberOfImages = 33;
 
 
-export default SevenParkResidences;
+  return SevenParkResidences;
+}

@@ -55,6 +55,7 @@ export default function AreaTemplate(props: AreaProps) {
     }, []);
     const areaDesarrollos = useMemo<Set<Desarrollo>>(
         () => getDesarrollosForArea(area, lang),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [area, lang, contentVersion]
     );
     for (let i = 1; i <= area.numberOfImages; i++) {

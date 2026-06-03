@@ -145,6 +145,14 @@ export default function ProjectTemplate({ desarrollo }: ProjectParams) {
   const [tabVisible, setTabVisible] = useState("brochure");
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const [videoError, setVideoError] = useState(false);
+  // Reset the video error state when the project changes. Deriving this during
+  // render (per React guidance) avoids a setState-in-effect that would trigger
+  // an extra cascading render on every navigation.
+  const [prevNombre, setPrevNombre] = useState(nombre);
+  if (nombre !== prevNombre) {
+    setPrevNombre(nombre);
+    setVideoError(false);
+  }
   const videoUrl =
     video ||
     `https://pagina-mama.s3.amazonaws.com/assets2/desarrollos/${nombre}/video.mp4`;
@@ -203,10 +211,6 @@ export default function ProjectTemplate({ desarrollo }: ProjectParams) {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Reset video error state when the project changes
-  useEffect(() => {
-    setVideoError(false);
-  }, [nombre]);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);

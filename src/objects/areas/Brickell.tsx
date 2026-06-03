@@ -1,4 +1,4 @@
-import {Area, AreaDto} from "../../models/areas/Area.tsx";
+import {AreaDto} from "../../models/areas/Area.tsx";
 
 
 

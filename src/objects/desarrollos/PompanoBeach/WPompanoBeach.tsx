@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo";
 import PompanoBeach from "../../areas/PompanoBeach";
-const lang: "en" | "es" = "es";
+export default function buildWPompanoBeach(lang: "es" | "en") {
 
 
 
@@ -243,4 +243,5 @@ const lang: "en" | "es" = "es";
         ];
 
 
-export default WPompanoBeachObject;
+  return WPompanoBeachObject;
+}

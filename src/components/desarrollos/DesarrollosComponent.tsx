@@ -23,7 +23,9 @@ export default function DesarrollosComponent() {
         return resolveLocalizedValue<string>(field, lang) || '';
     };
 
-    const areas = useMemo(() => Areas(), [contentVersion]);
+    const areas = useMemo(() => Areas(),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [contentVersion]);
 
     return (
         <Container>

@@ -73,7 +73,7 @@ export default function LegacyMigrationPanel() {
 
                     <div className="small text-muted">
                         <strong>{t('pages.editor.migration.summary', 'Ready to import')}:</strong>{' '}
-                        {summary.areaCount} {t('pages.editor.tabs.areas', 'Areas').toString().toLowerCase()}, {summary.desarrolloCount} {t('pages.editor.tabs.desarrollos', 'Developments').toString().toLowerCase()}.
+                        {summary.areaCount} {String(t('pages.editor.tabs.areas', 'Areas') ?? 'Areas').toLowerCase()}, {summary.desarrolloCount} {String(t('pages.editor.tabs.desarrollos', 'Developments') ?? 'Developments').toLowerCase()}.
                     </div>
 
                     {message && (

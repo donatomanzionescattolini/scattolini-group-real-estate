@@ -37,7 +37,9 @@ export default function AreasComponent(): React.ReactElement {
         return field;
     };
 
-    const allAreas = useMemo(() => Areas(), [contentVersion]);
+    const allAreas = useMemo(() => Areas(),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [contentVersion]);
 
     // Filter to only show areas that have projects
     const {areasWithProjects} = useMemo(() => {
@@ -54,6 +56,7 @@ export default function AreasComponent(): React.ReactElement {
         });
 
         return {areasWithProjects: withProjects, areasWithoutProjects: withoutProjects};
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allAreas, lang, contentVersion]);
 
     // Areas without projects (kept for future use):

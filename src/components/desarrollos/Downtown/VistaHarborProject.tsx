@@ -59,6 +59,7 @@ export default function VistaHarborProject() {
             )
         };
         return project;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getLocalizedField, getLocalizedArray, lang]);
 
     return (

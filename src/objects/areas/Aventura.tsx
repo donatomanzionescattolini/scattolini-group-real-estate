@@ -3,7 +3,7 @@ import {Area} from "../../models/areas/Area";
 
 
 
-    let AventuraObject = new Area("aventura");
+    const AventuraObject = new Area("aventura");
     AventuraObject.titulo = {
         es: "Aventura",
         en: "Aventura"

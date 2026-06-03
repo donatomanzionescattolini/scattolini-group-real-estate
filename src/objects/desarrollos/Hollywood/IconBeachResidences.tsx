@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo";
 import Hollywood from "../../areas/Hollywood";
-const lang: "en" | "es" = "es";
+export default function buildIconBeachResidences(lang: "es" | "en") {
 
 
 
@@ -73,4 +73,5 @@ const lang: "en" | "es" = "es";
         </>,
     };
 
-export default IconBeachResidences;
+  return IconBeachResidences;
+}

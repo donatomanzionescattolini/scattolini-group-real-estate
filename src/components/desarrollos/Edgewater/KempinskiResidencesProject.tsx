@@ -68,6 +68,7 @@ export default function KempinskiResidencesProject() {
             )
         };
         return project;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getLocalizedField, getLocalizedArray, lang]);
 
     return (

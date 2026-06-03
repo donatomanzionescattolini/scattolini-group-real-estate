@@ -21,6 +21,7 @@ export default function DesarrolloEditor() {
 
     useEffect(() => {
         loadDesarrollos();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -35,6 +36,7 @@ export default function DesarrolloEditor() {
             window.removeEventListener(DYNAMIC_AREAS_UPDATED_EVENT, handleContentUpdated as EventListener);
             window.removeEventListener(DYNAMIC_DESARROLLOS_UPDATED_EVENT, handleContentUpdated as EventListener);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedDesarrollo]);
 
     const getLocalized = (field: any) => {

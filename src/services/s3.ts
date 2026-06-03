@@ -1,45 +1,88 @@
-import {
-    DeleteObjectCommand,
-    ListObjectsV2Command,
-    PutObjectCommand,
-    S3Client,
-} from "@aws-sdk/client-s3";
+// Client-side S3 service.
+//
+// SECURITY: AWS credentials are NOT used in the browser in production. Uploads
+// go through a presigned URL minted by the `/api/s3` serverless function, and
+// list/delete are proxied through the same endpoint, so no secret is ever
+// shipped in the client bundle.
+//
+// In local `npm run dev`, if VITE_AWS_* creds are present, a dynamically
+// imported dev-only module talks to S3 directly (so you don't need
+// `vercel dev`). That branch is guarded by `import.meta.env.DEV` and is removed
+// from production builds — the AWS SDK never reaches the prod client bundle.
 
-const AWS_REGION = (import.meta.env.VITE_AWS_REGION || "").trim() && import.meta.env.VITE_AWS_REGION !== "N/A"
-    ? import.meta.env.VITE_AWS_REGION.trim()
-    : "us-east-1";
-const AWS_ACCESS_KEY_ID = (import.meta.env.VITE_AWS_ACCESS_KEY_ID || "").trim();
-const AWS_SECRET_ACCESS_KEY = (import.meta.env.VITE_AWS_SECRET_ACCESS_KEY || "").trim();
-const AWS_SESSION_TOKEN = (import.meta.env.VITE_AWS_SESSION_TOKEN || "").trim() || undefined;
 const BUCKET_NAME = (import.meta.env.VITE_S3_BUCKET || "pagina-mama").trim();
 const ASSETS_PREFIX = "assets2/desarrollos";
 const AREAS_PREFIX = "assets2/areas";
 
-if (import.meta.env.DEV) {
-    console.info("[S3 config]", {
-        bucket: BUCKET_NAME,
-        region: AWS_REGION,
-        accessKeyIdSuffix: AWS_ACCESS_KEY_ID ? `***${AWS_ACCESS_KEY_ID.slice(-4)}` : "(missing)",
-        hasSecretAccessKey: Boolean(AWS_SECRET_ACCESS_KEY),
-        hasSessionToken: Boolean(AWS_SESSION_TOKEN),
-    });
+interface S3ObjectMeta {
+    key: string;
+    size?: number;
+    lastModified?: Date;
 }
 
-if (!AWS_ACCESS_KEY_ID || !AWS_SECRET_ACCESS_KEY) {
-    console.error("[S3 config] Missing AWS credentials. Uploads will fail.", {
-        hasAccessKey: Boolean(AWS_ACCESS_KEY_ID),
-        hasSecretKey: Boolean(AWS_SECRET_ACCESS_KEY),
-    });
+function hasDevCreds(): boolean {
+    return Boolean(
+        (import.meta.env.VITE_AWS_ACCESS_KEY_ID || "").trim() &&
+        (import.meta.env.VITE_AWS_SECRET_ACCESS_KEY || "").trim(),
+    );
 }
 
-const s3Client = new S3Client({
-    region: AWS_REGION,
-    credentials: {
-        accessKeyId: AWS_ACCESS_KEY_ID,
-        secretAccessKey: AWS_SECRET_ACCESS_KEY,
-        sessionToken: AWS_SESSION_TOKEN,
-    },
-});
+async function apiPresignAndPut(key: string, body: Uint8Array, contentType: string): Promise<void> {
+    const presignRes = await fetch("/api/s3?action=presign", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key, contentType }),
+    });
+    if (!presignRes.ok) {
+        const detail = await presignRes.json().catch(() => ({}));
+        throw new Error(detail.error || `Could not get upload URL (HTTP ${presignRes.status})`);
+    }
+    const { url } = await presignRes.json();
+    const putRes = await fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": contentType },
+        // Cast: a Uint8Array is a valid fetch body at runtime; the cast satisfies
+        // the stricter BlobPart typing in newer TS lib (generic ArrayBufferLike).
+        body: new Blob([body as BlobPart], { type: contentType }),
+    });
+    if (!putRes.ok) throw new Error(`Upload failed (HTTP ${putRes.status})`);
+}
+
+async function putObject(key: string, body: Uint8Array, contentType: string): Promise<void> {
+    if (import.meta.env.DEV && hasDevCreds()) {
+        const { devPutObject } = await import("./s3DevDirect");
+        return devPutObject(key, body, contentType);
+    }
+    return apiPresignAndPut(key, body, contentType);
+}
+
+async function listObjects(prefix: string): Promise<S3ObjectMeta[]> {
+    if (import.meta.env.DEV && hasDevCreds()) {
+        const { devListObjects } = await import("./s3DevDirect");
+        return devListObjects(prefix);
+    }
+    const res = await fetch(`/api/s3?action=list&prefix=${encodeURIComponent(prefix)}`);
+    if (!res.ok) throw new Error(`Could not list media (HTTP ${res.status})`);
+    const data = await res.json();
+    return (data.objects || []).map((o: { key: string; size?: number; lastModified?: string }) => ({
+        key: o.key,
+        size: o.size,
+        lastModified: o.lastModified ? new Date(o.lastModified) : undefined,
+    }));
+}
+
+async function deleteObject(key: string): Promise<void> {
+    if (import.meta.env.DEV && hasDevCreds()) {
+        const { devDeleteObject } = await import("./s3DevDirect");
+        return devDeleteObject(key);
+    }
+    const res = await fetch("/api/s3?action=delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key }),
+    });
+    if (!res.ok) throw new Error(`Could not delete media (HTTP ${res.status})`);
+}
 
 export const VALID_FILE_TYPES = {
     pdfs: ["brochure.pdf", "hoja.pdf", "planos.pdf"],
@@ -169,15 +212,7 @@ export async function uploadFileToS3(
 
     try {
         console.log(`Uploading to S3: bucket=${BUCKET_NAME}, key=${s3Path}, contentType=${contentType}`);
-        const command = new PutObjectCommand({
-            Bucket: BUCKET_NAME,
-            Key: s3Path,
-            Body: body,
-            ContentType: contentType,
-        });
-
-        const sendResult = await s3Client.send(command);
-        console.log("S3 upload success result:", sendResult);
+        await putObject(s3Path, body, contentType);
 
         return {
             success: true,
@@ -202,63 +237,49 @@ export async function listDesarrolloMedia(areaName: string, desarrolloName: stri
     const files: MediaFile[] = [];
 
     try {
-        const command = new ListObjectsV2Command({
-            Bucket: BUCKET_NAME,
-            Prefix: prefix,
-        });
+        const objects = await listObjects(prefix);
 
-        const response = await s3Client.send(command);
+        for (const object of objects) {
+            if (!object.key) continue;
 
-        if (response.Contents) {
-            for (const object of response.Contents) {
-                if (!object.Key) continue;
+            const relativePath = object.key.replace(prefix, "");
+            const fileName = relativePath.split("/").pop() || "";
 
-                const relativePath = object.Key.replace(prefix, "");
-                const fileName = relativePath.split("/").pop() || "";
-
-                let type: MediaFile["type"];
-                if (relativePath.startsWith("pdfs/")) {
-                    type = "pdf";
-                } else if (relativePath === "video.mp4") {
-                    type = "video";
-                } else if (relativePath === "banner.jpg") {
-                    type = "banner";
-                } else if (relativePath.startsWith("image-gallery/")) {
-                    type = "gallery";
-                } else {
-                    continue;
-                }
-
-                files.push({
-                    key: object.Key,
-                    name: fileName,
-                    url: `https://${BUCKET_NAME}.s3.amazonaws.com/${object.Key}`,
-                    type,
-                    size: object.Size,
-                    lastModified: object.LastModified,
-                });
+            let type: MediaFile["type"];
+            if (relativePath.startsWith("pdfs/")) {
+                type = "pdf";
+            } else if (relativePath === "video.mp4") {
+                type = "video";
+            } else if (relativePath === "banner.jpg") {
+                type = "banner";
+            } else if (relativePath.startsWith("image-gallery/")) {
+                type = "gallery";
+            } else {
+                continue;
             }
+
+            files.push({
+                key: object.key,
+                name: fileName,
+                url: `https://${BUCKET_NAME}.s3.amazonaws.com/${object.key}`,
+                type,
+                size: object.size,
+                lastModified: object.lastModified,
+            });
         }
 
         const thumbnailKey = `${AREAS_PREFIX}/${safeArea}/${safeProject}.webp`;
-        const thumbnailCommand = new ListObjectsV2Command({
-            Bucket: BUCKET_NAME,
-            Prefix: thumbnailKey,
-        });
-
-        const thumbnailResponse = await s3Client.send(thumbnailCommand);
-        if (thumbnailResponse.Contents) {
-            for (const object of thumbnailResponse.Contents) {
-                if (object.Key === thumbnailKey) {
-                    files.push({
-                        key: object.Key,
-                        name: `${safeProject}.webp`,
-                        url: `https://${BUCKET_NAME}.s3.amazonaws.com/${object.Key}`,
-                        type: "thumbnail",
-                        size: object.Size,
-                        lastModified: object.LastModified,
-                    });
-                }
+        const thumbnailObjects = await listObjects(thumbnailKey);
+        for (const object of thumbnailObjects) {
+            if (object.key === thumbnailKey) {
+                files.push({
+                    key: object.key,
+                    name: `${safeProject}.webp`,
+                    url: `https://${BUCKET_NAME}.s3.amazonaws.com/${object.key}`,
+                    type: "thumbnail",
+                    size: object.size,
+                    lastModified: object.lastModified,
+                });
             }
         }
     } catch (error) {
@@ -270,12 +291,7 @@ export async function listDesarrolloMedia(areaName: string, desarrolloName: stri
 
 export async function deleteFileFromS3(key: string): Promise<boolean> {
     try {
-        const command = new DeleteObjectCommand({
-            Bucket: BUCKET_NAME,
-            Key: key,
-        });
-
-        await s3Client.send(command);
+        await deleteObject(key);
         return true;
     } catch (error) {
         console.error("S3 delete error:", error);
@@ -363,12 +379,7 @@ export async function uploadAreaMedia(
 
     try {
         console.log(`[S3] Uploading area media: bucket=${BUCKET_NAME}, key=${s3Path}`);
-        await s3Client.send(new PutObjectCommand({
-            Bucket: BUCKET_NAME,
-            Key: s3Path,
-            Body: body,
-            ContentType: contentType,
-        }));
+        await putObject(s3Path, body, contentType);
         return {
             success: true,
             key: s3Path,
@@ -387,42 +398,40 @@ export async function listAreaMedia(areaName: string): Promise<AreaMediaFile[]> 
     const files: AreaMediaFile[] = [];
 
     try {
-        const response = await s3Client.send(new ListObjectsV2Command({ Bucket: BUCKET_NAME, Prefix: prefix }));
-        if (response.Contents) {
-            for (const object of response.Contents) {
-                if (!object.Key) continue;
-                const fileName = object.Key.replace(prefix, "");
+        const objects = await listObjects(prefix);
+        for (const object of objects) {
+            if (!object.key) continue;
+            const fileName = object.key.replace(prefix, "");
 
-                // Skip development thumbnails ({desarrolloName}.webp)
-                if (fileName.includes("/")) continue;
+            // Skip development thumbnails ({desarrolloName}.webp)
+            if (fileName.includes("/")) continue;
 
-                let type: AreaMediaFile["type"];
-                let carouselNumber: number | undefined;
+            let type: AreaMediaFile["type"];
+            let carouselNumber: number | undefined;
 
-                if (fileName === "banner.jpg" || fileName === "banner.webp") {
-                    type = "banner";
-                } else if (fileName === "firstImage.jpg" || fileName === "firstImage.webp") {
-                    type = "firstImage";
+            if (fileName === "banner.jpg" || fileName === "banner.webp") {
+                type = "banner";
+            } else if (fileName === "firstImage.jpg" || fileName === "firstImage.webp") {
+                type = "firstImage";
+            } else {
+                const m = fileName.match(/^carousel-(\d+)\.(jpg|webp)$/i);
+                if (m) {
+                    type = "carousel";
+                    carouselNumber = parseInt(m[1], 10);
                 } else {
-                    const m = fileName.match(/^carousel-(\d+)\.(jpg|webp)$/i);
-                    if (m) {
-                        type = "carousel";
-                        carouselNumber = parseInt(m[1], 10);
-                    } else {
-                        continue;
-                    }
+                    continue;
                 }
-
-                files.push({
-                    key: object.Key,
-                    name: fileName,
-                    url: `https://${BUCKET_NAME}.s3.amazonaws.com/${object.Key}`,
-                    type,
-                    carouselNumber,
-                    size: object.Size,
-                    lastModified: object.LastModified,
-                });
             }
+
+            files.push({
+                key: object.key,
+                name: fileName,
+                url: `https://${BUCKET_NAME}.s3.amazonaws.com/${object.key}`,
+                type,
+                carouselNumber,
+                size: object.size,
+                lastModified: object.lastModified,
+            });
         }
     } catch (error) {
         console.error("[S3] listAreaMedia error:", error);

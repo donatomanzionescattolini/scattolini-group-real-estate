@@ -40,6 +40,7 @@ const Nav = () => {
             .sort((a, b) =>
                 (getLocalized(a.titulo) || a.name).localeCompare(getLocalized(b.titulo) || b.name)
             );
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lang, dynamicVersion, dynamicAreaVersion]);
     const [filteredAreas, setFilteredAreas] = useState<Array<Area>>(allAreas);
 
@@ -48,6 +49,7 @@ const Nav = () => {
             allAreas
                 .map((area) => [...getDesarrollosForArea(area, lang)])
                 .reduce((prev, cur) => [...prev, ...cur], []),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [allAreas, lang, dynamicVersion, dynamicAreaVersion]
     );
 

@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import MiamiBeach from "../../areas/MiamiBeach.tsx";
-const lang: "en" | "es" = "es";
+export default function buildTheWilliam(lang: "es" | "en") {
 
 
 
@@ -141,4 +141,5 @@ const lang: "en" | "es" = "es";
     };
 
 
-export default TheWilliamObject;
+  return TheWilliamObject;
+}

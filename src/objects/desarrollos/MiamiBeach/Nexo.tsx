@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import MiamiBeach from "../../areas/MiamiBeach.tsx";
-const lang: "en" | "es" = "es";
+export default function buildNexo(lang: "es" | "en") {
 
 
 
@@ -111,7 +111,7 @@ const lang: "en" | "es" = "es";
         residencias: NexoObject.displayCaracteristicasResidencias(),
         amenidades: NexoObject.displayAmenidades()
     };
-    ;
+    
     NexoObject.banner = true;
     NexoObject.video = <iframe width="500" height="300" className="object-fit-cover"
                                src="https://www.youtube.com/embed/E9S3zVDO1vsautoplay=1"
@@ -120,4 +120,5 @@ const lang: "en" | "es" = "es";
                                allowFullScreen></iframe>;
     NexoObject.numberOfImages = 41;
 
-export default NexoObject;
+  return NexoObject;
+}

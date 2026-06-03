@@ -27,6 +27,7 @@ export default function AreaEditor() {
 
     useEffect(() => {
         loadAreas();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const loadAreas = async () => {

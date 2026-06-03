@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo";
 import Homestead from "../../areas/Homestead";
-const lang: "en" | "es" = "es";
+export default function buildOnGrandville(lang: "es" | "en") {
 
 
 
@@ -146,4 +146,5 @@ const lang: "en" | "es" = "es";
     // ];
     OnGrandvilleObject.caracteristicas = OnGrandvilleObject.createCaracteristicas();
 
-export default OnGrandvilleObject;
+  return OnGrandvilleObject;
+}

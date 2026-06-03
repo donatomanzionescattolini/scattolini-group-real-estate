@@ -3,7 +3,7 @@ import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import Edgewater from "../../areas/Edgewater.tsx";
 
 
-    const {getLocalizedField, getLocalizedArray} = getDesarrolloI18n("the-villa", "es");
+    const {getLocalizedField} = getDesarrolloI18n("the-villa", "es");
     const TheVillaObject = new Desarrollo();
 
 

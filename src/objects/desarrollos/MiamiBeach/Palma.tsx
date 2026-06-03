@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo";
 import MiamiBeach from "../../areas/MiamiBeach";
-const lang: "en" | "es" = "es";
+export default function buildPalma(lang: "es" | "en") {
 
 
 
@@ -115,4 +115,5 @@ const lang: "en" | "es" = "es";
         </>
     };
 
-export default PalmaObject;
+  return PalmaObject;
+}

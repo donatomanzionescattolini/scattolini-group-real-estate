@@ -34,11 +34,14 @@
           property="twitter:description"/>
     <meta content="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo.png" property="twitter:image"/>
 
-    <!-- Favicons -->
-    <link href="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo.png" rel="icon" sizes="32x32" type="image/png"/>
-    <link href="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo.png" rel="icon" sizes="16x16" type="image/png"/>
-    <link href="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo.png" rel="apple-touch-icon" sizes="180x180"/>
-    <link href="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo.png" rel="shortcut icon"/>
+    <!-- Favicons — served same-origin so every search engine (Google, Bing,
+         DuckDuckGo, Yandex…) can fetch them. Cross-origin S3 favicons were being
+         ignored by non-Google engines, leaving only a gray globe in results. -->
+    <link href="/favicon.ico" rel="icon" sizes="any"/>
+    <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+    <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+    <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+    <link href="/favicon.ico" rel="shortcut icon"/>
     <link rel="manifest" href="/manifest.json"/>
 
     <link href="https://fonts.googleapis.com" rel="preconnect"/>

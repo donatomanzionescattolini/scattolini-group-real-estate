@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import Hollywood from "../../areas/Hollywood.tsx";
-const lang: "en" | "es" = "es";
+export default function buildGaiaResidences(lang: "es" | "en") {
 
 
 
@@ -90,4 +90,5 @@ const lang: "en" | "es" = "es";
     };
 
 
-export default GaiaResidences;
+  return GaiaResidences;
+}

@@ -1,6 +1,6 @@
 ﻿import Desarrollo from "../../../models/desarrollos/Desarrollo.tsx";
 import MiamiBeach from "../../areas/MiamiBeach.tsx";
-const lang: "en" | "es" = "es";
+export default function buildFivePark(lang: "es" | "en") {
 
 
 
@@ -273,4 +273,5 @@ const lang: "en" | "es" = "es";
     FiveParkObject.banner = true;
     FiveParkObject.area = MiamiBeach;
 
-export default FiveParkObject;
+  return FiveParkObject;
+}

@@ -166,7 +166,7 @@ const translations: Record<Language, Translation> = {
         'Il concept è già localizzato per permettere ai clienti esteri di entrare subito in contatto con la storia e il tono del brand.',
     },
     story: {
-      eyebrow: 'Focus sulla proprietà',
+      eyebrow: 'Focus sulla proprietaria',
       title:
         'Mettere Elda in primo piano rafforza autorevolezza, relazione e fiducia.',
       body:

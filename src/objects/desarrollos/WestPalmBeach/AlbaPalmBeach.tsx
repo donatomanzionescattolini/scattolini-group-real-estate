@@ -4,7 +4,7 @@ const project = new Desarrollo(WestPalmBeach);
 project.nombre = "alba-palm-beach";
 project.area = WestPalmBeach;
 project.banner = true;
-project.numberOfImages = 8;
+project.numberOfImages = 17;
 project.titulo = {
     es: "Alba Palm Beach",
     en: "Alba Palm Beach",
@@ -63,4 +63,15 @@ project.caracteristicas = {
         </ul>
     ),
 };
+project.video = (
+    <iframe
+        width="100%"
+        height="500px"
+        src="https://www.youtube.com/embed/Mwp3xMNUo3A?controls=1&rel=0"
+        title="Alba Palm Beach"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        style={{border: "none", display: "block"}}
+    />
+);
 export default project;

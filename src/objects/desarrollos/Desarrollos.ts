@@ -89,6 +89,7 @@ import ViceroyBrickell from "./Brickell/ViceroyBrickell.tsx";
 import StRegisBrickell from "./Brickell/StRegisBrickell.tsx";
 import buildParkside from "./Brickell/Parkside.tsx";
 const Parkside = buildParkside("es");
+import HouseOfWellnessBrickell from "./Brickell/HouseOfWellnessBrickell.tsx";
 import SevenParkResidences from "./Hollywood/SevenParkResidences.tsx";
 import GaiaResidences from "./Hollywood/GaiaResidences.tsx";
 import FaenaResidences from "./MiamiBeach/FaenaResidences.tsx";
@@ -240,6 +241,7 @@ desarrolloMap.push({
         ViceroyBrickell,
         StRegisBrickell,
         Parkside,
+        HouseOfWellnessBrickell,
     ]),
 });
 

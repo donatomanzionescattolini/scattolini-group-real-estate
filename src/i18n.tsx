@@ -752,6 +752,47 @@ const translations: Record<Lang, any> = {
                     }
                 }
             },
+            "house-of-wellness-brickell": {
+                titulo: "House of Wellness Brickell",
+                slogan: "La vida en el centro. El bienestar en el núcleo.",
+                direccion: "152 SW 9th Street, Miami, Florida 33130",
+                estimatedCompletionYear: "2028",
+                numberOfFloors: "34",
+                numberOfUnits: "656",
+                typeOfUnits: "Estudios, 1 y 2 habitaciones",
+                numberOfImages: "12",
+                introduccion: [
+                    "House of Wellness Brickell redefine el estilo de vida en Brickell al integrar bienestar físico, mental y social en una propuesta residencial contemporánea.",
+                    "Con 34 pisos y 656 residencias diseñadas cuidadosamente, el proyecto combina una ubicación urbana privilegiada con más de 22,000 pies cuadrados de amenidades enfocadas en wellness.",
+                    "Desarrollado por North Development, ofrece una propuesta residencial más accesible dentro del segmento de lujo, con residencias tipo estudio, de una y dos habitaciones."
+                ],
+                caracteristicas: {
+                    edificio: {
+                        direccion: "Dirección",
+                        pisos: "Pisos",
+                        unidades: "Unidades",
+                        tipos: "Tipos de residencias",
+                        amenidades: "Amenidades wellness",
+                        amenidadesValor: "Más de 22,000 pies cuadrados",
+                        desarrollador: "Desarrollador",
+                        desarrolladorValor: "North Development"
+                    },
+                    residencias: {
+                        r1: "Residencias tipo estudio, de una y dos habitaciones",
+                        r2: "Alturas de techo aproximadas de 9'4\"",
+                        r3: "Electrodomésticos premium: cooktop, refrigerador, dishwasher y speed oven",
+                        r4: "Pisos terminados en toda la unidad y baños en porcelanato",
+                        r5: "Gabinetes de dos tonos, topes de terrazo y balcones de concreto pulido"
+                    },
+                    amenidades: {
+                        a1: "Evaluación integral 360° de salud y bienestar al iniciar la residencia",
+                        a2: "Planes personalizados con nutrición, entrenamiento personal, terapia física, masajes, estética e IV therapy",
+                        a3: "Piscina tipo courtyard, coworking, estudio fitness indoor-outdoor y spa con sauna y vapor",
+                        a4: "Wellness bar, lounges sociales al aire libre y clases comunitarias",
+                        a5: "Ubicación estratégica en Brickell con acceso inmediato a Brickell City Centre, Metrorail, Metromover y The Underline"
+                    }
+                }
+            },
         },
         common: {
             loading: "Cargando...",
@@ -1514,6 +1555,47 @@ const translations: Record<Lang, any> = {
                         equipaje: "Luggage storage",
                         servicios: "Pay-per-use services such as chef, babysitter, and laundry",
                         ingreso: "Turnkey operations supported by global marketing and transparent monthly payouts"
+                    }
+                }
+            },
+            "house-of-wellness-brickell": {
+                titulo: "House of Wellness Brickell",
+                slogan: "Life at the Center. Wellness at the Core.",
+                direccion: "152 SW 9th Street, Miami, Florida 33130",
+                estimatedCompletionYear: "2028",
+                numberOfFloors: "34",
+                numberOfUnits: "656",
+                typeOfUnits: "Studios, 1 and 2 bedrooms",
+                numberOfImages: "12",
+                introduccion: [
+                    "House of Wellness Brickell redefines urban living in Brickell by integrating physical, mental, and social wellness into a contemporary residential concept.",
+                    "Rising 34 stories with 656 thoughtfully designed residences, the project blends a prime location with over 22,000 square feet of wellness-focused amenities.",
+                    "Developed by North Development, it delivers a more attainable luxury entry point with studio, one-bedroom, and two-bedroom homes."
+                ],
+                caracteristicas: {
+                    edificio: {
+                        direccion: "Address",
+                        pisos: "Floors",
+                        unidades: "Units",
+                        tipos: "Residence types",
+                        amenidades: "Wellness amenities",
+                        amenidadesValor: "Over 22,000 sq ft",
+                        desarrollador: "Developer",
+                        desarrolladorValor: "North Development"
+                    },
+                    residencias: {
+                        r1: "Studio, one-bedroom, and two-bedroom residences",
+                        r2: "Approximate 9'4\" ceiling heights",
+                        r3: "Premium appliances including cooktop, fridge, dishwasher, and speed oven",
+                        r4: "Finished flooring throughout and porcelain-tiled bathrooms",
+                        r5: "Two-tone cabinetry, terrazzo countertops, and polished concrete balconies"
+                    },
+                    amenidades: {
+                        a1: "Comprehensive 360° health and wellness assessment at move-in",
+                        a2: "Personalized plans with nutrition, personal training, physical therapy, massage, esthetician care, and IV therapy",
+                        a3: "Courtyard pool, coworking space, indoor-outdoor fitness studio, and spa sanctuary with sauna and steam",
+                        a4: "Wellness bar, outdoor social lounges, and community classes",
+                        a5: "Prime Brickell location with direct access to Brickell City Centre, Metrorail, Metromover, and The Underline"
                     }
                 }
             },

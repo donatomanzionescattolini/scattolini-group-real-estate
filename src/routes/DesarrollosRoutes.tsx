@@ -23,6 +23,8 @@ import OrlandoRoutes from "./desarrollos/OrlandoRoutes.tsx";
 import WestPalmBeachRoutes from "./desarrollos/WestPalmBeachRoutes.tsx";
 import { Route } from "react-router-dom";
 import DynamicDesarrolloRoute from "../components/desarrollos/DynamicDesarrolloRoute.tsx";
+import ProjectTemplate from "../components/desarrollos/ProjectTemplate.tsx";
+import HouseOfWellnessBrickell from "../objects/desarrollos/Brickell/HouseOfWellnessBrickell.tsx";
 
 export default function DesarrollosRoutes() {
     return (
@@ -49,6 +51,7 @@ export default function DesarrollosRoutes() {
             {HollywoodRoutes()}
             {OrlandoRoutes()}
             {WestPalmBeachRoutes()}
+            <Route element={<ProjectTemplate desarrollo={HouseOfWellnessBrickell} />} path="/desarrollos/house-of-wellness-brickell" />
             <Route element={<DynamicDesarrolloRoute />} path="/desarrollos/:slug" />
         </>
     );

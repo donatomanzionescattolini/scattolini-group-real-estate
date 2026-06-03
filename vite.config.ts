@@ -20,7 +20,11 @@ export default defineConfig({
                     if (id.includes('firebase') || id.includes('@firebase')) return 'vendor-firebase';
                     if (id.includes('@aws-sdk') || id.includes('@smithy')) return 'vendor-aws';
                     if (id.includes('react-pdf') || id.includes('pdfjs-dist')) return 'vendor-pdf';
-                    if (id.includes('bootstrap') || id.includes('react-bootstrap') || id.includes('@popperjs')) return 'vendor-bootstrap';
+                    // @restart/* are transitive deps of react-bootstrap; keeping them
+                    // in the same chunk prevents the vendor ↔ vendor-bootstrap circular
+                    // reference that causes a TDZ crash ("Cannot access '…' before
+                    // initialization") in the production bundle.
+                    if (id.includes('bootstrap') || id.includes('react-bootstrap') || id.includes('@popperjs') || id.includes('@restart/')) return 'vendor-bootstrap';
                     if (id.includes('react-router')) return 'vendor-router';
                     if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/scheduler/')) return 'vendor-react';
                     return 'vendor';

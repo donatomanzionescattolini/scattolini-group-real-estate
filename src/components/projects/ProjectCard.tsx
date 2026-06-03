@@ -1,0 +1,53 @@
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Project } from '../../data/types';
+import Badge from '../ui/Badge';
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+const statusLabel: Record<Project['status'], string> = {
+  'pre-construction': 'Pre-Construction',
+  'under-construction': 'Under Construction',
+  completed: 'Completed',
+};
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+  return (
+    <article className="group flex h-full flex-col overflow-hidden border border-[rgba(15,27,45,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
+      <div className="relative h-80 overflow-hidden">
+        <img className="h-full w-full object-cover transition duration-500 group-hover:scale-105" src={project.image} alt={project.name} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,27,45,0.68)] via-transparent to-transparent" />
+        <div className="absolute left-5 top-5">
+          <Badge>{project.areaName}</Badge>
+        </div>
+        <div className="absolute right-5 top-5">
+          <Badge tone="light">{statusLabel[project.status]}</Badge>
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-6">
+        <p className="editorial-label">{project.type}</p>
+        <h3 className="mt-3 text-3xl">{project.name}</h3>
+        <p className="mt-2 text-sm leading-6 text-muted">{project.tagline}</p>
+
+        <div className="mt-5 flex items-center justify-between border-y border-[rgba(15,27,45,0.08)] py-4 text-sm text-muted">
+          <div>
+            <p className="text-[11px] uppercase tracking-editorial">Price from</p>
+            <p className="mt-1 text-base font-medium text-navy">{project.priceFrom}</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[11px] uppercase tracking-editorial">Amenities</p>
+            <p className="mt-1 text-base font-medium text-navy">{project.amenities.length}</p>
+          </div>
+        </div>
+
+        <Link to={`/projects/${project.id}`} className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
+          View Details
+          <ArrowRight size={14} />
+        </Link>
+      </div>
+    </article>
+  );
+}

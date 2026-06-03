@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0f1b2d;
+  --gold: #c9a84c;
+  --cream: #f8f6f1;
+  --white: #ffffff;
+  --charcoal: #2c2c2c;
+  --muted: #8c8c8c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--charcoal);
+  background: var(--white);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: rgba(201, 168, 76, 0.2);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 27, 45, 0.06);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 27, 45, 0.28);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 27, 45, 0.42);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+  }
+
+  a,
+  button,
+  input,
+  textarea {
+    transition: all 220ms ease;
+  }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-navy;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+  }
+
+  .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 60px rgba(15, 27, 45, 0.08);
+    filter: brightness(0.97);
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+  }
+
+  .button-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .input-field {
+    @apply w-full bg-white px-4 py-3 text-sm text-charcoal outline-none placeholder:text-muted;
+    border: 1px solid rgba(44, 44, 44, 0.12);
+  }
+
+  .input-field:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+
+  .textarea-field {
+    @apply min-h-[140px] resize-none;
+  }
+
+  .editorial-label {
+    @apply text-[11px] font-medium uppercase tracking-editorial text-gold;
+  }
+
+  .panel-surface {
+    @apply bg-white;
+    border: 1px solid rgba(15, 27, 45, 0.08);
+    box-shadow: 0 22px 60px rgba(15, 27, 45, 0.08);
+  }
+}

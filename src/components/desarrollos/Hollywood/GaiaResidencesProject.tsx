@@ -1,9 +1,0 @@
-﻿import ProjectTemplate from "../ProjectTemplate.tsx";
-import buildGaiaResidences from "../../../objects/desarrollos/Hollywood/GaiaResidences.tsx";
-import {useTranslation} from "../../../i18n.tsx";
-
-
-export default function GaiaResidencesProject() {
-    const {lang} = useTranslation();
-    return <ProjectTemplate desarrollo={buildGaiaResidences(lang)}/>;
-}

@@ -2,15 +2,21 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../../i18n';
 
+const VIDEO_SRC = 'https://pagina-mama.s3.amazonaws.com/assets2/video-homepage.mp4';
+
 export default function HeroSection() {
   const { t } = useTranslation();
 
   return (
     <section className="relative isolate flex min-h-[calc(100vh-6rem)] items-end overflow-hidden bg-navy">
-      <img
-        src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1600&q=80"
-        alt="Luxury skyline in Miami"
+      {/* Autoplay background video */}
+      <video
         className="absolute inset-0 h-full w-full object-cover"
+        src={VIDEO_SRC}
+        autoPlay
+        muted
+        loop
+        playsInline
       />
       <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(15,27,45,0.88),rgba(15,27,45,0.36),rgba(15,27,45,0.18))]" />
       <div className="site-container relative z-10 py-20 sm:py-28">

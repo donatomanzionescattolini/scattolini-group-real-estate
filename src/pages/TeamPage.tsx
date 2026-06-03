@@ -3,11 +3,23 @@ import SectionHeader from '../components/ui/SectionHeader';
 import { agents } from '../data/agents';
 import { useTranslation } from '../i18n';
 
+const TEAM_GROUP_PHOTO = 'https://pagina-mama.s3.amazonaws.com/assets2/asociados/asociados2.png';
+
 export default function TeamPage() {
   const { t } = useTranslation();
 
   return (
     <div className="bg-cream">
+      {/* Group photo banner */}
+      <div className="w-full overflow-hidden bg-navy" style={{ maxHeight: '420px' }}>
+        <img
+          src={TEAM_GROUP_PHOTO}
+          alt="Scattolini Group Team"
+          className="w-full object-cover object-top"
+          style={{ maxHeight: '420px' }}
+        />
+      </div>
+
       <section className="site-container py-20">
         <SectionHeader
           eyebrow={t('teamPage.eyebrow')}

@@ -23,9 +23,25 @@ export default function HomePage() {
             <p className="editorial-label">{t('about.eyebrow')}</p>
             <h2 className="mt-5 text-5xl text-white">{t('about.heading')}</h2>
             <div className="mt-6 h-px w-24 bg-gold" />
-            <p className="mt-8 max-w-2xl text-base leading-8 text-[rgba(255,255,255,0.76)]">
-              {t('about.description')}
-            </p>
+
+            {/* Elda's photo */}
+            <div className="mt-8 flex items-start gap-6">
+              <div className="flex-shrink-0">
+                <img
+                  src="https://pagina-mama.s3.amazonaws.com/assets2/elda/elda.jpg"
+                  alt="Elda Scattolini"
+                  className="h-32 w-32 rounded-full object-cover border-2 border-gold shadow-card"
+                />
+              </div>
+              <div>
+                <p className="font-serif text-xl text-white leading-snug">Elda Scattolini</p>
+                <p className="mt-1 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.6)]">Owner &amp; Agent</p>
+                <p className="mt-4 max-w-2xl text-base leading-8 text-[rgba(255,255,255,0.76)]">
+                  {t('about.description')}
+                </p>
+              </div>
+            </div>
+
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
               <div>
                 <p className="font-serif text-4xl text-white">80</p>

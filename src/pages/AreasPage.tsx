@@ -1,15 +1,18 @@
 import AreaCard from '../components/areas/AreaCard';
 import SectionHeader from '../components/ui/SectionHeader';
 import { areas } from '../data/areas';
+import { useTranslation } from '../i18n';
 
 export default function AreasPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-white">
       <section className="site-container py-20">
         <SectionHeader
-          eyebrow="Markets"
-          title="Explore Our Markets"
-          description="A broad South Florida footprint spanning luxury urban cores, beachfront enclaves, legacy residential neighborhoods, and fast-growing lifestyle destinations."
+          eyebrow={t('areasPage.eyebrow')}
+          title={t('areasPage.title')}
+          description={t('areasPage.description')}
           align="center"
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">

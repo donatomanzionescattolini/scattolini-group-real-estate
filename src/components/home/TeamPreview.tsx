@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom';
 import { agents } from '../../data/agents';
+import { useTranslation } from '../../i18n';
 import SectionHeader from '../ui/SectionHeader';
 
 export default function TeamPreview() {
+  const { t } = useTranslation();
+
   return (
     <section className="site-container py-24">
       <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
         <SectionHeader
-          eyebrow="Advisors"
-          title="Our Team"
-          description="A multilingual, relationship-driven office with deep market fluency across South Florida's most competitive luxury neighborhoods."
+          eyebrow={t('teamPreview.eyebrow')}
+          title={t('teamPreview.title')}
+          description={t('teamPreview.description')}
         />
         <Link to="/team" className="text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
-          Meet all 14 agents
+          {t('teamPreview.meetAll')}
         </Link>
       </div>
 

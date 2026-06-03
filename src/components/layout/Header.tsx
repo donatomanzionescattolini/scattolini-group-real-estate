@@ -1,19 +1,21 @@
 import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-
-const navigation = [
-  { label: 'Home', to: '/' },
-  { label: 'Projects', to: '/projects' },
-  { label: 'Areas', to: '/areas' },
-  { label: 'Team', to: '/team' },
-  { label: 'Contact', to: '/contact' },
-];
+import { useTranslation } from '../../i18n';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t, lang, setLang } = useTranslation();
+
+  const navigation = [
+    { label: t('nav.home'), to: '/' },
+    { label: t('nav.projects'), to: '/projects' },
+    { label: t('nav.areas'), to: '/areas' },
+    { label: t('nav.team'), to: '/team' },
+    { label: t('nav.contact'), to: '/contact' },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -51,6 +53,28 @@ export default function Header() {
                 {item.label}
               </NavLink>
             ))}
+
+            {/* Language toggle */}
+            <div className="flex items-center gap-1 border border-[rgba(15,27,45,0.12)] px-1 py-1">
+              <button
+                type="button"
+                onClick={() => setLang('es')}
+                className={`px-2 py-1 text-xs font-semibold uppercase tracking-editorial transition-colors ${
+                  lang === 'es' ? 'bg-navy text-white' : 'text-muted hover:text-navy'
+                }`}
+              >
+                ES
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang('en')}
+                className={`px-2 py-1 text-xs font-semibold uppercase tracking-editorial transition-colors ${
+                  lang === 'en' ? 'bg-navy text-white' : 'text-muted hover:text-navy'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </nav>
 
           <button
@@ -80,6 +104,27 @@ export default function Header() {
                 {item.label}
               </NavLink>
             ))}
+            {/* Mobile language toggle */}
+            <div className="mt-4 flex items-center gap-2 py-2">
+              <button
+                type="button"
+                onClick={() => setLang('es')}
+                className={`px-3 py-2 text-xs font-semibold uppercase tracking-editorial border ${
+                  lang === 'es' ? 'bg-navy text-white border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
+                }`}
+              >
+                ES
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang('en')}
+                className={`px-3 py-2 text-xs font-semibold uppercase tracking-editorial border ${
+                  lang === 'en' ? 'bg-navy text-white border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       ) : null}

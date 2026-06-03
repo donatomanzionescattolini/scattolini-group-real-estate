@@ -1,11 +1,15 @@
-const stats = [
-  { value: '25+', label: 'Neighborhoods' },
-  { value: '100+', label: 'Developments' },
-  { value: '14', label: 'Expert Agents' },
-  { value: '15+', label: 'Years of Excellence' },
-];
+import { useTranslation } from '../../i18n';
 
 export default function StatsBar() {
+  const { t } = useTranslation();
+
+  const stats = [
+    { value: '25+', label: t('stats.neighborhoods') },
+    { value: '100+', label: t('stats.developments') },
+    { value: '14', label: t('stats.expertAgents') },
+    { value: '15+', label: t('stats.yearsOfExcellence') },
+  ];
+
   return (
     <section className="relative z-10 -mt-10">
       <div className="site-container">

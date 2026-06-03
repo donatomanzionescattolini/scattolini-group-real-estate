@@ -1,4 +1,5 @@
 import { Area } from '../../data/types';
+import { useTranslation } from '../../i18n';
 
 interface ProjectFilterProps {
   areas: Area[];
@@ -7,6 +8,8 @@ interface ProjectFilterProps {
 }
 
 export default function ProjectFilter({ areas, activeAreaId, onChange }: ProjectFilterProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-wrap gap-3">
       <button
@@ -18,7 +21,7 @@ export default function ProjectFilter({ areas, activeAreaId, onChange }: Project
             : 'border border-[rgba(15,27,45,0.12)] bg-white text-muted hover:border-gold hover:text-navy'
         }`}
       >
-        All Areas
+        {t('projectFilter.allAreas')}
       </button>
       {areas.map((area) => (
         <button

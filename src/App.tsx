@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import { TranslationProvider } from './i18n';
 import AreaDetailPage from './pages/AreaDetailPage';
 import AreasPage from './pages/AreasPage';
 import ContactPage from './pages/ContactPage';
@@ -44,8 +45,10 @@ function AppShell() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppShell />
-    </BrowserRouter>
+    <TranslationProvider>
+      <BrowserRouter>
+        <AppShell />
+      </BrowserRouter>
+    </TranslationProvider>
   );
 }

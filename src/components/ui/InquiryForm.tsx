@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { useTranslation } from '../../i18n';
 
 interface InquiryFormProps {
   title?: string;
@@ -12,11 +13,14 @@ interface InquiryFormProps {
 export default function InquiryForm({
   title,
   description,
-  submitLabel = 'Submit Inquiry',
+  submitLabel,
   theme = 'light',
   compact = false,
   defaultMessage = '',
 }: InquiryFormProps) {
+  const { t } = useTranslation();
+  const resolvedSubmitLabel = submitLabel ?? t('inquiryForm.defaultSubmit');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,7 +52,7 @@ export default function InquiryForm({
         <input
           className={inputClasses}
           type="text"
-          placeholder="Name"
+          placeholder={t('inquiryForm.placeholderName')}
           value={formData.name}
           onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
           required
@@ -56,7 +60,7 @@ export default function InquiryForm({
         <input
           className={inputClasses}
           type="email"
-          placeholder="Email"
+          placeholder={t('inquiryForm.placeholderEmail')}
           value={formData.email}
           onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
           required
@@ -64,24 +68,24 @@ export default function InquiryForm({
         <input
           className={inputClasses}
           type="tel"
-          placeholder="Phone"
+          placeholder={t('inquiryForm.placeholderPhone')}
           value={formData.phone}
           onChange={(event) => setFormData((current) => ({ ...current, phone: event.target.value }))}
         />
         <textarea
           className={textareaClasses}
-          placeholder="Tell us what you are looking for"
+          placeholder={t('inquiryForm.placeholderMessage')}
           value={formData.message}
           onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
           required
         />
         <button className={theme === 'dark' ? 'button-primary w-full sm:w-auto' : 'button-primary w-full'} type="submit">
-          {submitLabel}
+          {resolvedSubmitLabel}
         </button>
       </form>
       {submitted ? (
         <p className={`mt-4 text-sm ${theme === 'dark' ? 'text-gold' : 'text-navy'}`}>
-          Thank you — a Scattolini Group advisor will reach out shortly.
+          {t('inquiryForm.successMessage')}
         </p>
       ) : null}
     </div>

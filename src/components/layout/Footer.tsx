@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { areas } from '../../data/areas';
+import { useTranslation } from '../../i18n';
 
 const socialLinks = [
   { label: 'Instagram', href: '#', icon: Instagram },
@@ -10,6 +11,7 @@ const socialLinks = [
 
 export default function Footer() {
   const featuredAreas = areas.slice(0, 6);
+  const { t } = useTranslation();
 
   return (
     <footer className="bg-navy text-white">
@@ -19,7 +21,7 @@ export default function Footer() {
             <p className="font-serif text-4xl text-white">Scattolini Group</p>
             <div className="mt-3 h-px w-20 bg-gold" />
             <p className="mt-5 max-w-xs text-sm leading-7 text-[rgba(255,255,255,0.72)]">
-              Boutique South Florida real estate advisory for discerning buyers, investors, and families seeking extraordinary addresses.
+              {t('footer.tagline')}
             </p>
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map(({ label, href, icon: Icon }) => (
@@ -36,18 +38,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="editorial-label">Quick Links</p>
+            <p className="editorial-label">{t('footer.quickLinks')}</p>
             <ul className="mt-6 space-y-4 text-sm text-[rgba(255,255,255,0.78)]">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/projects">Projects</Link></li>
-              <li><Link to="/areas">Areas</Link></li>
-              <li><Link to="/team">Team</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/">{t('nav.home')}</Link></li>
+              <li><Link to="/projects">{t('nav.projects')}</Link></li>
+              <li><Link to="/areas">{t('nav.areas')}</Link></li>
+              <li><Link to="/team">{t('nav.team')}</Link></li>
+              <li><Link to="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <p className="editorial-label">Key Markets</p>
+            <p className="editorial-label">{t('footer.keyMarkets')}</p>
             <ul className="mt-6 space-y-4 text-sm text-[rgba(255,255,255,0.78)]">
               {featuredAreas.map((area) => (
                 <li key={area.id}>
@@ -58,18 +60,18 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="editorial-label">Contact</p>
+            <p className="editorial-label">{t('footer.contact')}</p>
             <ul className="mt-6 space-y-4 text-sm leading-7 text-[rgba(255,255,255,0.78)]">
-              <li>Brickell Avenue, Miami, FL 33131</li>
-              <li>(305) 555-0147</li>
-              <li>hello@scattolinigroup.com</li>
-              <li>Mon – Fri: 9:00 AM – 6:00 PM</li>
+              <li>{t('footer.address')}</li>
+              <li>{t('footer.phone')}</li>
+              <li>{t('footer.email')}</li>
+              <li>{t('footer.hours')}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-14 border-t border-[rgba(255,255,255,0.12)] pt-6 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.5)]">
-          © {new Date().getFullYear()} Scattolini Group. All rights reserved.
+          © {new Date().getFullYear()} Scattolini Group. {t('footer.rights')}
         </div>
       </div>
     </footer>

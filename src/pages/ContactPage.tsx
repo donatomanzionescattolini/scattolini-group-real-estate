@@ -1,22 +1,25 @@
 import { Clock3, Mail, MapPin, Phone } from 'lucide-react';
 import InquiryForm from '../components/ui/InquiryForm';
 import SectionHeader from '../components/ui/SectionHeader';
-
-const contactItems = [
-  { icon: MapPin, label: 'Office', value: 'Brickell Avenue, Miami, FL 33131' },
-  { icon: Phone, label: 'Phone', value: '(305) 555-0147' },
-  { icon: Mail, label: 'Email', value: 'hello@scattolinigroup.com' },
-  { icon: Clock3, label: 'Hours', value: 'Mon – Fri · 9:00 AM – 6:00 PM' },
-];
+import { useTranslation } from '../i18n';
 
 export default function ContactPage() {
+  const { t } = useTranslation();
+
+  const contactItems = [
+    { icon: MapPin, label: t('contactPage.labelOffice'), value: t('footer.address') },
+    { icon: Phone, label: t('contactPage.labelPhone'), value: t('footer.phone') },
+    { icon: Mail, label: t('contactPage.labelEmail'), value: t('footer.email') },
+    { icon: Clock3, label: t('contactPage.labelHours'), value: t('footer.hours') },
+  ];
+
   return (
     <div className="bg-white">
       <section className="site-container py-20">
         <SectionHeader
-          eyebrow="Contact"
-          title="Let's start the conversation"
-          description="Whether you are seeking a primary residence, a pre-construction opportunity, or expert guidance on a specific neighborhood, our team is ready to help."
+          eyebrow={t('contactPage.eyebrow')}
+          title={t('contactPage.title')}
+          description={t('contactPage.description')}
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -48,9 +51,9 @@ export default function ContactPage() {
 
           <div className="panel-surface p-8 sm:p-10">
             <InquiryForm
-              title="Contact our office"
-              description="Tell us what you are exploring and we will match you with the right advisor and next step."
-              submitLabel="Send Message"
+              title={t('contactPage.formTitle')}
+              description={t('contactPage.formDescription')}
+              submitLabel={t('contactPage.formSubmit')}
             />
           </div>
         </div>

@@ -3,10 +3,12 @@ import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
 import { areas } from '../data/areas';
 import { projects } from '../data/projects';
+import { useTranslation } from '../i18n';
 
 export default function AreaDetailPage() {
   const { areaId } = useParams();
   const area = areas.find((entry) => entry.id === areaId);
+  const { t } = useTranslation();
 
   if (!area) {
     return <Navigate to="/areas" replace />;
@@ -21,7 +23,7 @@ export default function AreaDetailPage() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.34),rgba(15,27,45,0.84))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
-            <Badge tone="light">{area.projectCount} projects</Badge>
+            <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
             <h1 className="mt-6 text-5xl text-white sm:text-6xl">{area.name}</h1>
             <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">{area.tagline}</p>
           </div>
@@ -31,31 +33,31 @@ export default function AreaDetailPage() {
       <section className="site-container py-20">
         <div className="grid gap-10 lg:grid-cols-[1.45fr_0.55fr]">
           <div>
-            <p className="editorial-label">Market Overview</p>
-            <h2 className="mt-4 text-4xl">Why buyers watch {area.name}</h2>
+            <p className="editorial-label">{t('areaDetail.marketOverview')}</p>
+            <h2 className="mt-4 text-4xl">{t('areaDetail.whyBuyersWatch')} {area.name}</h2>
             <p className="mt-6 text-base leading-8 text-muted">{area.description}</p>
           </div>
           <div className="panel-surface p-8">
-            <p className="editorial-label">At a glance</p>
+            <p className="editorial-label">{t('areaDetail.atAGlance')}</p>
             <div className="mt-6 space-y-5 text-sm text-muted">
               <div className="flex items-center justify-between border-b border-[rgba(15,27,45,0.08)] pb-4">
-                <span>Available projects</span>
+                <span>{t('areaDetail.availableProjects')}</span>
                 <span className="font-medium text-navy">{areaProjects.length}</span>
               </div>
               <div className="flex items-center justify-between border-b border-[rgba(15,27,45,0.08)] pb-4">
-                <span>Signature character</span>
+                <span>{t('areaDetail.signatureCharacter')}</span>
                 <span className="font-medium text-right text-navy">{area.tagline}</span>
               </div>
               <div className="pt-2 text-xs uppercase tracking-editorial text-muted">
-                Need a neighborhood comparison? <Link className="text-navy hover:text-gold" to="/contact">Speak with our team.</Link>
+                {t('areaDetail.neighborhoodComparison')} <Link className="text-navy hover:text-gold" to="/contact">{t('areaDetail.speakWithTeam')}</Link>
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-16">
-          <p className="editorial-label">Collection</p>
-          <h2 className="mt-4 text-4xl">Projects in {area.name}</h2>
+          <p className="editorial-label">{t('areaDetail.collection')}</p>
+          <h2 className="mt-4 text-4xl">{t('areaDetail.projectsIn')} {area.name}</h2>
 
           {areaProjects.length > 0 ? (
             <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
@@ -66,7 +68,7 @@ export default function AreaDetailPage() {
           ) : (
             <div className="mt-10 border border-[rgba(15,27,45,0.08)] bg-cream p-10 shadow-soft">
               <p className="max-w-3xl text-base leading-8 text-muted">
-                We are actively expanding our presence in this market. Contact us for off-market opportunities.
+                {t('areaDetail.expandingMarket')}
               </p>
             </div>
           )}

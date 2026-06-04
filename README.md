@@ -1,73 +1,219 @@
-# React + TypeScript + Vite
+# Scattolini Group Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Real estate website for Scattolini Group featuring property developments and areas in Miami and surrounding regions.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🏢 **Property Listings**: Comprehensive desarrollos (developments) catalog
+- 📍 **Area Information**: Detailed area guides for Miami neighborhoods
+- 🔒 **Content Management**: Authenticated editor for managing content
+- 🌐 **Bilingual Support**: Spanish and English content
+- 📱 **Responsive Design**: Mobile-friendly interface
+- 💬 **WhatsApp Integration**: Direct contact capability
 
-## React Compiler
+## New: Authentication & Editor System
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project now includes a secure content management system for authorized users to edit property and area information
+through a user-friendly interface.
 
-## Expanding the ESLint configuration
+### Quick Links
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **[Setup Guide](./SETUP_GUIDE.md)** - Complete setup instructions for development
+- **[Testing Guide](./TESTING_GUIDE.md)** - Manual testing procedures
+- **[Deployment Guide](./DEPLOYMENT_GUIDE.md)** - Production deployment instructions
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technology Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React 19.2 + TypeScript
+- **Build Tool**: Vite 7
+- **Routing**: React Router
+- **UI Framework**: MDB React UI Kit, Bootstrap
+- **Authentication**: Firebase Auth
+- **Database**: Firebase Firestore
+- **Forms**: React Hook Form
+- **Styling**: SCSS, Bootstrap
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16 or higher
+- npm or yarn package manager
+- Firebase account (for editor functionality)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/donatomanzionescattolini/scattolini-group.git
+cd scattolini-group
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install --legacy-peer-deps
 ```
+
+3. (Optional) For editor functionality, set up Firebase:
+    - Follow the [Setup Guide](./SETUP_GUIDE.md)
+    - Create `.env` file with Firebase credentials
+
+4. Start development server:
+
+```bash
+npm run dev
+```
+
+5. Open http://localhost:5173 in your browser
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+
+## Project Structure
+
+```
+scattolini-group/
+├── src/
+│   ├── components/        # React components
+│   │   ├── auth/         # Authentication components
+│   │   ├── editor/       # Content editor components
+│   │   ├── areas/        # Area display components
+│   │   └── desarrollos/  # Development display components
+│   ├── objects/          # Data objects
+│   │   ├── areas/        # Area definitions
+│   │   └── desarrollos/  # Development definitions
+│   ├── models/           # TypeScript models
+│   ├── contexts/         # React contexts
+│   ├── services/         # API and database services
+│   ├── config/           # Configuration files
+│   ├── routes/           # Route definitions
+│   └── types/            # TypeScript type definitions
+├── public/               # Static assets
+└── dist/                 # Build output
+```
+
+## Editor Access
+
+The content editor is available at `/editor` and requires authentication:
+
+1. Navigate to `/login`
+2. Enter credentials (configured in Firebase)
+3. Access the editor to manage:
+    - Desarrollo objects (property developments)
+    - Area objects (neighborhood information)
+
+For detailed instructions, see the [Testing Guide](./TESTING_GUIDE.md).
+
+## Environment Variables
+
+Required environment variables (see `.env.example`):
+
+```env
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+## Deployment
+
+For production deployment instructions, see the [Deployment Guide](./DEPLOYMENT_GUIDE.md).
+
+The application can be deployed to:
+
+- Vercel (recommended for Vite apps)
+- Firebase Hosting
+- Any static hosting service
+
+## Native Mobile Apps (App Store + Play Store)
+
+If you need the same experience distributed through the Apple App Store and Google Play,
+you should wrap this React/Vite web app in a native container and publish native binaries.
+
+Recommended approach:
+
+1. Use **Capacitor** to package the existing web app for iOS and Android.
+2. Keep this repository as the single source of UI/business logic.
+3. Add native capabilities (push notifications, deep links, biometrics) via Capacitor plugins as needed.
+4. Create production builds and publish via:
+   - Apple App Store Connect (iOS)
+   - Google Play Console (Android)
+
+Repository setup status:
+
+- `@capacitor/core` and `@capacitor/cli` are now declared in `package.json`.
+- `capacitor.config.ts` is included with app id `com.scattolini.group` and `webDir: dist`.
+- Convenience scripts are included:
+  - `npm run mobile:sync`
+  - `npm run mobile:ios`
+  - `npm run mobile:android`
+
+First-time local bootstrap:
+
+```bash
+npm install
+npx cap add ios
+npx cap add android
+npm run mobile:sync
+```
+
+Then open native projects for signing and release:
+
+- `npx cap open ios` (Xcode)
+- `npx cap open android` (Android Studio)
+
+Notes:
+
+- You still maintain the website and app in one codebase.
+- Store compliance items (privacy labels, permissions descriptions, age rating, screenshots, metadata)
+  are required before approval.
+- This PWA-style setup can coexist with store apps, but App Store/Play distribution requires the
+  native packaging and release process above.
+
+## Security
+
+- Authentication handled by Firebase Auth
+- Protected routes require login
+- Environment variables for sensitive data
+- Firestore security rules for data protection
+
+See [Deployment Guide](./DEPLOYMENT_GUIDE.md) for security best practices.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## License
+
+Private - All rights reserved
+
+## Contact
+
+For questions or support, contact Scattolini Group through the website contact form or WhatsApp.
+
+## Acknowledgments
+
+- Built with React and Vite
+- UI components from MDB React UI Kit
+- Icons from Font Awesome
+- Hosted on Vercel

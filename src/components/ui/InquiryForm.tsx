@@ -31,7 +31,7 @@ export default function InquiryForm({
 
   const inputClasses =
     theme === 'dark'
-      ? 'w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-3 text-sm text-white outline-none placeholder:text-[rgba(255,255,255,0.58)] focus:border-gold focus:ring-1 focus:ring-gold'
+      ? 'w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-3 text-sm text-amber-100 outline-none placeholder:text-[rgba(255,255,255,0.58)] focus:border-gold focus:ring-1 focus:ring-gold'
       : 'input-field';
 
   const textareaClasses = `${inputClasses} ${compact ? 'min-h-[120px]' : 'min-h-[150px]'} resize-none`;
@@ -44,7 +44,7 @@ export default function InquiryForm({
 
   return (
     <div>
-      {title ? <h3 className={`text-3xl ${theme === 'dark' ? 'text-white' : ''}`}>{title}</h3> : null}
+      {title ? <h3 className={`text-3xl ${theme === 'dark' ? 'text-amber-100' : ''}`}>{title}</h3> : null}
       {description ? (
         <p className={`mt-3 text-sm leading-6 ${theme === 'dark' ? 'text-[rgba(255,255,255,0.76)]' : 'text-muted'}`}>{description}</p>
       ) : null}

@@ -15,9 +15,9 @@ const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
         <img src={area.image} alt={area.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,27,45,0.84)] via-[rgba(15,27,45,0.3)] to-transparent" />
       </div>
-      <div className="relative flex min-h-[380px] flex-col justify-end p-7 text-white">
+      <div className="relative flex min-h-[380px] flex-col justify-end p-7 text-amber-100">
         <Badge tone="light">{area.projectCount} projects</Badge>
-        <h3 className="mt-4 text-4xl text-white">{area.name}</h3>
+        <h3 className="mt-4 text-4xl text-amber-100">{area.name}</h3>
         <p className="mt-2 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.78)]">{area.tagline}</p>
         <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold">
           Explore Market <ArrowRight size={14} />

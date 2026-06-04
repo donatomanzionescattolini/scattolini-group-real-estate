@@ -44,7 +44,7 @@ export default function BlogPage() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2 text-xs font-semibold uppercase tracking-editorial transition-colors ${
                   isActive
-                    ? 'bg-navy text-white'
+                    ? 'bg-teal-950 text-amber-100'
                     : 'border border-[rgba(15,27,45,0.12)] text-muted hover:border-navy hover:text-navy'
                 }`}
               >

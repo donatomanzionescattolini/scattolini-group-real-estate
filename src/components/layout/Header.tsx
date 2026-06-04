@@ -60,7 +60,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('es')}
                 className={`px-2 py-1 text-xs font-semibold uppercase tracking-editorial transition-colors ${
-                  lang === 'es' ? 'bg-navy text-white' : 'text-muted hover:text-navy'
+                  lang === 'es' ? 'bg-teal-950 text-amber-100' : 'text-muted hover:text-navy'
                 }`}
               >
                 ES
@@ -69,7 +69,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('en')}
                 className={`px-2 py-1 text-xs font-semibold uppercase tracking-editorial transition-colors ${
-                  lang === 'en' ? 'bg-navy text-white' : 'text-muted hover:text-navy'
+                  lang === 'en' ? 'bg-teal-950 text-amber-100' : 'text-muted hover:text-navy'
                 }`}
               >
                 EN
@@ -110,7 +110,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('es')}
                 className={`px-3 py-2 text-xs font-semibold uppercase tracking-editorial border ${
-                  lang === 'es' ? 'bg-navy text-white border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
+                  lang === 'es' ? 'bg-teal-950 text-amber-100 border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
                 }`}
               >
                 ES
@@ -119,7 +119,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('en')}
                 className={`px-3 py-2 text-xs font-semibold uppercase tracking-editorial border ${
-                  lang === 'en' ? 'bg-navy text-white border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
+                  lang === 'en' ? 'bg-teal-950 text-amber-100 border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
                 }`}
               >
                 EN

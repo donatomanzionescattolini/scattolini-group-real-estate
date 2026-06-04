@@ -31,7 +31,7 @@ export default function BlogPostPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-navy">
+      <section className="relative isolate overflow-hidden bg-teal-950">
         <img src={post.image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.42),rgba(15,27,45,0.85))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
@@ -48,7 +48,7 @@ export default function BlogPostPage() {
             <div className="mt-8">
               <Badge tone="light">{t(`blog.categories.${post.category}`)}</Badge>
             </div>
-            <h1 className="mt-6 text-4xl text-white sm:text-5xl">{title}</h1>
+            <h1 className="mt-6 text-4xl text-amber-100 sm:text-5xl">{title}</h1>
             <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-[rgba(255,255,255,0.78)]">
               <span className="inline-flex items-center gap-2">
                 <UserRound size={16} className="text-gold" /> {post.author}

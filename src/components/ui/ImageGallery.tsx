@@ -54,7 +54,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
           >
             <img src={src} alt={`${alt} ${i + 2}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
             {i === 3 && remaining > 0 && (
-              <span className="absolute inset-0 flex items-center justify-center bg-[rgba(15,27,45,0.55)] text-lg font-medium text-white">
+              <span className="absolute inset-0 flex items-center justify-center bg-[rgba(15,27,45,0.55)] text-lg font-medium text-amber-100">
                 +{remaining}
               </span>
             )}
@@ -66,14 +66,14 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
       {lightboxIndex !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.92)]" onClick={close}>
           <div className="absolute right-4 top-4 z-10">
-            <button type="button" onClick={close} className="rounded-full bg-[rgba(255,255,255,0.12)] p-2 text-white transition hover:bg-[rgba(255,255,255,0.24)]">
+            <button type="button" onClick={close} className="rounded-full bg-[rgba(255,255,255,0.12)] p-2 text-amber-100 transition hover:bg-[rgba(255,255,255,0.24)]">
               <X size={22} />
             </button>
           </div>
 
           <button
             type="button"
-            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.12)] p-2.5 text-white transition hover:bg-[rgba(255,255,255,0.24)]"
+            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.12)] p-2.5 text-amber-100 transition hover:bg-[rgba(255,255,255,0.24)]"
             onClick={(e) => { e.stopPropagation(); prev(); }}
           >
             <ChevronLeft size={24} />
@@ -88,7 +88,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 
           <button
             type="button"
-            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.12)] p-2.5 text-white transition hover:bg-[rgba(255,255,255,0.24)]"
+            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.12)] p-2.5 text-amber-100 transition hover:bg-[rgba(255,255,255,0.24)]"
             onClick={(e) => { e.stopPropagation(); next(); }}
           >
             <ChevronRight size={24} />

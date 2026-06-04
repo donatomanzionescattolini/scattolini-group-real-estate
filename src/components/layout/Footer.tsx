@@ -14,7 +14,7 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-teal-950 text-amber-100">
       <div className="site-container py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -24,7 +24,7 @@ export default function Footer() {
                 alt=""
                 className="h-7 w-auto object-contain brightness-0 invert opacity-80"
               />
-              <p className="font-serif text-4xl text-white">Scattolini Group</p>
+              <p className="font-serif text-4xl text-amber-100">Scattolini Group</p>
             </div>
             <div className="mt-3 h-px w-20 bg-gold" />
             <p className="mt-5 max-w-xs text-sm leading-7 text-[rgba(255,255,255,0.72)]">
@@ -36,7 +36,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="inline-flex h-10 w-10 items-center justify-center border border-[rgba(255,255,255,0.16)] text-white hover:border-gold hover:text-gold"
+                  className="inline-flex h-10 w-10 items-center justify-center border border-[rgba(255,255,255,0.16)] text-amber-100 hover:border-gold hover:text-gold"
                 >
                   <Icon size={16} />
                 </a>

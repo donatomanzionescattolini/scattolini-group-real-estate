@@ -7,6 +7,8 @@ export default {
     extend: {
       colors: {
         navy: 'var(--navy)',
+        teal: 'var(--teal)',
+        'warm-brown': 'var(--warm-brown)',
         gold: 'var(--gold)',
         cream: 'var(--cream)',
         white: 'var(--white)',
@@ -14,12 +16,12 @@ export default {
         muted: 'var(--muted)',
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'serif'],
-        sans: ['DM Sans', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 22px 60px rgba(15, 27, 45, 0.08)',
-        card: '0 24px 70px rgba(15, 27, 45, 0.14)',
+        soft: '0 22px 60px rgba(27, 52, 51, 0.08)',
+        card: '0 24px 70px rgba(27, 52, 51, 0.14)',
       },
       letterSpacing: {
         editorial: '0.28em',

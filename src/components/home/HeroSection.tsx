@@ -8,7 +8,7 @@ export default function HeroSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative isolate flex min-h-[calc(100vh-6rem)] items-end overflow-hidden bg-navy">
+    <section className="relative isolate flex min-h-[calc(100vh-6rem)] items-end overflow-hidden bg-teal-950">
       {/* Autoplay background video */}
       <video
         className="absolute inset-0 h-full w-full object-cover"
@@ -22,7 +22,7 @@ export default function HeroSection() {
       <div className="site-container relative z-10 py-20 sm:py-28">
         <div className="max-w-3xl">
           <p className="editorial-label">{t('hero.eyebrow')}</p>
-          <h1 className="mt-6 text-5xl leading-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 text-5xl leading-tight text-amber-100 sm:text-6xl lg:text-7xl">
             {t('hero.heading').split('\n').map((line, i) => (
               <span key={i}>{line}{i === 0 ? <br /> : null}</span>
             ))}

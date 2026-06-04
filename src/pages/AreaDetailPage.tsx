@@ -19,13 +19,13 @@ export default function AreaDetailPage() {
 
   return (
     <div className="bg-white">
-      <section className="relative isolate overflow-hidden bg-navy">
+      <section className="relative isolate overflow-hidden bg-teal-950">
         <img src={area.image} alt={area.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.34),rgba(15,27,45,0.84))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
             <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
-            <h1 className="mt-6 text-5xl text-white sm:text-6xl">{area.name}</h1>
+            <h1 className="mt-6 text-5xl text-amber-100 sm:text-6xl">{area.name}</h1>
             <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">{area.tagline}</p>
           </div>
         </div>

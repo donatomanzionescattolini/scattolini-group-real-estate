@@ -27,7 +27,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-navy">
+      <section className="relative isolate overflow-hidden bg-teal-950">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.36),rgba(15,27,45,0.82))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
@@ -45,7 +45,7 @@ export default function ProjectDetailPage() {
               <Badge tone="light">{project.areaName}</Badge>
               <Badge tone="light">{statusLabels[project.status]}</Badge>
             </div>
-            <h1 className="mt-6 text-5xl text-white sm:text-6xl">{project.name}</h1>
+            <h1 className="mt-6 text-5xl text-amber-100 sm:text-6xl">{project.name}</h1>
             <p className="mt-4 text-lg leading-8 text-[rgba(255,255,255,0.78)]">{project.tagline}</p>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function ProjectDetailPage() {
           <div className="site-container">
             <p className="editorial-label">{t('projectDetail.video')}</p>
             <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
-            <div className="relative overflow-hidden rounded-lg bg-navy" style={{ aspectRatio: '16/9' }}>
+            <div className="relative overflow-hidden rounded-lg bg-teal-950" style={{ aspectRatio: '16/9' }}>
               <video
                 className="h-full w-full object-cover"
                 controls
@@ -153,7 +153,7 @@ export default function ProjectDetailPage() {
               </video>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity peer-paused:opacity-100">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[rgba(255,255,255,0.18)] backdrop-blur-sm">
-                  <Play className="text-white" size={28} fill="white" />
+                  <Play className="text-amber-100" size={28} fill="white" />
                 </div>
               </div>
             </div>

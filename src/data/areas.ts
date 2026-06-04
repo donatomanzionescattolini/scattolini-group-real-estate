@@ -3,7 +3,7 @@ import { Area } from './types';
 const S3_AREAS = 'https://pagina-mama.s3.amazonaws.com/assets2/areas';
 
 function areaGallery(areaId: string, count: number): string[] {
-  return Array.from({ length: count }, (_, i) => `${S3_AREAS}/${areaId}/gallery/image (${i + 1}).jpg`);
+  return Array.from({ length: count }, (_, i) => `${S3_AREAS}/${areaId}/gallery/image%20(${i + 1}).jpg`);
 }
 
 export const areas: Area[] = [

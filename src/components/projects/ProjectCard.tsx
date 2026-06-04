@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Project } from '../../data/types';
 import Badge from '../ui/Badge';
@@ -13,11 +14,11 @@ const statusLabel: Record<Project['status'], string> = {
   completed: 'Completed',
 };
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="group flex h-full flex-col overflow-hidden border border-[rgba(15,27,45,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
       <div className="relative h-80 overflow-hidden">
-        <img className="h-full w-full object-cover transition duration-500 group-hover:scale-105" src={project.image} alt={project.name} />
+        <img className="h-full w-full object-cover transition duration-500 group-hover:scale-105" src={project.image} alt={project.name} loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,27,45,0.68)] via-transparent to-transparent" />
         <div className="absolute left-5 top-5">
           <Badge>{project.areaName}</Badge>
@@ -50,4 +51,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
     </article>
   );
-}
+});
+
+export default ProjectCard;

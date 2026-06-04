@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { Agent } from '../../data/types';
 
 interface AgentCardProps {
   agent: Agent;
 }
 
-export default function AgentCard({ agent }: AgentCardProps) {
+const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
   const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
 
   return (
@@ -16,6 +17,8 @@ export default function AgentCard({ agent }: AgentCardProps) {
             src={agent.photo}
             alt={`${agent.firstName} ${agent.lastName}`}
             className="absolute inset-0 h-full w-full object-contain p-4"
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-cream">
@@ -41,4 +44,6 @@ export default function AgentCard({ agent }: AgentCardProps) {
       </div>
     </article>
   );
-}
+});
+
+export default AgentCard;

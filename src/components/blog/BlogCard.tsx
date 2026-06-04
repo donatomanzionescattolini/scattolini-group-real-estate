@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { localize } from '../../data/blog';
 import { BlogPost } from '../../data/types';
@@ -9,7 +10,7 @@ interface BlogCardProps {
   post: BlogPost;
 }
 
-export default function BlogCard({ post }: BlogCardProps) {
+const BlogCard = memo(function BlogCard({ post }: BlogCardProps) {
   const { t, lang } = useTranslation();
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', {
@@ -54,5 +55,6 @@ export default function BlogCard({ post }: BlogCardProps) {
       </div>
     </article>
   );
-}
+});
 
+export default BlogCard;

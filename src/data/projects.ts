@@ -186,6 +186,12 @@ function buildDescription(project: ProjectSeed, index: number) {
   return `${openers[index % openers.length]} ${typeCopy[project.type]} ${statusCopy[project.status]}`;
 }
 
+const S3_BASE = 'https://pagina-mama.s3.amazonaws.com/assets2/desarrollos';
+
+function buildGallery(projectId: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `${S3_BASE}/${projectId}/image-gallery/image (${i + 1}).jpg`);
+}
+
 export const projects: Project[] = projectSeeds.map((project, index) => ({
   ...project,
   image: imageLibrary[project.imageIndex % imageLibrary.length],
@@ -195,6 +201,10 @@ export const projects: Project[] = projectSeeds.map((project, index) => ({
   floors: 18 + (index % 45),
   units: `${90 + ((index * 13) % 260)} residences`,
   completionYear: completionMap[project.status][index % completionMap[project.status].length],
+  gallery: buildGallery(project.id, 6 + (index % 5)),
+  factsheetPdf: `${S3_BASE}/${project.id}/pdfs/hoja.pdf`,
+  floorplansPdf: `${S3_BASE}/${project.id}/pdfs/planos.pdf`,
+  videoUrl: `${S3_BASE}/${project.id}/video.mp4`,
 }));
 
 export const featuredProjects = projects.filter((project) => project.featured);

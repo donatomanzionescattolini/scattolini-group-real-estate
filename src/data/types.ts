@@ -15,6 +15,7 @@ export interface Area {
   description: string;
   image: string;
   projectCount: number;
+  gallery?: string[];
 }
 
 export interface Project {
@@ -35,4 +36,8 @@ export interface Project {
   features: string[];
   image: string;
   featured?: boolean;
+  gallery?: string[];
+  factsheetPdf?: string;
+  floorplansPdf?: string;
+  videoUrl?: string;
 }

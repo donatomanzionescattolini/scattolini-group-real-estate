@@ -18,8 +18,11 @@ export default function Footer() {
       <div className="site-container py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-serif text-4xl text-white">Scattolini Group</p>
-            <div className="mt-3 h-px w-20 bg-gold" />
+            <img
+              src="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo-transparent-background-1.png"
+              alt="Scattolini Group"
+              className="h-14 w-auto object-contain brightness-0 invert"
+            />
             <p className="mt-5 max-w-xs text-sm leading-7 text-[rgba(255,255,255,0.72)]">
               {t('footer.tagline')}
             </p>

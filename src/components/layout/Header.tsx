@@ -30,15 +30,18 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(15,27,45,0.05)] bg-[rgba(255,255,255,0.92)] backdrop-blur ${
+      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(14,45,47,0.08)] bg-[rgba(242,242,237,0.95)] backdrop-blur ${
         scrolled ? 'shadow-[0_10px_40px_rgba(15,27,45,0.08)]' : ''
       }`}
     >
       <div className="site-container">
         <div className="flex h-24 items-center justify-between">
-          <Link to="/" className="flex flex-col">
-            <span className="font-serif text-[2rem] leading-none text-navy sm:text-[2.2rem]">Scattolini Group</span>
-            <span className="mt-2 h-px w-20 bg-gold" />
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo-transparent-background-1.png"
+              alt="Scattolini Group"
+              className="h-16 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">

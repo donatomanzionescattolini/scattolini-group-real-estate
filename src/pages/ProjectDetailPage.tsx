@@ -1,7 +1,8 @@
-import { ArrowRight, CalendarDays, Layers3, Sparkles } from 'lucide-react';
+import { ArrowRight, CalendarDays, Download, FileText, Layers3, Play, Sparkles } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
+import ImageGallery from '../components/ui/ImageGallery';
 import InquiryForm from '../components/ui/InquiryForm';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
@@ -25,6 +26,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="bg-white">
+      {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.36),rgba(15,27,45,0.82))]" />
@@ -49,6 +51,16 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
+      {/* Photo Gallery */}
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="site-container py-16">
+          <p className="editorial-label">{t('projectDetail.gallery')}</p>
+          <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.photoGallery')}</h2>
+          <ImageGallery images={project.gallery} alt={project.name} />
+        </section>
+      )}
+
+      {/* Key Stats + Overview + Sidebar */}
       <section className="site-container py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
           <div>
@@ -124,6 +136,76 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
+      {/* Video */}
+      {project.videoUrl && (
+        <section className="bg-cream py-20">
+          <div className="site-container">
+            <p className="editorial-label">{t('projectDetail.video')}</p>
+            <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
+            <div className="relative overflow-hidden rounded-lg bg-navy" style={{ aspectRatio: '16/9' }}>
+              <video
+                className="h-full w-full object-cover"
+                controls
+                preload="metadata"
+                poster={project.image}
+              >
+                <source src={project.videoUrl} type="video/mp4" />
+              </video>
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity peer-paused:opacity-100">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[rgba(255,255,255,0.18)] backdrop-blur-sm">
+                  <Play className="text-white" size={28} fill="white" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Documents */}
+      {(project.factsheetPdf || project.floorplansPdf) && (
+        <section className="site-container py-20">
+          <p className="editorial-label">{t('projectDetail.documents')}</p>
+          <h2 className="mt-4 mb-8 text-4xl">{project.name}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {project.factsheetPdf && (
+              <a
+                href={project.factsheetPdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-5 rounded-lg border border-[rgba(15,27,45,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
+                  <FileText size={22} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-navy">{t('projectDetail.factsheet')}</p>
+                  <p className="mt-1 text-xs text-muted">{t('projectDetail.downloadFactsheet')}</p>
+                </div>
+                <Download size={16} className="shrink-0 text-muted transition group-hover:text-gold" />
+              </a>
+            )}
+            {project.floorplansPdf && (
+              <a
+                href={project.floorplansPdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-5 rounded-lg border border-[rgba(15,27,45,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
+                  <Layers3 size={22} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-navy">{t('projectDetail.floorplans')}</p>
+                  <p className="mt-1 text-xs text-muted">{t('projectDetail.downloadFloorplans')}</p>
+                </div>
+                <Download size={16} className="shrink-0 text-muted transition group-hover:text-gold" />
+              </a>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Related Projects */}
       <section className="bg-cream py-20">
         <div className="site-container">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

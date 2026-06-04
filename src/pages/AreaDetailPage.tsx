@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
+import ImageGallery from '../components/ui/ImageGallery';
 import { areas } from '../data/areas';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
@@ -29,6 +30,15 @@ export default function AreaDetailPage() {
           </div>
         </div>
       </section>
+
+      {/* Neighborhood Gallery */}
+      {area.gallery && area.gallery.length > 0 && (
+        <section className="site-container py-16">
+          <p className="editorial-label">{t('areaDetail.gallery')}</p>
+          <h2 className="mt-4 mb-8 text-4xl">{t('areaDetail.areaGallery')}</h2>
+          <ImageGallery images={area.gallery} alt={area.name} />
+        </section>
+      )}
 
       <section className="site-container py-20">
         <div className="grid gap-10 lg:grid-cols-[1.45fr_0.55fr]">

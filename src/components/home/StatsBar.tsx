@@ -13,7 +13,7 @@ export default function StatsBar() {
   return (
     <section className="relative z-10 -mt-10">
       <div className="site-container">
-        <div className="grid gap-px overflow-hidden border border-[rgba(15,27,45,0.08)] bg-[rgba(15,27,45,0.08)] shadow-soft md:grid-cols-4">
+          <div className="grid gap-px overflow-hidden border border-[rgba(27,52,51,0.08)] bg-[rgba(27,52,51,0.08)] shadow-soft md:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="bg-white px-6 py-8 text-center">
               <p className="font-serif text-4xl text-navy">{stat.value}</p>

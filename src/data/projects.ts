@@ -170,6 +170,7 @@ function buildDescription(project: ProjectSeed, index: number) {
 }
 
 const S3_BASE = 'https://pagina-mama.s3.amazonaws.com/assets2/desarrollos';
+const S3_AREAS_BASE = 'https://pagina-mama.s3.amazonaws.com/assets2/areas';
 
 function buildGallery(projectId: string, count: number): string[] {
   return Array.from({ length: count }, (_, i) => `${S3_BASE}/${projectId}/image-gallery/image (${i + 1}).jpg`);
@@ -177,7 +178,8 @@ function buildGallery(projectId: string, count: number): string[] {
 
 export const projects: Project[] = projectSeeds.map((project, index) => ({
   ...project,
-  image: `${S3_BASE}/${project.id}/banner.jpg`,
+  image: `${S3_BASE}/${project.id}/image-gallery/image (1).jpg`,
+  thumbnail: `${S3_AREAS_BASE}/${project.areaId}/${project.id}.webp`,
   description: buildDescription(project, index),
   amenities: buildAmenities(project, index),
   features: buildFeatures(project, index),

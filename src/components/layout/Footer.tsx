@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="editorial-label">{t('footer.quickLinks')}</p>
+            <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('footer.quickLinks')}</p>
             <ul className="mt-6 space-y-4 text-sm text-[rgba(255,255,255,0.78)]">
               <li><Link to="/">{t('nav.home')}</Link></li>
               <li><Link to="/projects">{t('nav.projects')}</Link></li>
@@ -57,7 +57,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="editorial-label">{t('footer.keyMarkets')}</p>
+            <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('footer.keyMarkets')}</p>
             <ul className="mt-6 space-y-4 text-sm text-[rgba(255,255,255,0.78)]">
               {featuredAreas.map((area) => (
                 <li key={area.id}>
@@ -68,7 +68,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="editorial-label">{t('footer.contact')}</p>
+            <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('footer.contact')}</p>
             <ul className="mt-6 space-y-4 text-sm leading-7 text-[rgba(255,255,255,0.78)]">
               <li>{t('footer.address')}</li>
               <li>{t('footer.phone')}</li>

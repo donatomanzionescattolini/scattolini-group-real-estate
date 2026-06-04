@@ -23,7 +23,7 @@ export default function TeamPreview() {
         {agents.slice(0, 10).map((agent) => {
           const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
           return (
-            <div key={agent.id} className="border border-[rgba(15,27,45,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
+            <div key={agent.id} className="border border-[rgba(27,52,51,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
               {/* Photo */}
               <div className="relative w-full bg-cream" style={{ paddingBottom: '100%' }}>
                 {agent.photo ? (

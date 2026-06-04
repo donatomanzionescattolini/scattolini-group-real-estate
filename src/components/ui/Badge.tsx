@@ -6,8 +6,8 @@ interface BadgeProps {
 }
 
 const toneStyles = {
-  gold: 'border border-[rgba(201,168,76,0.35)] bg-[rgba(201,168,76,0.12)] text-gold',
-  navy: 'border border-[rgba(15,27,45,0.15)] bg-[rgba(15,27,45,0.06)] text-navy',
+  gold: 'border border-[rgba(165,125,49,0.35)] bg-[rgba(165,125,49,0.12)] text-gold',
+  navy: 'border border-[rgba(27,52,51,0.15)] bg-[rgba(27,52,51,0.06)] text-navy',
   light: 'border border-[rgba(255,255,255,0.28)] bg-[rgba(255,255,255,0.12)] text-amber-100',
 };
 

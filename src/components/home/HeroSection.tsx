@@ -18,10 +18,10 @@ export default function HeroSection() {
         loop
         playsInline
       />
-      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(15,27,45,0.88),rgba(15,27,45,0.36),rgba(15,27,45,0.18))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(27,52,51,0.88),rgba(27,52,51,0.36),rgba(27,52,51,0.18))]" />
       <div className="site-container relative z-10 py-20 sm:py-28">
         <div className="max-w-3xl">
-          <p className="editorial-label">{t('hero.eyebrow')}</p>
+          <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('hero.eyebrow')}</p>
           <h1 className="mt-6 text-5xl leading-tight text-amber-100 sm:text-6xl lg:text-7xl">
             {t('hero.heading').split('\n').map((line, i) => (
               <span key={i}>{line}{i === 0 ? <br /> : null}</span>

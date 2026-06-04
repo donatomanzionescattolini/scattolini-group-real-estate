@@ -10,10 +10,10 @@ interface AreaCardProps {
 
 const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
   return (
-    <Link to={`/areas/${area.id}`} className="group relative block overflow-hidden border border-[rgba(15,27,45,0.08)] shadow-soft">
+    <Link to={`/areas/${area.id}`} className="group relative block overflow-hidden border border-[rgba(27,52,51,0.08)] shadow-soft">
       <div className="absolute inset-0">
         <img src={area.image} alt={area.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(15,27,45,0.84)] via-[rgba(15,27,45,0.3)] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(27,52,51,0.84)] via-[rgba(27,52,51,0.3)] to-transparent" />
       </div>
       <div className="relative flex min-h-[380px] flex-col justify-end p-7 text-amber-100">
         <Badge tone="light">{area.projectCount} projects</Badge>

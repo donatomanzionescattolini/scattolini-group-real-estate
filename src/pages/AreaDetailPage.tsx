@@ -21,7 +21,7 @@ export default function AreaDetailPage() {
     <div className="bg-white">
       <section className="relative isolate overflow-hidden bg-teal-950">
         <img src={area.image} alt={area.name} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.34),rgba(15,27,45,0.84))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,52,51,0.34),rgba(27,52,51,0.84))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
             <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
@@ -50,11 +50,11 @@ export default function AreaDetailPage() {
           <div className="panel-surface p-8">
             <p className="editorial-label">{t('areaDetail.atAGlance')}</p>
             <div className="mt-6 space-y-5 text-sm text-muted">
-              <div className="flex items-center justify-between border-b border-[rgba(15,27,45,0.08)] pb-4">
+              <div className="flex items-center justify-between border-b border-[rgba(27,52,51,0.08)] pb-4">
                 <span>{t('areaDetail.availableProjects')}</span>
                 <span className="font-medium text-navy">{areaProjects.length}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-[rgba(15,27,45,0.08)] pb-4">
+              <div className="flex items-center justify-between border-b border-[rgba(27,52,51,0.08)] pb-4">
                 <span>{t('areaDetail.signatureCharacter')}</span>
                 <span className="font-medium text-right text-navy">{area.tagline}</span>
               </div>
@@ -76,7 +76,7 @@ export default function AreaDetailPage() {
               ))}
             </div>
           ) : (
-            <div className="mt-10 border border-[rgba(15,27,45,0.08)] bg-cream p-10 shadow-soft">
+            <div className="mt-10 border border-[rgba(27,52,51,0.08)] bg-cream p-10 shadow-soft">
               <p className="max-w-3xl text-base leading-8 text-muted">
                 {t('areaDetail.expandingMarket')}
               </p>

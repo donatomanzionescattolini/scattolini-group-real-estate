@@ -118,7 +118,7 @@ body {
   }
 
   .editorial-label {
-    @apply text-[11px] font-medium uppercase tracking-editorial text-gold;
+    @apply text-[11px] font-medium uppercase tracking-editorial text-teal;
   }
 
   .panel-surface {

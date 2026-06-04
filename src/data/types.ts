@@ -77,6 +77,7 @@ export interface Project {
   amenities: string[];
   features: string[];
   image: string;
+  thumbnail?: string;
   featured?: boolean;
   gallery?: string[];
   factsheetPdf?: string;

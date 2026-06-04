@@ -29,7 +29,7 @@ export default function ProjectDetailPage() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-teal-950">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.36),rgba(15,27,45,0.82))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,52,51,0.36),rgba(27,52,51,0.82))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-4xl">
             <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">
@@ -93,7 +93,7 @@ export default function ProjectDetailPage() {
                 <p className="editorial-label">{t('projectDetail.amenities')}</p>
                 <ul className="mt-6 space-y-4">
                   {project.amenities.map((amenity) => (
-                    <li key={amenity} className="border-b border-[rgba(15,27,45,0.08)] pb-4 text-sm text-charcoal">
+                    <li key={amenity} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
                       {amenity}
                     </li>
                   ))}
@@ -103,7 +103,7 @@ export default function ProjectDetailPage() {
                 <p className="editorial-label">{t('projectDetail.residenceFeatures')}</p>
                 <ul className="mt-6 space-y-4">
                   {project.features.map((feature) => (
-                    <li key={feature} className="border-b border-[rgba(15,27,45,0.08)] pb-4 text-sm text-charcoal">
+                    <li key={feature} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
                       {feature}
                     </li>
                   ))}
@@ -116,7 +116,7 @@ export default function ProjectDetailPage() {
             <div className="panel-surface p-8">
               <p className="editorial-label">{t('projectDetail.contactAbout')}</p>
               <h3 className="mt-4 text-3xl">{t('projectDetail.requestPresentation')}</h3>
-              <div className="mt-6 space-y-4 border-y border-[rgba(15,27,45,0.08)] py-6 text-sm text-muted">
+              <div className="mt-6 space-y-4 border-y border-[rgba(27,52,51,0.08)] py-6 text-sm text-muted">
                 <div className="flex items-center justify-between">
                   <span>{t('projectDetail.market')}</span>
                   <span className="font-medium text-navy">{project.areaName}</span>
@@ -172,7 +172,7 @@ export default function ProjectDetailPage() {
                 href={project.factsheetPdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-lg border border-[rgba(15,27,45,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
+                className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
                   <FileText size={22} />
@@ -189,7 +189,7 @@ export default function ProjectDetailPage() {
                 href={project.floorplansPdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-lg border border-[rgba(15,27,45,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
+                className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
                   <Layers3 size={22} />

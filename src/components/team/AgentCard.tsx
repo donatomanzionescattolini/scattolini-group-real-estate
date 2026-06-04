@@ -11,12 +11,12 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
   return (
     <article className="flex h-full flex-col items-start border border-[rgba(15,27,45,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
       {/* Photo area */}
-      <div className="relative w-full bg-cream" style={{ paddingBottom: '100%' }}>
+      <div className="relative w-full h-full bg-cream" style={{ paddingBottom: '100%' }}>
         {agent.photo ? (
           <img
             src={agent.photo}
             alt={`${agent.firstName} ${agent.lastName}`}
-            className="absolute inset-0 h-full w-full object-contain p-4 pb-0"
+            className="absolute inset-0 h-full w-full object-contain p-0 m-0"
             loading="lazy"
             decoding="async"
           />

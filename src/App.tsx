@@ -5,6 +5,8 @@ import Header from './components/layout/Header';
 import { TranslationProvider } from './i18n';
 import AreaDetailPage from './pages/AreaDetailPage';
 import AreasPage from './pages/AreasPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import ContactPage from './pages/ContactPage';
 import HomePage from './pages/HomePage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -33,6 +35,8 @@ function AppShell() {
           <Route path="/projects/:projectId" element={<ProjectDetailPage />} />
           <Route path="/areas" element={<AreasPage />} />
           <Route path="/areas/:areaId" element={<AreaDetailPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:postId" element={<BlogPostPage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

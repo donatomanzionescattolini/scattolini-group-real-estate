@@ -13,6 +13,7 @@ export default function Header() {
     { label: t('nav.home'), to: '/' },
     { label: t('nav.projects'), to: '/projects' },
     { label: t('nav.areas'), to: '/areas' },
+    { label: t('nav.blog'), to: '/blog' },
     { label: t('nav.team'), to: '/team' },
     { label: t('nav.contact'), to: '/contact' },
   ];

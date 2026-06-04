@@ -50,6 +50,7 @@ export default function Footer() {
               <li><Link to="/">{t('nav.home')}</Link></li>
               <li><Link to="/projects">{t('nav.projects')}</Link></li>
               <li><Link to="/areas">{t('nav.areas')}</Link></li>
+              <li><Link to="/blog">{t('nav.blog')}</Link></li>
               <li><Link to="/team">{t('nav.team')}</Link></li>
               <li><Link to="/contact">{t('nav.contact')}</Link></li>
             </ul>

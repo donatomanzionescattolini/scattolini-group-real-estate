@@ -18,6 +18,48 @@ export interface Area {
   gallery?: string[];
 }
 
+/** Supported UI languages (mirrors the union exported from i18n). */
+export type Lang = 'es' | 'en';
+
+/** A value translated into both supported languages. */
+export interface LocaleString {
+  es: string;
+  en: string;
+}
+
+/** An array of strings (e.g. body paragraphs) per language. */
+export interface LocaleStringArray {
+  es: string[];
+  en: string[];
+}
+
+export type BlogCategory =
+  | 'market-insights'
+  | 'investor-guide'
+  | 'financing'
+  | 'neighborhood'
+  | 'lifestyle';
+
+export interface BlogPost {
+  /** URL slug, also used as the unique id. */
+  id: string;
+  category: BlogCategory;
+  author: string;
+  /** ISO date string (YYYY-MM-DD). */
+  publishedAt: string;
+  readMinutes: number;
+  image: string;
+  title: LocaleString;
+  excerpt: LocaleString;
+  /**
+   * Body paragraphs per language. A paragraph that starts with `## `
+   * is rendered as a subheading; everything else is a paragraph.
+   */
+  body: LocaleStringArray;
+  /** True when the post was produced by the scheduled AI generator. */
+  generated?: boolean;
+}
+
 export interface Project {
   id: string;
   name: string;

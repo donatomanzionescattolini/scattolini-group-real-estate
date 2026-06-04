@@ -6,10 +6,6 @@ interface ImageGalleryProps {
   alt: string;
 }
 
-function normalizeImageSrc(src: string): string {
-  return src.replace(/%20/g, ' ');
-}
-
 export default function ImageGallery({ images, alt }: ImageGalleryProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -46,7 +42,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
           className="group relative col-span-2 row-span-2 cursor-pointer overflow-hidden"
           onClick={() => setLightboxIndex(0)}
         >
-          <img src={normalizeImageSrc(visible[0])} alt={`${alt} 1`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+          <img src={visible[0]} alt={`${alt} 1`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
         </button>
         {visible.slice(1).map((src, i) => (
           <button
@@ -55,7 +51,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
             className="group relative cursor-pointer overflow-hidden"
             onClick={() => setLightboxIndex(i + 1)}
           >
-            <img src={normalizeImageSrc(src)} alt={`${alt} ${i + 2}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+            <img src={src} alt={`${alt} ${i + 2}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
             {i === 3 && remaining > 0 && (
               <span className="absolute inset-0 flex items-center justify-center bg-[rgba(15,27,45,0.55)] text-lg font-medium text-white">
                 +{remaining}
@@ -83,7 +79,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
           </button>
 
           <img
-            src={normalizeImageSrc(images[lightboxIndex])}
+            src={images[lightboxIndex]}
             alt={`${alt} ${lightboxIndex + 1}`}
             className="max-h-[85vh] max-w-[90vw] rounded object-contain"
             onClick={(e) => e.stopPropagation()}

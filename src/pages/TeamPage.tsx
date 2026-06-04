@@ -11,12 +11,12 @@ export default function TeamPage() {
   return (
     <div className="bg-cream">
       {/* Group photo banner */}
-      <div className="w-full overflow-hidden bg-navy" style={{ maxHeight: '420px' }}>
+      <div className="w-full bg-navy flex items-center justify-center">
         <img
           src={TEAM_GROUP_PHOTO}
           alt="Scattolini Group Team"
-          className="w-full object-cover object-top"
-          style={{ maxHeight: '420px' }}
+          className="w-full object-contain"
+          style={{ maxHeight: '480px' }}
         />
       </div>
 

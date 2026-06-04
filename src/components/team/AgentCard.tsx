@@ -16,7 +16,7 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
           <img
             src={agent.photo}
             alt={`${agent.firstName} ${agent.lastName}`}
-            className="absolute inset-0 h-full w-full object-contain p-4"
+            className="absolute inset-0 h-full w-full object-contain p-4 pb-0"
             loading="lazy"
             decoding="async"
           />

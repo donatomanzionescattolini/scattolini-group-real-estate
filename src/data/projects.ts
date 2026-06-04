@@ -189,7 +189,7 @@ function buildDescription(project: ProjectSeed, index: number) {
 const S3_BASE = 'https://pagina-mama.s3.amazonaws.com/assets2/desarrollos';
 
 function buildGallery(projectId: string, count: number): string[] {
-  return Array.from({ length: count }, (_, i) => `${S3_BASE}/${projectId}/image-gallery/image%20(${i + 1}).jpg`);
+  return Array.from({ length: count }, (_, i) => `${S3_BASE}/${projectId}/image-gallery/image (${i + 1}).jpg`);
 }
 
 export const projects: Project[] = projectSeeds.map((project, index) => ({

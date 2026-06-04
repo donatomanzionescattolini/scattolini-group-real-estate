@@ -5,12 +5,12 @@
 @tailwind utilities;
 
 :root {
-  --navy: #0e2d2f;
-  --gold: #8a6944;
-  --cream: #ede3d6;
-  --white: #f2f2ed;
-  --charcoal: #2b2a2e;
-  --muted: #84705c;
+  --navy: #0f1b2d;
+  --gold: #c9a84c;
+  --cream: #f8f6f1;
+  --white: #ffffff;
+  --charcoal: #2c2c2c;
+  --muted: #8c8c8c;
 }
 
 html {
@@ -22,7 +22,7 @@ body {
   min-width: 320px;
   font-family: 'DM Sans', sans-serif;
   color: var(--charcoal);
-  background: var(--cream);
+  background: var(--white);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,7 +33,7 @@ body {
 }
 
 *::selection {
-  background: rgba(138, 105, 68, 0.2);
+  background: rgba(201, 168, 76, 0.2);
 }
 
 ::-webkit-scrollbar {

@@ -7,7 +7,9 @@ interface ImageGalleryProps {
 }
 
 function normalizeImageSrc(src: string): string {
-  return src.replace(/%20/g, ' ');
+  // Encode literal spaces to %20 so S3 URLs are always valid.
+  // Already-encoded %20 sequences are left untouched.
+  return src.replace(/ /g, '%20');
 }
 
 export default function ImageGallery({ images, alt }: ImageGalleryProps) {

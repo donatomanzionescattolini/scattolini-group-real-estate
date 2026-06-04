@@ -41,7 +41,7 @@ export default function ContactPage() {
             <div className="overflow-hidden border border-[rgba(15,27,45,0.08)] shadow-soft">
               <iframe
                 title="Scattolini Group office map"
-                src="https://www.google.com/maps?q=Brickell%20Avenue%2C%20Miami%2C%20FL&z=13&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.434979553679!2d-80.40457942587769!3d25.789220007469854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9bef22d2a8b8d%3A0xeb3e2fa5183c827!2s12750%20NW%2017th%20St%2C%20Miami%2C%20FL%2033182!5e0!3m2!1sen!2sus!4v1691887259163!5m2!1sen!2sus"
                 className="h-[320px] w-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

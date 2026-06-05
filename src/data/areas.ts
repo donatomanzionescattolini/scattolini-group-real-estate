@@ -17,7 +17,7 @@ export const areas: Area[] = [
     },
     image: `${S3_AREAS}/brickell/thumbnail.webp`,
     projectCount: 14,
-    gallery: areaGallery('brickell', 8),
+    gallery: areaGallery('brickell', 11),
   },
   {
     id: 'miami-beach',

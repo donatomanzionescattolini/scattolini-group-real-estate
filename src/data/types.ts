@@ -2,7 +2,7 @@ export interface Agent {
   id: string;
   firstName: string;
   lastName: string;
-  role: string;
+  role: LocaleString;
   phone?: string;
   email?: string;
   photo?: string;
@@ -11,8 +11,8 @@ export interface Agent {
 export interface Area {
   id: string;
   name: string;
-  tagline: string;
-  description: string;
+  tagline: LocaleString;
+  description: LocaleString;
   image: string;
   projectCount: number;
   gallery?: string[];
@@ -65,17 +65,17 @@ export interface Project {
   name: string;
   areaId: string;
   areaName: string;
-  tagline: string;
-  description: string;
+  tagline: LocaleString;
+  description: LocaleString;
   address?: string;
   floors?: number;
-  units?: string;
+  units?: LocaleString;
   completionYear?: string;
   priceFrom?: string;
   type: 'luxury' | 'residential' | 'resort' | 'branded';
   status: 'pre-construction' | 'under-construction' | 'completed';
-  amenities: string[];
-  features: string[];
+  amenities: LocaleString[];
+  features: LocaleString[];
   image: string;
   thumbnail?: string;
   featured?: boolean;

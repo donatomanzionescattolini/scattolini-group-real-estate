@@ -1,20 +1,18 @@
 import { ArrowRight } from 'lucide-react';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { localize } from '../../data/localize';
 import { Project } from '../../data/types';
+import { useTranslation } from '../../i18n';
 import Badge from '../ui/Badge';
 
 interface ProjectCardProps {
   project: Project;
 }
 
-const statusLabel: Record<Project['status'], string> = {
-  'pre-construction': 'Pre-Construction',
-  'under-construction': 'Under Construction',
-  completed: 'Completed',
-};
-
 const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
+  const { t, lang } = useTranslation();
+
   return (
     <article className="group flex h-full flex-col overflow-hidden border border-[rgba(27,52,51,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
       <div className="relative h-80 overflow-hidden">
@@ -24,14 +22,14 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
           <Badge>{project.areaName}</Badge>
         </div>
         <div className="absolute right-5 top-5">
-          <Badge tone="light">{statusLabel[project.status]}</Badge>
+          <Badge tone="light">{t(`projectDetail.statusLabels.${project.status}`)}</Badge>
         </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <p className="editorial-label">{project.type}</p>
+        <p className="editorial-label">{t(`projectTypes.${project.type}`)}</p>
         <h3 className="mt-3 text-3xl">{project.name}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted">{project.tagline}</p>
+        <p className="mt-2 text-sm leading-6 text-muted">{localize(project.tagline, lang)}</p>
 
         {/*<div className="mt-5 flex items-center justify-between border-y border-[rgba(27,52,51,0.08)] py-4 text-sm text-muted">*/}
         {/*  <div>*/}
@@ -45,7 +43,7 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
         {/*</div>*/}
 
         <Link to={`/projects/${project.id}`} className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
-          View Details
+          {t('projectCard.viewDetails')}
           <ArrowRight size={14} />
         </Link>
       </div>

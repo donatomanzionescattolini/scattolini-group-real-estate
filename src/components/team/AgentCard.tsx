@@ -1,11 +1,14 @@
 import { memo } from 'react';
+import { localize } from '../../data/localize';
 import { Agent } from '../../data/types';
+import { useTranslation } from '../../i18n';
 
 interface AgentCardProps {
   agent: Agent;
 }
 
 const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
+  const { t, lang } = useTranslation();
   const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
 
   return (
@@ -34,12 +37,12 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
         <h3 className="text-3xl leading-none">
           {agent.firstName} <span className="block">{agent.lastName}</span>
         </h3>
-        <p className="mt-3 text-sm uppercase tracking-editorial text-muted">{agent.role}</p>
+        <p className="mt-3 text-sm uppercase tracking-editorial text-muted">{localize(agent.role, lang)}</p>
         <a
           className="mt-6 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold"
           href={`mailto:hello@scattolinigroup.com?subject=Inquiry for ${agent.firstName} ${agent.lastName}`}
         >
-          Contact
+          {t('agentCard.contact')}
         </a>
       </div>
     </article>

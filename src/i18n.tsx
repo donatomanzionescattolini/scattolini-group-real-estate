@@ -25,6 +25,9 @@ const translations: Record<Lang, TranslationTree> = {
     },
     footer: {
       tagline: 'Asesoría boutique de bienes raíces en el Sur de Florida para compradores, inversores y familias que buscan direcciones extraordinarias.',
+      ctaLabel: '¿Listo para invertir?',
+      ctaHeading: 'Encuentre su próxima propiedad en Miami',
+      ctaButton: 'Contáctenos',
       quickLinks: 'Accesos rápidos',
       keyMarkets: 'Mercados principales',
       contact: 'Contacto',
@@ -74,6 +77,7 @@ const translations: Record<Lang, TranslationTree> = {
       formTitle: 'Déjenos guiar su próximo movimiento',
       formDescription: 'Comparta sus objetivos y lo conectaremos con el asesor, vecindario y oportunidad adecuados.',
       formSubmit: 'Solicitar Consulta',
+      ownerRole: 'Propietaria y Agente',
     },
     areasPage: {
       eyebrow: 'Mercados',
@@ -89,6 +93,22 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectFilter: {
       allAreas: 'Todas las Áreas',
+    },
+    projectTypes: {
+      luxury: 'Lujo',
+      residential: 'Residencial',
+      resort: 'Resort',
+      branded: 'De Marca',
+    },
+    projectCard: {
+      viewDetails: 'Ver Detalles',
+    },
+    areaCard: {
+      projects: 'proyectos',
+      exploreMarket: 'Explorar Mercado',
+    },
+    agentCard: {
+      contact: 'Contacto',
     },
     contactPage: {
       eyebrow: 'Contacto',
@@ -126,6 +146,7 @@ const translations: Record<Lang, TranslationTree> = {
       breadcrumbHome: 'Inicio',
       breadcrumbProjects: 'Proyectos',
       delivery: 'Entrega',
+      deliveryNow: 'Ahora',
       scale: 'Escala',
       priceFrom: 'Precio Desde',
       overview: 'Descripción general',
@@ -201,6 +222,9 @@ const translations: Record<Lang, TranslationTree> = {
     },
     footer: {
       tagline: 'Boutique South Florida real estate advisory for discerning buyers, investors, and families seeking extraordinary addresses.',
+      ctaLabel: 'Ready to invest?',
+      ctaHeading: 'Find your next property in Miami',
+      ctaButton: 'Contact us',
       quickLinks: 'Quick Links',
       keyMarkets: 'Key Markets',
       contact: 'Contact',
@@ -250,6 +274,7 @@ const translations: Record<Lang, TranslationTree> = {
       formTitle: 'Let us curate your next move',
       formDescription: 'Share your goals and we will connect you with the right advisor, neighborhood, and opportunity.',
       formSubmit: 'Request Consultation',
+      ownerRole: 'Owner & Agent',
     },
     areasPage: {
       eyebrow: 'Markets',
@@ -265,6 +290,22 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectFilter: {
       allAreas: 'All Areas',
+    },
+    projectTypes: {
+      luxury: 'Luxury',
+      residential: 'Residential',
+      resort: 'Resort',
+      branded: 'Branded',
+    },
+    projectCard: {
+      viewDetails: 'View Details',
+    },
+    areaCard: {
+      projects: 'projects',
+      exploreMarket: 'Explore Market',
+    },
+    agentCard: {
+      contact: 'Contact',
     },
     contactPage: {
       eyebrow: 'Contact',
@@ -302,6 +343,7 @@ const translations: Record<Lang, TranslationTree> = {
       breadcrumbHome: 'Home',
       breadcrumbProjects: 'Projects',
       delivery: 'Delivery',
+      deliveryNow: 'Now',
       scale: 'Scale',
       priceFrom: 'Price From',
       overview: 'Overview',

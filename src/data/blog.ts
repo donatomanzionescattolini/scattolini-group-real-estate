@@ -1,4 +1,4 @@
-import { BlogPost, Lang, LocaleString, LocaleStringArray } from './types';
+import { BlogPost } from './types';
 import generated from './generated-posts.json';
 
 // ─── Seed posts ────────────────────────────────────────────────────────────
@@ -175,12 +175,6 @@ export function getPostById(id: string): BlogPost | undefined {
   return blogPosts.find((post) => post.id === id);
 }
 
-/** Pick the value for the active language, falling back to Spanish. */
-export function localize(value: LocaleString, lang: Lang): string {
-  return value[lang] ?? value.es;
-}
-
-export function localizeBody(value: LocaleStringArray, lang: Lang): string[] {
-  return value[lang] ?? value.es;
-}
+// Re-exported from the shared helper so existing imports keep working.
+export { localize, localizeBody } from './localize';
 

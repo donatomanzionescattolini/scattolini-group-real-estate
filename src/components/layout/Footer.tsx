@@ -16,20 +16,20 @@ export default function Footer() {
   return (
     <footer>
       {/* CTA Band — teal (#1F595A) bg, cream text */}
-      <div className="bg-teal">
-        <div className="site-container py-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-[11px] font-medium uppercase tracking-editorial text-[rgba(237,227,214,0.65)]">{t('footer.ctaLabel') || 'Ready to invest?'}</p>
-            <p className="mt-1 font-serif text-2xl text-cream">{t('footer.ctaHeading') || 'Find your next property in Miami'}</p>
-          </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 border border-gold bg-gold px-7 py-3 text-xs font-semibold uppercase tracking-editorial text-navy transition hover:brightness-95 hover:-translate-y-0.5 shrink-0"
-          >
-            {t('footer.ctaButton') || 'Contact us'}
-          </Link>
-        </div>
-      </div>
+      {/*<div className="bg-teal">*/}
+      {/*  <div className="site-container py-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">*/}
+      {/*    <div>*/}
+      {/*      <p className="text-[11px] font-medium uppercase tracking-editorial text-[rgba(237,227,214,0.65)]">{t('footer.ctaLabel') || 'Ready to invest?'}</p>*/}
+      {/*      <p className="mt-1 font-serif text-2xl text-cream">{t('footer.ctaHeading') || 'Find your next property in Miami'}</p>*/}
+      {/*    </div>*/}
+      {/*    <Link*/}
+      {/*      to="/contact"*/}
+      {/*      className="inline-flex items-center gap-2 border border-gold bg-gold px-7 py-3 text-xs font-semibold uppercase tracking-editorial text-navy transition hover:brightness-95 hover:-translate-y-0.5 shrink-0"*/}
+      {/*    >*/}
+      {/*      {t('footer.ctaButton') || 'Contact us'}*/}
+      {/*    </Link>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       {/* Main footer body — navy (#1B3433) bg */}
       <div className="bg-navy">

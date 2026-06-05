@@ -35,7 +35,7 @@ export default function HomePage() {
               </div>
               <div>
                 <p className="font-serif text-xl text-amber-100 leading-snug">Elda Scattolini</p>
-                <p className="mt-1 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.6)]">Owner &amp; Agent</p>
+                <p className="mt-1 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.6)]">{t('about.ownerRole')}</p>
                 <p className="mt-4 max-w-2xl text-base leading-8 text-[rgba(255,255,255,0.76)]">
                   {t('about.description')}
                 </p>

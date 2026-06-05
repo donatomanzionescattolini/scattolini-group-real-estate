@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { agents } from '../../data/agents';
+import { localize } from '../../data/localize';
 import { useTranslation } from '../../i18n';
 import SectionHeader from '../ui/SectionHeader';
 
 export default function TeamPreview() {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   return (
     <section className="site-container py-24">
@@ -44,7 +45,7 @@ export default function TeamPreview() {
                   {agent.firstName}
                   <span className="block">{agent.lastName}</span>
                 </h3>
-                <p className="mt-2 text-xs uppercase tracking-editorial text-muted">{agent.role}</p>
+                <p className="mt-2 text-xs uppercase tracking-editorial text-muted">{localize(agent.role, lang)}</p>
               </div>
             </div>
           );

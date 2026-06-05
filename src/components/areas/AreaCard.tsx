@@ -1,7 +1,9 @@
 import { ArrowRight } from 'lucide-react';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { localize } from '../../data/localize';
 import { Area } from '../../data/types';
+import { useTranslation } from '../../i18n';
 import Badge from '../ui/Badge';
 
 interface AreaCardProps {
@@ -9,6 +11,8 @@ interface AreaCardProps {
 }
 
 const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
+  const { t, lang } = useTranslation();
+
   return (
     <Link to={`/areas/${area.id}`} className="group relative block overflow-hidden border border-[rgba(27,52,51,0.08)] shadow-soft">
       <div className="absolute inset-0">
@@ -16,11 +20,11 @@ const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(27,52,51,0.84)] via-[rgba(27,52,51,0.3)] to-transparent" />
       </div>
       <div className="relative flex min-h-[380px] flex-col justify-end p-7 text-amber-100">
-        <Badge tone="light">{area.projectCount} projects</Badge>
+        <Badge tone="light">{area.projectCount} {t('areaCard.projects')}</Badge>
         <h3 className="mt-4 text-4xl text-amber-100">{area.name}</h3>
-        <p className="mt-2 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.78)]">{area.tagline}</p>
+        <p className="mt-2 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.78)]">{localize(area.tagline, lang)}</p>
         <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold">
-          Explore Market <ArrowRight size={14} />
+          {t('areaCard.exploreMarket')} <ArrowRight size={14} />
         </span>
       </div>
     </Link>

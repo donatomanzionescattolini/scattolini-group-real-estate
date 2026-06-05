@@ -4,13 +4,14 @@ import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
 import ImageGallery from '../components/ui/ImageGallery';
 import InquiryForm from '../components/ui/InquiryForm';
+import { localize } from '../data/localize';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams();
   const project = projects.find((entry) => entry.id === projectId);
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   if (!project) {
     return <Navigate to="/projects" replace />;
@@ -46,7 +47,7 @@ export default function ProjectDetailPage() {
               <Badge tone="light">{statusLabels[project.status]}</Badge>
             </div>
             <h1 className="mt-6 text-5xl text-amber-100 sm:text-6xl">{project.name}</h1>
-            <p className="mt-4 text-lg leading-8 text-[rgba(255,255,255,0.78)]">{project.tagline}</p>
+            <p className="mt-4 text-lg leading-8 text-[rgba(255,255,255,0.78)]">{localize(project.tagline, lang)}</p>
           </div>
         </div>
       </section>
@@ -68,12 +69,12 @@ export default function ProjectDetailPage() {
               <div className="panel-surface p-5">
                 <CalendarDays className="text-gold" size={18} />
                 <p className="mt-4 text-xs uppercase tracking-editorial text-muted">{t('projectDetail.delivery')}</p>
-                <p className="mt-2 text-2xl text-navy">{project.completionYear}</p>
+                <p className="mt-2 text-2xl text-navy">{project.completionYear === 'Now' ? t('projectDetail.deliveryNow') : project.completionYear}</p>
               </div>
               <div className="panel-surface p-5">
                 <Layers3 className="text-gold" size={18} />
                 <p className="mt-4 text-xs uppercase tracking-editorial text-muted">{t('projectDetail.scale')}</p>
-                <p className="mt-2 text-2xl text-navy">{project.units}</p>
+                <p className="mt-2 text-2xl text-navy">{project.units ? localize(project.units, lang) : null}</p>
               </div>
               <div className="panel-surface p-5">
                 <Sparkles className="text-gold" size={18} />
@@ -85,28 +86,34 @@ export default function ProjectDetailPage() {
             <div className="mt-12">
               <p className="editorial-label">{t('projectDetail.overview')}</p>
               <h2 className="mt-4 text-4xl">{t('projectDetail.closerLook')} {project.name}</h2>
-              <p className="mt-6 max-w-4xl text-base leading-8 text-muted">{project.description}</p>
+              <p className="mt-6 max-w-4xl text-base leading-8 text-muted">{localize(project.description, lang)}</p>
             </div>
 
             <div className="mt-12 grid gap-10 lg:grid-cols-2">
               <div>
                 <p className="editorial-label">{t('projectDetail.amenities')}</p>
                 <ul className="mt-6 space-y-4">
-                  {project.amenities.map((amenity) => (
-                    <li key={amenity} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
-                      {amenity}
-                    </li>
-                  ))}
+                  {project.amenities.map((amenity) => {
+                    const label = localize(amenity, lang);
+                    return (
+                      <li key={label} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
+                        {label}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
               <div>
                 <p className="editorial-label">{t('projectDetail.residenceFeatures')}</p>
                 <ul className="mt-6 space-y-4">
-                  {project.features.map((feature) => (
-                    <li key={feature} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
-                      {feature}
-                    </li>
-                  ))}
+                  {project.features.map((feature) => {
+                    const label = localize(feature, lang);
+                    return (
+                      <li key={label} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
+                        {label}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

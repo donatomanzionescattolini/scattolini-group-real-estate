@@ -3,13 +3,14 @@ import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
 import ImageGallery from '../components/ui/ImageGallery';
 import { areas } from '../data/areas';
+import { localize } from '../data/localize';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
 
 export default function AreaDetailPage() {
   const { areaId } = useParams();
   const area = areas.find((entry) => entry.id === areaId);
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   if (!area) {
     return <Navigate to="/areas" replace />;
@@ -26,7 +27,7 @@ export default function AreaDetailPage() {
           <div className="max-w-3xl">
             <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
             <h1 className="mt-6 text-5xl text-amber-100 sm:text-6xl">{area.name}</h1>
-            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">{area.tagline}</p>
+            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">{localize(area.tagline, lang)}</p>
           </div>
         </div>
       </section>
@@ -45,7 +46,7 @@ export default function AreaDetailPage() {
           <div>
             <p className="editorial-label">{t('areaDetail.marketOverview')}</p>
             <h2 className="mt-4 text-4xl">{t('areaDetail.whyBuyersWatch')} {area.name}</h2>
-            <p className="mt-6 text-base leading-8 text-muted">{area.description}</p>
+            <p className="mt-6 text-base leading-8 text-muted">{localize(area.description, lang)}</p>
           </div>
           <div className="panel-surface p-8">
             <p className="editorial-label">{t('areaDetail.atAGlance')}</p>
@@ -56,7 +57,7 @@ export default function AreaDetailPage() {
               </div>
               <div className="flex items-center justify-between border-b border-[rgba(27,52,51,0.08)] pb-4">
                 <span>{t('areaDetail.signatureCharacter')}</span>
-                <span className="font-medium text-right text-navy">{area.tagline}</span>
+                <span className="font-medium text-right text-navy">{localize(area.tagline, lang)}</span>
               </div>
               <div className="pt-2 text-xs uppercase tracking-editorial text-muted">
                 {t('areaDetail.neighborhoodComparison')} <Link className="text-navy hover:text-gold" to="/contact">{t('areaDetail.speakWithTeam')}</Link>

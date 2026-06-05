@@ -14,25 +14,31 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
   const { t, lang } = useTranslation();
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-[rgba(27,52,51,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
-      <div className="relative h-80 overflow-hidden">
-        <img className="h-full w-full object-cover transition duration-500 group-hover:scale-105" src={project.thumbnail || project.image} alt={project.name} loading="lazy" decoding="async" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.55)] via-transparent to-transparent" />
-        <div className="absolute left-5 top-5">
-          <Badge>{project.areaName}</Badge>
-        </div>
-        <div className="absolute right-5 top-5">
-          <Badge tone="light">{t(`projectDetail.statusLabels.${project.status}`)}</Badge>
-        </div>
+    <article className="group relative block overflow-hidden border border-[rgba(27,52,51,0.08)] shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
+      <div className="absolute inset-0">
+        <img
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          src={project.thumbnail || project.image}
+          alt={project.name}
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.88)] via-[rgba(12,36,35,0.3)] to-transparent" />
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <p className="editorial-label">{t(`projectTypes.${project.type}`)}</p>
-        <h3 className="mt-3 text-3xl">{project.name}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted">{localize(project.tagline, lang)}</p>
-        <Link to={`/projects/${project.id}`} className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
-          {t('projectCard.viewDetails')}
-          <ArrowRight size={14} />
+      <div className="relative flex min-h-[380px] flex-col justify-end p-7">
+        <div className="flex items-center gap-2">
+          <Badge>{project.areaName}</Badge>
+          <Badge tone="light">{t(`projectDetail.statusLabels.${project.status}`)}</Badge>
+        </div>
+        <p className="mt-4 text-[11px] font-medium uppercase tracking-editorial text-gold">{t(`projectTypes.${project.type}`)}</p>
+        <h3 className="mt-1 text-3xl text-amber-100">{project.name}</h3>
+        <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.78)]">{localize(project.tagline, lang)}</p>
+        <Link
+          to={`/projects/${project.id}`}
+          className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold"
+        >
+          {t('projectCard.viewDetails')} <ArrowRight size={14} />
         </Link>
       </div>
     </article>

@@ -20,37 +20,30 @@ const BlogCard = memo(function BlogCard({ post }: BlogCardProps) {
   });
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden border border-[rgba(27,52,51,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
-      <Link to={`/blog/${post.id}`} className="relative block h-56 overflow-hidden">
+    <Link to={`/blog/${post.id}`} className="group relative block overflow-hidden border border-[rgba(27,52,51,0.08)] shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
+      <div className="absolute inset-0">
         <img
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           src={post.image}
           alt={localize(post.title, lang)}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.55)] via-transparent to-transparent" />
-        <div className="absolute left-5 top-5">
-          <Badge>{t(`blog.categories.${post.category}`)}</Badge>
-        </div>
-      </Link>
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.88)] via-[rgba(12,36,35,0.3)] to-transparent" />
+      </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-center gap-3 text-[11px] uppercase tracking-editorial text-muted">
+      <div className="relative flex min-h-[340px] flex-col justify-end p-7">
+        <Badge>{t(`blog.categories.${post.category}`)}</Badge>
+        <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-editorial text-[rgba(255,255,255,0.65)]">
           <span>{formattedDate}</span>
           <span className="h-1 w-1 rounded-full bg-gold" />
           <span>{post.readMinutes} {t('blog.minRead')}</span>
         </div>
-        <h3 className="mt-3 text-2xl leading-snug">{localize(post.title, lang)}</h3>
-        <p className="mt-3 flex-1 text-sm leading-6 text-muted">{localize(post.excerpt, lang)}</p>
-        <Link
-          to={`/blog/${post.id}`}
-          className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold"
-        >
-          {t('blog.readArticle')}
-          <ArrowRight size={14} />
-        </Link>
+        <h3 className="mt-2 text-2xl leading-snug text-amber-100">{localize(post.title, lang)}</h3>
+        <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold">
+          {t('blog.readArticle')} <ArrowRight size={14} />
+        </span>
       </div>
-    </article>
+    </Link>
   );
 });
 

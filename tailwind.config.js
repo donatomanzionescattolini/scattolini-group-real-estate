@@ -11,7 +11,6 @@ export default {
         'warm-brown': 'var(--warm-brown)',
         gold: 'var(--gold)',
         cream: 'var(--cream)',
-        sand: 'var(--sand)',
         deep: 'var(--deep)',
         stone: 'var(--stone)',
         white: 'var(--white)',

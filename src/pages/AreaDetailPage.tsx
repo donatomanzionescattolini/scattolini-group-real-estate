@@ -50,18 +50,18 @@ export default function AreaDetailPage() {
             <p className="mt-6 text-base leading-8 text-muted">{localize(area.description, lang)}</p>
           </div>
           <div className="panel-surface p-8">
-            <p className="editorial-label">{t('areaDetail.atAGlance')}</p>
-            <div className="mt-6 space-y-5 text-sm text-muted">
-              <div className="flex items-center justify-between border-b border-[rgba(27,52,51,0.08)] pb-4">
+            <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('areaDetail.atAGlance')}</p>
+            <div className="mt-6 space-y-5 text-sm text-[rgba(237,227,214,0.7)]">
+              <div className="flex items-center justify-between border-b border-[rgba(237,227,214,0.15)] pb-4">
                 <span>{t('areaDetail.availableProjects')}</span>
-                <span className="font-medium text-navy">{areaProjects.length}</span>
+                <span className="font-medium text-cream">{areaProjects.length}</span>
               </div>
-              <div className="flex items-center justify-between border-b border-[rgba(27,52,51,0.08)] pb-4">
+              <div className="flex items-center justify-between border-b border-[rgba(237,227,214,0.15)] pb-4">
                 <span>{t('areaDetail.signatureCharacter')}</span>
-                <span className="font-medium text-right text-navy">{localize(area.tagline, lang)}</span>
+                <span className="font-medium text-right text-cream">{localize(area.tagline, lang)}</span>
               </div>
-              <div className="pt-2 text-xs uppercase tracking-editorial text-muted">
-                {t('areaDetail.neighborhoodComparison')} <Link className="text-navy hover:text-gold" to="/contact">{t('areaDetail.speakWithTeam')}</Link>
+              <div className="pt-2 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">
+                {t('areaDetail.neighborhoodComparison')} <Link className="text-gold hover:text-cream" to="/contact">{t('areaDetail.speakWithTeam')}</Link>
               </div>
             </div>
           </div>
@@ -78,8 +78,10 @@ export default function AreaDetailPage() {
               ))}
             </div>
           ) : (
-            <div className="mt-10 border border-[rgba(27,52,51,0.08)] bg-white p-10 shadow-soft">
-              <p className="max-w-3xl text-base leading-8 text-muted">{t('areaDetail.expandingMarket')}</p>
+            <div className="mt-10 border border-[rgba(237,227,214,0.12)] bg-navy p-10 shadow-card">
+              <p className="max-w-3xl text-base leading-8 text-[rgba(237,227,214,0.78)]">
+                {t('areaDetail.expandingMarket')}
+              </p>
             </div>
           )}
         </div>

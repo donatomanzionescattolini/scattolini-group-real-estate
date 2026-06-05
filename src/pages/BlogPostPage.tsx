@@ -96,11 +96,11 @@ export default function BlogPostPage() {
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="panel-surface p-8">
-              <p className="editorial-label">{t('blog.ctaEyebrow')}</p>
-              <h3 className="mt-4 text-3xl">{t('blog.ctaTitle')}</h3>
-              <p className="mt-4 text-sm leading-7 text-muted">{t('blog.ctaDescription')}</p>
+              <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('blog.ctaEyebrow')}</p>
+              <h3 className="mt-4 text-3xl text-cream">{t('blog.ctaTitle')}</h3>
+              <p className="mt-4 text-sm leading-7 text-[rgba(237,227,214,0.72)]">{t('blog.ctaDescription')}</p>
               <div className="mt-6">
-                <InquiryForm compact defaultMessage={`${t('blog.ctaDefaultMessage')} "${title}".`} submitLabel={t('blog.ctaSubmit')} />
+                <InquiryForm compact theme="dark" defaultMessage={`${t('blog.ctaDefaultMessage')} "${title}".`} submitLabel={t('blog.ctaSubmit')} />
               </div>
             </div>
           </aside>

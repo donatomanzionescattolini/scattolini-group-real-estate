@@ -30,18 +30,19 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="flex flex-1 flex-col p-6">
         <p className="editorial-label">{project.type}</p>
+        <h3 className="mt-3 text-3xl">{project.name}</h3>
         <p className="mt-2 text-sm leading-6 text-muted">{project.tagline}</p>
 
-        <div className="mt-5 flex items-center justify-between border-y border-[rgba(27,52,51,0.08)] py-4 text-sm text-muted">
-          <div>
-            <p className="text-[11px] uppercase tracking-editorial">Price from</p>
-            <p className="mt-1 text-base font-medium text-navy">{project.priceFrom}</p>
-          </div>
-          <div className="text-right">
-            <p className="text-[11px] uppercase tracking-editorial">Amenities</p>
-            <p className="mt-1 text-base font-medium text-navy">{project.amenities.length}</p>
-          </div>
-        </div>
+        {/*<div className="mt-5 flex items-center justify-between border-y border-[rgba(27,52,51,0.08)] py-4 text-sm text-muted">*/}
+        {/*  <div>*/}
+        {/*    <p className="text-[11px] uppercase tracking-editorial">Price from</p>*/}
+        {/*    <p className="mt-1 text-base font-medium text-navy">{project.priceFrom}</p>*/}
+        {/*  </div>*/}
+        {/*  <div className="text-right">*/}
+        {/*    <p className="text-[11px] uppercase tracking-editorial">Amenities</p>*/}
+        {/*    <p className="mt-1 text-base font-medium text-navy">{project.amenities.length}</p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         <Link to={`/projects/${project.id}`} className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
           View Details

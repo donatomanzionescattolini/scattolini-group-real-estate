@@ -37,7 +37,7 @@ const translations: Record<Lang, TranslationTree> = {
     hero: {
       eyebrow: 'Bienes Raíces de Lujo · Sur de Florida',
       heading: 'Bienes Raíces Boutique.\nResultados Excepcionales.',
-      description: 'Scattolini Group es una firma boutique especializada en los vecindarios más destacados del Sur de Florida, torres de marca y desarrollos de lujo de nueva generación.',
+      description: 'Scattolini Group es una firma boutique especializada en los vecindarios más destacados del Sur de Florida y desarrollos de lujo de nueva generación.',
       exploreProjects: 'Explorar Proyectos',
       meetTeam: 'Conocer al Equipo',
     },

@@ -30,7 +30,6 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="flex flex-1 flex-col p-6">
         <p className="editorial-label">{project.type}</p>
-        <h3 className="mt-3 text-3xl">{project.name}</h3>
         <p className="mt-2 text-sm leading-6 text-muted">{project.tagline}</p>
 
         <div className="mt-5 flex items-center justify-between border-y border-[rgba(27,52,51,0.08)] py-4 text-sm text-muted">

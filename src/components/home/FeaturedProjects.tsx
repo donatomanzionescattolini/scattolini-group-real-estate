@@ -8,7 +8,7 @@ export default function FeaturedProjects() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-cream">
+    <section className="bg-white">
       <div className="site-container py-24">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader

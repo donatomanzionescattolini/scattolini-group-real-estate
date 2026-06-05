@@ -10,7 +10,8 @@
   --teal: #1F595A;        /* Secondary */
   --warm-brown: #8A6944;  /* Accent */
   --gold: #A57D31;        /* Highlight */
-  --cream: #EDE3D6;       /* Background */
+  --cream: #EDE3D6;       /* Warm cream — small accent blocks only */
+  --section-bg: #FAFAF9;  /* Barely-warm off-white for section/page backgrounds */
   --deep: #0C2423;        /* Brandbook deepest green — darkest surfaces */
   --stone: #566967;       /* Brandbook grey-green — subtle neutral */
   --white: #ffffff;

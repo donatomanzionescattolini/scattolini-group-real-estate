@@ -1,4 +1,4 @@
-import { areas } from '../../data/areas';
+﻿import { areas } from '../../data/areas';
 import { useTranslation } from '../../i18n';
 import AreaCard from '../areas/AreaCard';
 import SectionHeader from '../ui/SectionHeader';
@@ -13,7 +13,7 @@ export default function AreasShowcase() {
     .filter((area): area is NonNullable<typeof area> => Boolean(area));
 
   return (
-    <section className="bg-cream py-24">
+    <section className="bg-section-bg py-24">
       <div className="site-container">
         <SectionHeader
           eyebrow={t('areasShowcase.eyebrow')}

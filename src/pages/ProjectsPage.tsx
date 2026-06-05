@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectFilter from '../components/projects/ProjectFilter';
 import SectionHeader from '../components/ui/SectionHeader';
@@ -21,7 +21,7 @@ export default function ProjectsPage() {
   }, [activeAreaId]);
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       <section className="site-container py-20">
         <SectionHeader
           eyebrow={t('projectsPage.eyebrow')}

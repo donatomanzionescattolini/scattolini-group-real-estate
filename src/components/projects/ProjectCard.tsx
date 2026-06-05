@@ -32,11 +32,11 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
           <Badge tone="light">{t(`projectDetail.statusLabels.${project.status}`)}</Badge>
         </div>
         <p className="mt-4 text-[11px] font-medium uppercase tracking-editorial text-gold">{t(`projectTypes.${project.type}`)}</p>
-        <h3 className="mt-1 text-3xl text-amber-100">{project.name}</h3>
-        <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.78)]">{localize(project.tagline, lang)}</p>
+        <h3 className="mt-1 text-3xl text-white">{project.name}</h3>
+        <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.72)]">{localize(project.tagline, lang)}</p>
         <Link
           to={`/projects/${project.id}`}
-          className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold"
+          className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-[#EDE3D6] hover:text-white"
         >
           {t('projectCard.viewDetails')} <ArrowRight size={14} />
         </Link>

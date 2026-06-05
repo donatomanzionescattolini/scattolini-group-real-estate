@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+﻿import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import PageLoader from './components/ui/PageLoader';
@@ -28,7 +28,7 @@ function ScrollToTop() {
 
 function AppShell() {
   return (
-    <div className="min-h-screen bg-cream text-charcoal">
+    <div className="min-h-screen bg-section-bg text-charcoal">
       <ScrollToTop />
       <Header />
       <main className="pt-24">

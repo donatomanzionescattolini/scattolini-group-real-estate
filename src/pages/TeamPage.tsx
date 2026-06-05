@@ -1,4 +1,4 @@
-import AgentCard from '../components/team/AgentCard';
+﻿import AgentCard from '../components/team/AgentCard';
 import SectionHeader from '../components/ui/SectionHeader';
 import { agents } from '../data/agents';
 import { useTranslation } from '../i18n';
@@ -9,7 +9,7 @@ export default function TeamPage() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       {/* Group photo banner */}
       <div className="w-full bg-deep flex items-center justify-center">
         <img

@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarDays, Download, FileText, Layers3, Play, Sparkles } from 'lucide-react';
+﻿import { ArrowRight, CalendarDays, Download, FileText, Layers3, Play } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
@@ -26,7 +26,7 @@ export default function ProjectDetailPage() {
   };
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-deep">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
@@ -62,11 +62,11 @@ export default function ProjectDetailPage() {
       )}
 
       {/* Key Stats + Overview + Sidebar */}
-      <section className="bg-cream">
+      <section className="bg-section-bg">
         <div className="site-container py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
           <div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="panel-surface p-5">
                 <CalendarDays className="text-gold" size={18} />
                 <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.delivery')}</p>
@@ -76,11 +76,6 @@ export default function ProjectDetailPage() {
                 <Layers3 className="text-gold" size={18} />
                 <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.scale')}</p>
                 <p className="mt-2 text-2xl text-cream">{project.units ? localize(project.units, lang) : null}</p>
-              </div>
-              <div className="panel-surface p-5">
-                <Sparkles className="text-gold" size={18} />
-                <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.priceFrom')}</p>
-                <p className="mt-2 text-2xl text-cream">{project.priceFrom}</p>
               </div>
             </div>
 
@@ -133,10 +128,6 @@ export default function ProjectDetailPage() {
                   <span>{t('projectDetail.status')}</span>
                   <span className="font-medium text-cream">{statusLabels[project.status]}</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span>{t('projectDetail.price')}</span>
-                  <span className="font-medium text-cream">{project.priceFrom}</span>
-                </div>
               </div>
               <InquiryForm compact theme="dark" defaultMessage={`${t('projectDetail.defaultMessage')} ${project.name}.`} submitLabel={t('projectDetail.inquireNow')} />
             </div>
@@ -147,7 +138,7 @@ export default function ProjectDetailPage() {
 
       {/* Video */}
       {project.videoUrl && (
-        <section className="bg-cream py-20">
+        <section className="bg-white py-20">
           <div className="site-container">
             <p className="editorial-label">{t('projectDetail.video')}</p>
             <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
@@ -172,7 +163,7 @@ export default function ProjectDetailPage() {
 
       {/* Documents */}
       {(project.factsheetPdf || project.floorplansPdf) && (
-        <section className="bg-cream">
+        <section className="bg-section-bg">
           <div className="site-container py-20">
           <p className="editorial-label">{t('projectDetail.documents')}</p>
           <h2 className="mt-4 mb-8 text-4xl">{project.name}</h2>
@@ -184,7 +175,7 @@ export default function ProjectDetailPage() {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-5 rounded-lg border border-[rgba(237,227,214,0.12)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-section-bg text-gold">
                   <FileText size={22} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -201,7 +192,7 @@ export default function ProjectDetailPage() {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-5 rounded-lg border border-[rgba(237,227,214,0.12)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-section-bg text-gold">
                   <Layers3 size={22} />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -217,7 +208,7 @@ export default function ProjectDetailPage() {
       )}
 
       {/* Related Projects */}
-      <section className="bg-cream py-20">
+      <section className="bg-white py-20">
         <div className="site-container">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>

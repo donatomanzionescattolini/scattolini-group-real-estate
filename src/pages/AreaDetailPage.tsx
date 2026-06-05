@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from 'react-router-dom';
+﻿import { Link, Navigate, useParams } from 'react-router-dom';
 import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
 import ImageGallery from '../components/ui/ImageGallery';
@@ -19,7 +19,7 @@ export default function AreaDetailPage() {
   const areaProjects = projects.filter((project) => project.areaId === area.id);
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       <section className="relative isolate overflow-hidden bg-deep">
         <img src={area.image} alt={area.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.34),rgba(12,36,35,0.84))]" />
@@ -41,7 +41,7 @@ export default function AreaDetailPage() {
         </section>
       )}
 
-      <section className="bg-cream">
+      <section className="bg-section-bg">
         <div className="site-container py-20">
         <div className="grid gap-10 lg:grid-cols-[1.45fr_0.55fr]">
           <div>

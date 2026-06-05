@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { agents } from '../../data/agents';
 import { localize } from '../../data/localize';
 import { useTranslation } from '../../i18n';
@@ -8,7 +8,7 @@ export default function TeamPreview() {
   const { t, lang } = useTranslation();
 
   return (
-    <section className="bg-cream">
+    <section className="bg-white">
       <div className="site-container py-24">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
@@ -27,7 +27,7 @@ export default function TeamPreview() {
             return (
               <div key={agent.id} className="border border-[rgba(237,227,214,0.12)] bg-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
                 {/* Photo */}
-                <div className="relative w-full bg-cream" style={{ paddingBottom: '100%' }}>
+                <div className="relative w-full bg-section-bg" style={{ paddingBottom: '100%' }}>
                   {agent.photo ? (
                     <img
                       src={agent.photo}

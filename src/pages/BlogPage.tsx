@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+﻿import { useMemo, useState } from 'react';
 import BlogCard from '../components/blog/BlogCard';
 import SectionHeader from '../components/ui/SectionHeader';
 import { blogPosts } from '../data/blog';
@@ -30,7 +30,7 @@ export default function BlogPage() {
   const filters: (BlogCategory | 'all')[] = ['all', ...availableCategories];
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       <section className="site-container py-20">
         <SectionHeader eyebrow={t('blog.eyebrow')} title={t('blog.title')} description={t('blog.description')} />
 

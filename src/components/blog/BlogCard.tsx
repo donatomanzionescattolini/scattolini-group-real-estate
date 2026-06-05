@@ -33,13 +33,13 @@ const BlogCard = memo(function BlogCard({ post }: BlogCardProps) {
 
       <div className="relative flex min-h-[340px] flex-col justify-end p-7">
         <Badge>{t(`blog.categories.${post.category}`)}</Badge>
-        <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-editorial text-[rgba(255,255,255,0.65)]">
+        <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-editorial text-[#EDE3D6]">
           <span>{formattedDate}</span>
           <span className="h-1 w-1 rounded-full bg-gold" />
           <span>{post.readMinutes} {t('blog.minRead')}</span>
         </div>
         <h3 className="mt-2 text-2xl leading-snug text-amber-100">{localize(post.title, lang)}</h3>
-        <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold">
+        <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold hover:text-white">
           {t('blog.readArticle')} <ArrowRight size={14} />
         </span>
       </div>

@@ -1,4 +1,4 @@
-import { Clock3, Mail, MapPin, Phone } from 'lucide-react';
+﻿import { Clock3, Mail, MapPin, Phone } from 'lucide-react';
 import InquiryForm from '../components/ui/InquiryForm';
 import SectionHeader from '../components/ui/SectionHeader';
 import { useTranslation } from '../i18n';
@@ -14,7 +14,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       <section className="site-container py-20">
         <SectionHeader
           eyebrow={t('contactPage.eyebrow')}

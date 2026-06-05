@@ -1,4 +1,4 @@
-import AreaCard from '../components/areas/AreaCard';
+﻿import AreaCard from '../components/areas/AreaCard';
 import SectionHeader from '../components/ui/SectionHeader';
 import { areas } from '../data/areas';
 import { useTranslation } from '../i18n';
@@ -7,7 +7,7 @@ export default function AreasPage() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-cream">
+    <div className="bg-section-bg">
       <section className="site-container py-20">
         <SectionHeader
           eyebrow={t('areasPage.eyebrow')}

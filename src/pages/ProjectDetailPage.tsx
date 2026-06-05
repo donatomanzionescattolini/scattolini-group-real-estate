@@ -28,7 +28,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-teal-950">
+      <section className="relative isolate overflow-hidden bg-navy">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,52,51,0.36),rgba(27,52,51,0.82))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
@@ -149,7 +149,7 @@ export default function ProjectDetailPage() {
           <div className="site-container">
             <p className="editorial-label">{t('projectDetail.video')}</p>
             <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
-            <div className="relative overflow-hidden rounded-lg bg-teal-950" style={{ aspectRatio: '16/9' }}>
+            <div className="relative overflow-hidden rounded-lg bg-navy" style={{ aspectRatio: '16/9' }}>
               <video
                 className="h-full w-full object-cover"
                 controls

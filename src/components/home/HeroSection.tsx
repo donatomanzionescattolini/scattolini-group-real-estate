@@ -8,7 +8,7 @@ export default function HeroSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="relative isolate flex min-h-[calc(100vh-6rem)] items-end overflow-hidden bg-teal-950">
+    <section className="relative isolate flex min-h-[calc(100vh-6rem)] items-end overflow-hidden bg-navy">
       {/* Autoplay background video */}
       <video
         className="absolute inset-0 h-full w-full object-cover"
@@ -18,7 +18,7 @@ export default function HeroSection() {
         loop
         playsInline
       />
-      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(27,52,51,0.88),rgba(27,52,51,0.36),rgba(27,52,51,0.18))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(12,36,35,0.92),rgba(27,52,51,0.62),rgba(31,89,90,0.34))]" />
       <div className="site-container relative z-10 py-20 sm:py-28">
         <div className="max-w-3xl">
           <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('hero.eyebrow')}</p>

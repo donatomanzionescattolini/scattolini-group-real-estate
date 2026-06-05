@@ -132,8 +132,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright bar — Primary Dark (#0e2d2f), muted cream text */}
-      <div style={{ background: '#0e2d2f' }}>
+      {/* Copyright bar — brand deepest green, muted cream text */}
+      <div className="bg-deep">
         <div className="site-container flex flex-col items-center justify-between gap-3 py-5 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.45)] sm:flex-row">
           <span>© {new Date().getFullYear()} Scattolini Group. {t('footer.rights')}</span>
           <span className="h-px w-8 bg-gold opacity-30 hidden sm:block" />

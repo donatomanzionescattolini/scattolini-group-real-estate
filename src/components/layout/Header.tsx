@@ -31,14 +31,14 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(15,27,45,0.05)] bg-[rgba(255,255,255,0.92)] backdrop-blur ${
-        scrolled ? 'shadow-[0_10px_40px_rgba(15,27,45,0.08)]' : ''
+      className={`fixed inset-x-0 top-0 z-50 border-b border-[rgba(237,227,214,0.1)] bg-[rgba(27,52,51,0.92)] backdrop-blur ${
+        scrolled ? 'shadow-[0_10px_40px_rgba(12,36,35,0.45)]' : ''
       }`}
     >
       <div className="site-container">
         <div className="flex h-24 items-center justify-between">
           <Link to="/" className="flex flex-col">
-            <span className="font-serif text-[2rem] leading-none text-navy sm:text-[2.2rem]">Scattolini Group</span>
+            <span className="font-serif text-[2rem] leading-none text-cream sm:text-[2.2rem]">Scattolini Group</span>
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -47,7 +47,7 @@ export default function Header() {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `text-xs font-medium uppercase tracking-editorial ${isActive ? 'text-navy' : 'text-muted hover:text-navy'}`
+                  `text-xs font-medium uppercase tracking-editorial transition-colors ${isActive ? 'text-gold' : 'text-[rgba(237,227,214,0.72)] hover:text-cream'}`
                 }
               >
                 {item.label}
@@ -55,12 +55,12 @@ export default function Header() {
             ))}
 
             {/* Language toggle */}
-            <div className="flex items-center gap-1 border border-[rgba(15,27,45,0.12)] px-1 py-1">
+            <div className="flex items-center gap-1 border border-[rgba(237,227,214,0.18)] px-1 py-1">
               <button
                 type="button"
                 onClick={() => setLang('es')}
                 className={`px-2 py-1 text-xs font-semibold uppercase tracking-editorial transition-colors ${
-                  lang === 'es' ? 'bg-teal-950 text-amber-100' : 'text-muted hover:text-navy'
+                  lang === 'es' ? 'bg-gold text-navy' : 'text-[rgba(237,227,214,0.72)] hover:text-cream'
                 }`}
               >
                 ES
@@ -69,7 +69,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('en')}
                 className={`px-2 py-1 text-xs font-semibold uppercase tracking-editorial transition-colors ${
-                  lang === 'en' ? 'bg-teal-950 text-amber-100' : 'text-muted hover:text-navy'
+                  lang === 'en' ? 'bg-gold text-navy' : 'text-[rgba(237,227,214,0.72)] hover:text-cream'
                 }`}
               >
                 EN
@@ -79,7 +79,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="inline-flex h-12 w-12 items-center justify-center border border-[rgba(15,27,45,0.08)] text-navy lg:hidden"
+            className="inline-flex h-12 w-12 items-center justify-center border border-[rgba(237,227,214,0.18)] text-cream lg:hidden"
             onClick={() => setMobileOpen((current) => !current)}
             aria-label="Toggle navigation"
           >
@@ -89,15 +89,15 @@ export default function Header() {
       </div>
 
       {mobileOpen ? (
-        <div className="border-t border-[rgba(15,27,45,0.08)] bg-white lg:hidden">
+        <div className="border-t border-[rgba(237,227,214,0.12)] bg-navy lg:hidden">
           <div className="site-container flex flex-col py-6">
             {navigation.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `border-b border-[rgba(15,27,45,0.08)] py-4 text-xs font-medium uppercase tracking-editorial ${
-                    isActive ? 'text-navy' : 'text-muted'
+                  `border-b border-[rgba(237,227,214,0.1)] py-4 text-xs font-medium uppercase tracking-editorial ${
+                    isActive ? 'text-gold' : 'text-[rgba(237,227,214,0.72)]'
                   }`
                 }
               >
@@ -110,7 +110,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('es')}
                 className={`px-3 py-2 text-xs font-semibold uppercase tracking-editorial border ${
-                  lang === 'es' ? 'bg-teal-950 text-amber-100 border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
+                  lang === 'es' ? 'bg-gold text-navy border-gold' : 'border-[rgba(237,227,214,0.18)] text-[rgba(237,227,214,0.72)]'
                 }`}
               >
                 ES
@@ -119,7 +119,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLang('en')}
                 className={`px-3 py-2 text-xs font-semibold uppercase tracking-editorial border ${
-                  lang === 'en' ? 'bg-teal-950 text-amber-100 border-navy' : 'border-[rgba(15,27,45,0.12)] text-muted'
+                  lang === 'en' ? 'bg-gold text-navy border-gold' : 'border-[rgba(237,227,214,0.18)] text-[rgba(237,227,214,0.72)]'
                 }`}
               >
                 EN

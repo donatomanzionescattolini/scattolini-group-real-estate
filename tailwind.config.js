@@ -11,6 +11,8 @@ export default {
         'warm-brown': 'var(--warm-brown)',
         gold: 'var(--gold)',
         cream: 'var(--cream)',
+        deep: 'var(--deep)',
+        stone: 'var(--stone)',
         white: 'var(--white)',
         charcoal: 'var(--charcoal)',
         muted: 'var(--muted)',

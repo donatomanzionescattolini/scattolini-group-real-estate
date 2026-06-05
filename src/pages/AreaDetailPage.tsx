@@ -20,7 +20,7 @@ export default function AreaDetailPage() {
 
   return (
     <div className="bg-white">
-      <section className="relative isolate overflow-hidden bg-teal-950">
+      <section className="relative isolate overflow-hidden bg-navy">
         <img src={area.image} alt={area.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(27,52,51,0.34),rgba(27,52,51,0.84))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">

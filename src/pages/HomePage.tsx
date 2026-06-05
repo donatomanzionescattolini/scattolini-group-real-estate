@@ -17,7 +17,7 @@ export default function HomePage() {
       <AreasShowcase />
       <TeamPreview />
 
-      <section className="bg-teal-950 py-24">
+      <section className="bg-navy py-24">
         <div className="site-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <p className="editorial-label">{t('about.eyebrow')}</p>

@@ -5,11 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --navy: #1B3433;
-  --teal: #1F595A;
-  --warm-brown: #8A6944;
-  --gold: #A57D31;
-  --cream: #EDE3D6;
+  /* ── Scattolini Group brand palette (per Brandbook) ── */
+  --navy: #1B3433;        /* Primary dark — deep green */
+  --teal: #1F595A;        /* Secondary */
+  --warm-brown: #8A6944;  /* Accent */
+  --gold: #A57D31;        /* Highlight */
+  --cream: #EDE3D6;       /* Background */
+  --deep: #0C2423;        /* Brandbook deepest green — darkest surfaces */
+  --stone: #566967;       /* Brandbook grey-green — subtle neutral */
   --white: #ffffff;
   --charcoal: #2c2c2c;
   --muted: #7a6a57;

@@ -26,7 +26,7 @@ export default function ProjectDetailPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-cream">
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-deep">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
@@ -69,18 +69,18 @@ export default function ProjectDetailPage() {
             <div className="grid gap-4 sm:grid-cols-3">
               <div className="panel-surface p-5">
                 <CalendarDays className="text-gold" size={18} />
-                <p className="mt-4 text-xs uppercase tracking-editorial text-muted">{t('projectDetail.delivery')}</p>
-                <p className="mt-2 text-2xl text-navy">{project.completionYear === 'Now' ? t('projectDetail.deliveryNow') : project.completionYear}</p>
+                <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.delivery')}</p>
+                <p className="mt-2 text-2xl text-cream">{project.completionYear === 'Now' ? t('projectDetail.deliveryNow') : project.completionYear}</p>
               </div>
               <div className="panel-surface p-5">
                 <Layers3 className="text-gold" size={18} />
-                <p className="mt-4 text-xs uppercase tracking-editorial text-muted">{t('projectDetail.scale')}</p>
-                <p className="mt-2 text-2xl text-navy">{project.units ? localize(project.units, lang) : null}</p>
+                <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.scale')}</p>
+                <p className="mt-2 text-2xl text-cream">{project.units ? localize(project.units, lang) : null}</p>
               </div>
               <div className="panel-surface p-5">
                 <Sparkles className="text-gold" size={18} />
-                <p className="mt-4 text-xs uppercase tracking-editorial text-muted">{t('projectDetail.priceFrom')}</p>
-                <p className="mt-2 text-2xl text-navy">{project.priceFrom}</p>
+                <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.priceFrom')}</p>
+                <p className="mt-2 text-2xl text-cream">{project.priceFrom}</p>
               </div>
             </div>
 
@@ -122,23 +122,23 @@ export default function ProjectDetailPage() {
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="panel-surface p-8">
-              <p className="editorial-label">{t('projectDetail.contactAbout')}</p>
-              <h3 className="mt-4 text-3xl">{t('projectDetail.requestPresentation')}</h3>
-              <div className="mt-6 space-y-4 border-y border-[rgba(27,52,51,0.08)] py-6 text-sm text-muted">
+              <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('projectDetail.contactAbout')}</p>
+              <h3 className="mt-4 text-3xl text-cream">{t('projectDetail.requestPresentation')}</h3>
+              <div className="mt-6 space-y-4 border-y border-[rgba(237,227,214,0.15)] py-6 text-sm text-[rgba(237,227,214,0.7)]">
                 <div className="flex items-center justify-between">
                   <span>{t('projectDetail.market')}</span>
-                  <span className="font-medium text-navy">{project.areaName}</span>
+                  <span className="font-medium text-cream">{project.areaName}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>{t('projectDetail.status')}</span>
-                  <span className="font-medium text-navy">{statusLabels[project.status]}</span>
+                  <span className="font-medium text-cream">{statusLabels[project.status]}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>{t('projectDetail.price')}</span>
-                  <span className="font-medium text-navy">{project.priceFrom}</span>
+                  <span className="font-medium text-cream">{project.priceFrom}</span>
                 </div>
               </div>
-              <InquiryForm compact defaultMessage={`${t('projectDetail.defaultMessage')} ${project.name}.`} submitLabel={t('projectDetail.inquireNow')} />
+              <InquiryForm compact theme="dark" defaultMessage={`${t('projectDetail.defaultMessage')} ${project.name}.`} submitLabel={t('projectDetail.inquireNow')} />
             </div>
           </aside>
         </div>
@@ -147,7 +147,7 @@ export default function ProjectDetailPage() {
 
       {/* Video */}
       {project.videoUrl && (
-        <section className="bg-white py-20">
+        <section className="bg-cream py-20">
           <div className="site-container">
             <p className="editorial-label">{t('projectDetail.video')}</p>
             <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
@@ -182,16 +182,16 @@ export default function ProjectDetailPage() {
                 href={project.factsheetPdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
+                className="group flex items-center gap-5 rounded-lg border border-[rgba(237,227,214,0.12)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
                   <FileText size={22} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-navy">{t('projectDetail.factsheet')}</p>
-                  <p className="mt-1 text-xs text-muted">{t('projectDetail.downloadFactsheet')}</p>
+                  <p className="text-sm font-semibold text-cream">{t('projectDetail.factsheet')}</p>
+                  <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFactsheet')}</p>
                 </div>
-                <Download size={16} className="shrink-0 text-muted transition group-hover:text-gold" />
+                <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
               </a>
             )}
             {project.floorplansPdf && (
@@ -199,16 +199,16 @@ export default function ProjectDetailPage() {
                 href={project.floorplansPdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.08)] bg-white p-6 shadow-soft transition hover:border-gold hover:shadow-card"
+                className="group flex items-center gap-5 rounded-lg border border-[rgba(237,227,214,0.12)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream text-gold">
                   <Layers3 size={22} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-navy">{t('projectDetail.floorplans')}</p>
-                  <p className="mt-1 text-xs text-muted">{t('projectDetail.downloadFloorplans')}</p>
+                  <p className="text-sm font-semibold text-cream">{t('projectDetail.floorplans')}</p>
+                  <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFloorplans')}</p>
                 </div>
-                <Download size={16} className="shrink-0 text-muted transition group-hover:text-gold" />
+                <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
               </a>
             )}
           </div>

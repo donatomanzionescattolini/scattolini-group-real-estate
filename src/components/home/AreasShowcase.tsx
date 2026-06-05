@@ -13,7 +13,7 @@ export default function AreasShowcase() {
     .filter((area): area is NonNullable<typeof area> => Boolean(area));
 
   return (
-    <section className="bg-white py-24">
+    <section className="bg-cream py-24">
       <div className="site-container">
         <SectionHeader
           eyebrow={t('areasShowcase.eyebrow')}

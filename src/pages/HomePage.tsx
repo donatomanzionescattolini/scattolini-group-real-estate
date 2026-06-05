@@ -58,12 +58,11 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.06)] p-8 shadow-card sm:p-10">
+          <div className="border border-[rgba(27,52,51,0.08)] bg-cream p-8 shadow-card sm:p-10">
             <InquiryForm
               title={t('about.formTitle')}
               description={t('about.formDescription')}
               submitLabel={t('about.formSubmit')}
-              theme="dark"
             />
           </div>
         </div>

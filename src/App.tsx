@@ -28,7 +28,7 @@ function ScrollToTop() {
 
 function AppShell() {
   return (
-    <div className="min-h-screen bg-white text-charcoal">
+    <div className="min-h-screen bg-cream text-charcoal">
       <ScrollToTop />
       <Header />
       <main className="pt-24">

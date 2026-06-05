@@ -12,7 +12,7 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
   const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
 
   return (
-    <article className="flex h-full flex-col items-start border border-[rgba(15,27,45,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
+    <article className="flex h-full flex-col items-start border border-[rgba(237,227,214,0.12)] bg-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
       {/* Photo area */}
       <div className="relative w-full h-full bg-cream" style={{ paddingBottom: '100%' }}>
         {agent.photo ? (
@@ -34,12 +34,12 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
 
       {/* Info area */}
       <div className="flex flex-col p-6">
-        <h3 className="text-3xl leading-none">
+        <h3 className="text-3xl leading-none text-cream">
           {agent.firstName} <span className="block">{agent.lastName}</span>
         </h3>
-        <p className="mt-3 text-sm uppercase tracking-editorial text-muted">{localize(agent.role, lang)}</p>
+        <p className="mt-3 text-sm uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{localize(agent.role, lang)}</p>
         <a
-          className="mt-6 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold"
+          className="mt-6 text-xs font-semibold uppercase tracking-editorial text-gold hover:text-cream"
           href={`mailto:hello@scattolinigroup.com?subject=Inquiry for ${agent.firstName} ${agent.lastName}`}
         >
           {t('agentCard.contact')}

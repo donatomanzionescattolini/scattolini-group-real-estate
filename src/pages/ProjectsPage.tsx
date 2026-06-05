@@ -29,7 +29,7 @@ export default function ProjectsPage() {
           description={t('projectsPage.description')}
         />
 
-        <div className="mt-12 rounded-none border border-[rgba(15,27,45,0.08)] bg-white p-6 shadow-soft sm:p-8">
+        <div className="mt-12">
           <ProjectFilter areas={areasWithProjects} activeAreaId={activeAreaId} onChange={setActiveAreaId} />
         </div>
 

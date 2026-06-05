@@ -125,8 +125,8 @@ body {
   }
 
   .panel-surface {
-    @apply bg-white;
-    border: 1px solid rgba(27, 52, 51, 0.1);
-    box-shadow: 0 22px 60px rgba(27, 52, 51, 0.08);
+    @apply bg-navy text-cream;
+    border: 1px solid rgba(237, 227, 214, 0.12);
+    box-shadow: 0 22px 60px rgba(12, 36, 35, 0.28);
   }
 }

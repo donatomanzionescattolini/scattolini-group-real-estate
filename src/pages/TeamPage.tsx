@@ -9,7 +9,7 @@ export default function TeamPage() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-cream">
+    <div className="bg-white">
       {/* Group photo banner */}
       <div className="w-full bg-deep flex items-center justify-center">
         <img

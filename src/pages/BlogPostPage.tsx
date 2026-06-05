@@ -29,7 +29,7 @@ export default function BlogPostPage() {
     .slice(0, 3);
 
   return (
-    <div className="bg-cream">
+    <div className="bg-white">
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-deep">
         <img src={post.image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
@@ -65,7 +65,7 @@ export default function BlogPostPage() {
       </section>
 
       {/* Body + sidebar */}
-      <section className="bg-cream">
+      <section className="bg-white">
         <div className="site-container py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
           <article>
@@ -110,7 +110,7 @@ export default function BlogPostPage() {
 
       {/* Related */}
       {relatedPosts.length > 0 && (
-        <section className="bg-cream py-20">
+        <section className="bg-white py-20">
           <div className="site-container">
             <p className="editorial-label">{t('blog.relatedEyebrow')}</p>
             <h2 className="mt-4 text-4xl">{t('blog.relatedTitle')}</h2>
@@ -125,4 +125,3 @@ export default function BlogPostPage() {
     </div>
   );
 }
-

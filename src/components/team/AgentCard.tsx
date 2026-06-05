@@ -12,34 +12,34 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
   const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
 
   return (
-    <article className="flex h-full flex-col items-start border border-[rgba(237,227,214,0.12)] bg-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
-      {/* Photo area */}
-      <div className="relative w-full h-full bg-cream" style={{ paddingBottom: '100%' }}>
+    <article className="group flex h-full flex-col overflow-hidden border border-[rgba(27,52,51,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
+      {/* Square photo */}
+      <div className="relative w-full overflow-hidden" style={{ paddingBottom: '100%' }}>
         {agent.photo ? (
           <img
             src={agent.photo}
             alt={`${agent.firstName} ${agent.lastName}`}
-            className="absolute inset-0 h-full w-full object-contain p-0 m-0"
+            className="absolute inset-0 h-full w-full object-contain bg-sand"
             loading="lazy"
             decoding="async"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-cream">
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gold font-serif text-4xl text-navy">
+          <div className="absolute inset-0 flex items-center justify-center bg-sand">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gold font-serif text-3xl text-navy">
               {initials}
             </div>
           </div>
         )}
       </div>
 
-      {/* Info area */}
-      <div className="flex flex-col p-6">
-        <h3 className="text-3xl leading-none text-cream">
+      {/* Info */}
+      <div className="flex flex-1 flex-col p-6">
+        <p className="editorial-label">{localize(agent.role, lang)}</p>
+        <h3 className="mt-3 text-3xl leading-none">
           {agent.firstName} <span className="block">{agent.lastName}</span>
         </h3>
-        <p className="mt-3 text-sm uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{localize(agent.role, lang)}</p>
         <a
-          className="mt-6 text-xs font-semibold uppercase tracking-editorial text-gold hover:text-cream"
+          className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold"
           href={`mailto:hello@scattolinigroup.com?subject=Inquiry for ${agent.firstName} ${agent.lastName}`}
         >
           {t('agentCard.contact')}

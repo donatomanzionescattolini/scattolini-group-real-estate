@@ -12,12 +12,11 @@ export default function StatsBar() {
 
   return (
     <section className="relative z-10 -mt-10">
-      <div className="site-container">
-          <div className="grid gap-px overflow-hidden border border-[rgba(237,227,214,0.12)] bg-[rgba(237,227,214,0.12)] shadow-card md:grid-cols-4">
+      <div className="site-container">          <div className="grid gap-px overflow-hidden border border-[rgba(27,52,51,0.08)] bg-[rgba(27,52,51,0.08)] shadow-soft md:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="bg-navy px-6 py-8 text-center">
-              <p className="font-serif text-4xl text-gold">{stat.value}</p>
-              <p className="mt-2 text-xs font-medium uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{stat.label}</p>
+            <div key={stat.label} className="bg-white px-6 py-8 text-center">
+              <p className="font-serif text-4xl text-navy">{stat.value}</p>
+              <p className="mt-2 text-xs font-medium uppercase tracking-editorial text-muted">{stat.label}</p>
             </div>
           ))}
         </div>

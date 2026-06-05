@@ -10,7 +10,8 @@
   --teal: #1F595A;        /* Secondary */
   --warm-brown: #8A6944;  /* Accent */
   --gold: #A57D31;        /* Highlight */
-  --cream: #EDE3D6;       /* Background */
+  --cream: #F7F4EE;       /* Background — soft, very light warm off-white */
+  --sand: #EDE3D6;        /* Richer warm cream for small accents */
   --deep: #0C2423;        /* Brandbook deepest green — darkest surfaces */
   --stone: #566967;       /* Brandbook grey-green — subtle neutral */
   --white: #ffffff;
@@ -125,8 +126,8 @@ body {
   }
 
   .panel-surface {
-    @apply bg-navy text-cream;
-    border: 1px solid rgba(237, 227, 214, 0.12);
-    box-shadow: 0 22px 60px rgba(12, 36, 35, 0.28);
+    @apply bg-white;
+    border: 1px solid rgba(27, 52, 51, 0.1);
+    box-shadow: 0 22px 60px rgba(27, 52, 51, 0.08);
   }
 }

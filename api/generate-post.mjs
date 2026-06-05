@@ -115,7 +115,7 @@ async function generatePost(topic) {
     readMinutes: Math.min(7, Math.max(3, Number(parsed.readMinutes) || 5)),
     // A rotating, stable stock image keeps the layout consistent without extra services.
     image:
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=85',
     title: { es: parsed.title?.es ?? title, en: title },
     excerpt: { es: parsed.excerpt?.es ?? '', en: parsed.excerpt?.en ?? '' },
     body: {

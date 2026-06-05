@@ -11,7 +11,7 @@ export default function TeamPage() {
   return (
     <div className="bg-cream">
       {/* Group photo banner */}
-      <div className="w-full bg-navy flex items-center justify-center">
+      <div className="w-full bg-deep flex items-center justify-center">
         <img
           src={TEAM_GROUP_PHOTO}
           alt="Scattolini Group Team"

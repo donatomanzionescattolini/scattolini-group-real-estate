@@ -14,7 +14,7 @@ const seedPosts: BlogPost[] = [
     publishedAt: '2026-05-28',
     readMinutes: 6,
     image:
-      'https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&w=2400&q=85',
     title: {
       es: 'Comprar en Miami siendo extranjero: lo que realmente necesita saber',
       en: 'Buying in Miami as a foreign national: what you actually need to know',
@@ -53,7 +53,7 @@ const seedPosts: BlogPost[] = [
     publishedAt: '2026-05-14',
     readMinutes: 5,
     image:
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2400&q=85',
     title: {
       es: 'Preconstrucción vs. reventa en 2026: cómo pensar la decisión',
       en: 'Pre-construction vs. resale in 2026: how to think about the decision',
@@ -92,7 +92,7 @@ const seedPosts: BlogPost[] = [
     publishedAt: '2026-04-30',
     readMinutes: 4,
     image:
-      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2400&q=85',
     title: {
       es: 'El dólar y su poder de compra: por qué la calma vence al apuro',
       en: 'The dollar and your buying power: why calm beats urgency',
@@ -129,7 +129,7 @@ const seedPosts: BlogPost[] = [
     publishedAt: '2026-04-16',
     readMinutes: 5,
     image:
-      'https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=1600&q=80',
+      'https://images.unsplash.com/photo-1535498730771-e735b998cd64?auto=format&fit=crop&w=2400&q=85',
     title: {
       es: 'Brickell o Edgewater: dos perfiles de inversión, una misma bahía',
       en: 'Brickell or Edgewater: two investment profiles, one bay',

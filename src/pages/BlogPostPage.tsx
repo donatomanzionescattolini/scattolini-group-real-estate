@@ -31,9 +31,9 @@ export default function BlogPostPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-navy">
+      <section className="relative isolate overflow-hidden bg-deep">
         <img src={post.image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,27,45,0.42),rgba(15,27,45,0.85))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.42),rgba(12,36,35,0.85))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">

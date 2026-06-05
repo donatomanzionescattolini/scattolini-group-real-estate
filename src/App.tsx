@@ -5,7 +5,7 @@ import PageLoader from './components/ui/PageLoader';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import { TranslationProvider } from './i18n';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react';
 const AreaDetailPage = lazy(() => import('./pages/AreaDetailPage'));
 const AreasPage = lazy(() => import('./pages/AreasPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
@@ -50,6 +50,7 @@ function AppShell() {
         </ErrorBoundary>
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }

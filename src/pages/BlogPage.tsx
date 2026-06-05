@@ -30,7 +30,7 @@ export default function BlogPage() {
   const filters: (BlogCategory | 'all')[] = ['all', ...availableCategories];
 
   return (
-    <div className="bg-cream">
+    <div className="bg-white">
       <section className="site-container py-20">
         <SectionHeader eyebrow={t('blog.eyebrow')} title={t('blog.title')} description={t('blog.description')} />
 
@@ -63,4 +63,3 @@ export default function BlogPage() {
     </div>
   );
 }
-

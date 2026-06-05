@@ -7,7 +7,7 @@ export default function AreasPage() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-cream">
+    <div className="bg-white">
       <section className="site-container py-20">
         <SectionHeader
           eyebrow={t('areasPage.eyebrow')}

@@ -41,7 +41,8 @@ export default function AreaDetailPage() {
         </section>
       )}
 
-      <section className="site-container py-20">
+      <section className="bg-cream">
+        <div className="site-container py-20">
         <div className="grid gap-10 lg:grid-cols-[1.45fr_0.55fr]">
           <div>
             <p className="editorial-label">{t('areaDetail.marketOverview')}</p>
@@ -77,12 +78,13 @@ export default function AreaDetailPage() {
               ))}
             </div>
           ) : (
-            <div className="mt-10 border border-[rgba(27,52,51,0.08)] bg-cream p-10 shadow-soft">
+            <div className="mt-10 border border-[rgba(27,52,51,0.08)] bg-white p-10 shadow-soft">
               <p className="max-w-3xl text-base leading-8 text-muted">
                 {t('areaDetail.expandingMarket')}
               </p>
             </div>
           )}
+        </div>
         </div>
       </section>
     </div>

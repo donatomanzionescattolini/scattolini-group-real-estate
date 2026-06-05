@@ -65,7 +65,8 @@ export default function BlogPostPage() {
       </section>
 
       {/* Body + sidebar */}
-      <section className="site-container py-20">
+      <section className="bg-cream">
+        <div className="site-container py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
           <article>
             <p className="text-lg leading-8 text-charcoal">{localize(post.excerpt, lang)}</p>
@@ -103,6 +104,7 @@ export default function BlogPostPage() {
               </div>
             </div>
           </aside>
+        </div>
         </div>
       </section>
 

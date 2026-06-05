@@ -62,7 +62,8 @@ export default function ProjectDetailPage() {
       )}
 
       {/* Key Stats + Overview + Sidebar */}
-      <section className="site-container py-20">
+      <section className="bg-cream">
+        <div className="site-container py-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
           <div>
             <div className="grid gap-4 sm:grid-cols-3">
@@ -141,11 +142,12 @@ export default function ProjectDetailPage() {
             </div>
           </aside>
         </div>
+        </div>
       </section>
 
       {/* Video */}
       {project.videoUrl && (
-        <section className="bg-cream py-20">
+        <section className="bg-white py-20">
           <div className="site-container">
             <p className="editorial-label">{t('projectDetail.video')}</p>
             <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
@@ -170,7 +172,8 @@ export default function ProjectDetailPage() {
 
       {/* Documents */}
       {(project.factsheetPdf || project.floorplansPdf) && (
-        <section className="site-container py-20">
+        <section className="bg-cream">
+          <div className="site-container py-20">
           <p className="editorial-label">{t('projectDetail.documents')}</p>
           <h2 className="mt-4 mb-8 text-4xl">{project.name}</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -208,6 +211,7 @@ export default function ProjectDetailPage() {
                 <Download size={16} className="shrink-0 text-muted transition group-hover:text-gold" />
               </a>
             )}
+          </div>
           </div>
         </section>
       )}

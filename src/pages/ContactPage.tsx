@@ -14,7 +14,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-cream">
       <section className="site-container py-20">
         <SectionHeader
           eyebrow={t('contactPage.eyebrow')}

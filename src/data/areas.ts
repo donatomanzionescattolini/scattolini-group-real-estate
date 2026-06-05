@@ -39,7 +39,7 @@ export const areas: Area[] = [
       en: "Edgewater is one of Miami's most dynamic residential corridors, stretching along Biscayne Bay north of downtown. Luxury towers with panoramic water views are transforming the skyline, while Wynwood's cultural energy lies just steps away. A rare blend of urban connectivity and serene waterfront living.",
       es: 'Edgewater es uno de los corredores residenciales más dinámicos de Miami, que se extiende a lo largo de la Bahía de Biscayne al norte del centro. Torres de lujo con vistas panorámicas al agua están transformando el horizonte, mientras la energía cultural de Wynwood se encuentra a pocos pasos. Una rara combinación de conectividad urbana y serena vida frente al agua.',
     },
-    image: `${S3_AREAS}/edgewater/carousel-3.webp`,
+    image: `${S3_AREAS}/edgewater/thumbnail.webp`,
     projectCount: 7,
     gallery: areaGallery('edgewater', 8),
   },

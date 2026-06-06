@@ -86,7 +86,7 @@ export default function ProjectDetailPage() {
           <div className="site-container">
             <p className="editorial-label">{t('projectDetail.gallery')}</p>
             <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.photoGallery')}</h2>
-            <ImageGallery images={project.gallery} alt={project.name} />
+            <ImageGallery images={project.gallery!} alt={project.name} />
           </div>
         </section>
       )}

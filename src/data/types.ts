@@ -14,6 +14,7 @@ export interface Area {
   tagline: LocaleString;
   description: LocaleString;
   image: string;
+  bannerImage: string;
   projectCount: number;
   gallery?: string[];
 }

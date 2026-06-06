@@ -25,6 +25,34 @@ export default function ProjectDetailPage() {
     completed: t('projectDetail.statusLabels.completed'),
   };
 
+  const hasGallery = Boolean(project.gallery && project.gallery.length > 0);
+  const hasVideo = Boolean(project.videoUrl);
+  const hasDocs = Boolean(project.factsheetPdf || project.floorplansPdf);
+
+  /**
+   * Compute a clean two-tone (light/dark) rhythm that stays consistent across every
+   * project, regardless of which optional sections (gallery/video/documents) render.
+   * The hero is always dark and the gallery + overview form one continuous light zone;
+   * the remaining sections then alternate so no two same-tone bands ever sit adjacent.
+   */
+  type Tone = 'light' | 'dark';
+  const tone: Record<'video' | 'documents' | 'related', Tone> = (() => {
+    const result = {} as Record<'video' | 'documents' | 'related', Tone>;
+    let prev: Tone = 'light'; // the overview/body zone above is always light
+    for (const key of ['video', 'documents', 'related'] as const) {
+      if (key === 'video' && !hasVideo) continue;
+      if (key === 'documents' && !hasDocs) continue;
+      prev = prev === 'light' ? 'dark' : 'light';
+      result[key] = prev;
+    }
+    return result;
+  })();
+
+  const sectionBg = (t: Tone) => (t === 'dark' ? 'bg-deep' : 'bg-section-bg');
+  const headingClass = (t: Tone) => (t === 'dark' ? 'text-cream' : '');
+  const labelClass = (t: Tone) =>
+    t === 'dark' ? 'text-gold' : 'text-teal';
+
   return (
     <div className="bg-section-bg">
       {/* Hero */}
@@ -52,103 +80,109 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
-      {project.gallery && project.gallery.length > 0 && (
-        <section className="site-container py-16">
-          <p className="editorial-label">{t('projectDetail.gallery')}</p>
-          <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.photoGallery')}</h2>
-          <ImageGallery images={project.gallery} alt={project.name} />
+      {/* Photo Gallery — light, forms one continuous light zone with the overview below */}
+      {hasGallery && (
+        <section className="bg-section-bg py-16">
+          <div className="site-container">
+            <p className="editorial-label">{t('projectDetail.gallery')}</p>
+            <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.photoGallery')}</h2>
+            <ImageGallery images={project.gallery} alt={project.name} />
+          </div>
         </section>
       )}
 
-      {/* Key Stats + Overview + Sidebar */}
-      <section className="bg-section-bg">
+      {/* Key Stats + Overview + Sidebar — clean white base */}
+      <section className="bg-white">
         <div className="site-container py-20">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
-          <div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="panel-surface p-5">
-                <CalendarDays className="text-gold" size={18} />
-                <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.delivery')}</p>
-                <p className="mt-2 text-2xl text-cream">{project.completionYear === 'Now' ? t('projectDetail.deliveryNow') : project.completionYear}</p>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)]">
+            <div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="panel-surface p-5">
+                  <CalendarDays className="text-gold" size={18} />
+                  <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.delivery')}</p>
+                  <p className="mt-2 text-2xl text-cream">{project.completionYear === 'Now' ? t('projectDetail.deliveryNow') : project.completionYear}</p>
+                </div>
+                <div className="panel-surface p-5">
+                  <Layers3 className="text-gold" size={18} />
+                  <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.scale')}</p>
+                  <p className="mt-2 text-2xl text-cream">{project.units ? localize(project.units, lang) : null}</p>
+                </div>
               </div>
-              <div className="panel-surface p-5">
-                <Layers3 className="text-gold" size={18} />
-                <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.scale')}</p>
-                <p className="mt-2 text-2xl text-cream">{project.units ? localize(project.units, lang) : null}</p>
+
+              <div className="mt-12">
+                <p className="editorial-label">{t('projectDetail.overview')}</p>
+                <h2 className="mt-4 text-4xl">{t('projectDetail.closerLook')} {project.name}</h2>
+                <p className="mt-6 max-w-4xl text-base leading-8 text-muted">{localize(project.description, lang)}</p>
+              </div>
+
+              {/* Amenities & Features — navy panel, cohesive with the stat & contact cards */}
+              <div className="mt-12 rounded-xl bg-navy p-8">
+                <div className="grid gap-10 lg:grid-cols-2">
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('projectDetail.amenities')}</p>
+                    <ul className="mt-6 space-y-4">
+                      {project.amenities.map((amenity) => {
+                        const label = localize(amenity, lang);
+                        return (
+                          <li key={label} className="border-b border-[rgba(237,227,214,0.14)] pb-4 text-sm text-[rgba(237,227,214,0.82)]">
+                            {label}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('projectDetail.residenceFeatures')}</p>
+                    <ul className="mt-6 space-y-4">
+                      {project.features.map((feature) => {
+                        const label = localize(feature, lang);
+                        return (
+                          <li key={label} className="border-b border-[rgba(237,227,214,0.14)] pb-4 text-sm text-[rgba(237,227,214,0.82)]">
+                            {label}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="mt-12">
-              <p className="editorial-label">{t('projectDetail.overview')}</p>
-              <h2 className="mt-4 text-4xl">{t('projectDetail.closerLook')} {project.name}</h2>
-              <p className="mt-6 max-w-4xl text-base leading-8 text-muted">{localize(project.description, lang)}</p>
-            </div>
-
-            <div className="mt-12 grid gap-10 lg:grid-cols-2">
-              <div>
-                <p className="editorial-label">{t('projectDetail.amenities')}</p>
-                <ul className="mt-6 space-y-4">
-                  {project.amenities.map((amenity) => {
-                    const label = localize(amenity, lang);
-                    return (
-                      <li key={label} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
-                        {label}
-                      </li>
-                    );
-                  })}
-                </ul>
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <div className="panel-surface p-8">
+                <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('projectDetail.contactAbout')}</p>
+                <h3 className="mt-4 text-3xl text-cream">{t('projectDetail.requestPresentation')}</h3>
+                <div className="mt-6 space-y-4 border-y border-[rgba(237,227,214,0.15)] py-6 text-sm text-[rgba(237,227,214,0.7)]">
+                  <div className="flex items-center justify-between">
+                    <span>{t('projectDetail.market')}</span>
+                    <span className="font-medium text-cream">{project.areaName}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>{t('projectDetail.status')}</span>
+                    <span className="font-medium text-cream">{statusLabels[project.status]}</span>
+                  </div>
+                </div>
+                <InquiryForm compact theme="dark" defaultMessage={`${t('projectDetail.defaultMessage')} ${project.name}.`} submitLabel={t('projectDetail.inquireNow')} />
               </div>
-              <div>
-                <p className="editorial-label">{t('projectDetail.residenceFeatures')}</p>
-                <ul className="mt-6 space-y-4">
-                  {project.features.map((feature) => {
-                    const label = localize(feature, lang);
-                    return (
-                      <li key={label} className="border-b border-[rgba(27,52,51,0.08)] pb-4 text-sm text-charcoal">
-                        {label}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
+            </aside>
           </div>
-
-          <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="panel-surface p-8">
-              <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('projectDetail.contactAbout')}</p>
-              <h3 className="mt-4 text-3xl text-cream">{t('projectDetail.requestPresentation')}</h3>
-              <div className="mt-6 space-y-4 border-y border-[rgba(237,227,214,0.15)] py-6 text-sm text-[rgba(237,227,214,0.7)]">
-                <div className="flex items-center justify-between">
-                  <span>{t('projectDetail.market')}</span>
-                  <span className="font-medium text-cream">{project.areaName}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>{t('projectDetail.status')}</span>
-                  <span className="font-medium text-cream">{statusLabels[project.status]}</span>
-                </div>
-              </div>
-              <InquiryForm compact theme="dark" defaultMessage={`${t('projectDetail.defaultMessage')} ${project.name}.`} submitLabel={t('projectDetail.inquireNow')} />
-            </div>
-          </aside>
-        </div>
         </div>
       </section>
 
-      {/* Video */}
-      {project.videoUrl && (
-        <section className="bg-white py-20">
+      {/* Video — tone follows the alternating rhythm */}
+      {hasVideo && (
+        <section className={`${sectionBg(tone.video)} py-20`}>
           <div className="site-container">
-            <p className="editorial-label">{t('projectDetail.video')}</p>
-            <h2 className="mt-4 mb-8 text-4xl">{t('projectDetail.projectVideo')}</h2>
-            <div className="relative overflow-hidden rounded-lg bg-navy" style={{ aspectRatio: '16/9' }}>
+            <p className={`text-[11px] font-medium uppercase tracking-editorial ${labelClass(tone.video)}`}>{t('projectDetail.video')}</p>
+            <h2 className={`mt-4 mb-8 text-4xl ${headingClass(tone.video)}`}>{t('projectDetail.projectVideo')}</h2>
+            <div className="relative overflow-hidden rounded-xl bg-[#0C2423] shadow-card" style={{ aspectRatio: '16/9' }}>
               <video
                 className="h-full w-full object-cover"
                 controls
                 preload="metadata"
                 poster={project.image}
               >
+                {/* Video hosted on S3: assets2/desarrollos/{id}/video.mp4 */}
                 <source src={project.videoUrl} type="video/mp4" />
               </video>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity peer-paused:opacity-100">
@@ -161,61 +195,61 @@ export default function ProjectDetailPage() {
         </section>
       )}
 
-      {/* Documents */}
-      {(project.factsheetPdf || project.floorplansPdf) && (
-        <section className="bg-section-bg">
-          <div className="site-container py-20">
-          <p className="editorial-label">{t('projectDetail.documents')}</p>
-          <h2 className="mt-4 mb-8 text-4xl">{project.name}</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {project.factsheetPdf && (
-              <a
-                href={project.factsheetPdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-lg border border-[rgba(237,227,214,0.12)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
-              >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-section-bg text-gold">
-                  <FileText size={22} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-cream">{t('projectDetail.factsheet')}</p>
-                  <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFactsheet')}</p>
-                </div>
-                <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
-              </a>
-            )}
-            {project.floorplansPdf && (
-              <a
-                href={project.floorplansPdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-lg border border-[rgba(237,227,214,0.12)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
-              >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-section-bg text-gold">
-                  <Layers3 size={22} />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-cream">{t('projectDetail.floorplans')}</p>
-                  <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFloorplans')}</p>
-                </div>
-                <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
-              </a>
-            )}
-          </div>
+      {/* Documents — tone follows the alternating rhythm */}
+      {hasDocs && (
+        <section className={`${sectionBg(tone.documents)} py-20`}>
+          <div className="site-container">
+            <p className={`text-[11px] font-medium uppercase tracking-editorial ${labelClass(tone.documents)}`}>{t('projectDetail.documents')}</p>
+            <h2 className={`mt-4 mb-8 text-4xl ${headingClass(tone.documents)}`}>{project.name}</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {project.factsheetPdf && (
+                <a
+                  href={project.factsheetPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.18)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[rgba(237,227,214,0.12)] text-gold">
+                    <FileText size={22} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-cream">{t('projectDetail.factsheet')}</p>
+                    <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFactsheet')}</p>
+                  </div>
+                  <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
+                </a>
+              )}
+              {project.floorplansPdf && (
+                <a
+                  href={project.floorplansPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.18)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[rgba(237,227,214,0.12)] text-gold">
+                    <Layers3 size={22} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-cream">{t('projectDetail.floorplans')}</p>
+                    <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFloorplans')}</p>
+                  </div>
+                  <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
+                </a>
+              )}
+            </div>
           </div>
         </section>
       )}
 
-      {/* Related Projects */}
-      <section className="bg-white py-20">
+      {/* Related Projects — tone follows the alternating rhythm */}
+      <section className={`${sectionBg(tone.related)} py-20`}>
         <div className="site-container">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="editorial-label">{t('projectDetail.relatedProperties')}</p>
-              <h2 className="mt-4 text-4xl">{t('projectDetail.moreProjectsIn')} {project.areaName}</h2>
+              <p className={`text-[11px] font-medium uppercase tracking-editorial ${labelClass(tone.related)}`}>{t('projectDetail.relatedProperties')}</p>
+              <h2 className={`mt-4 text-4xl ${headingClass(tone.related)}`}>{t('projectDetail.moreProjectsIn')} {project.areaName}</h2>
             </div>
-            <Link to={`/areas/${project.areaId}`} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
+            <Link to={`/areas/${project.areaId}`} className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial hover:text-gold ${tone.related === 'dark' ? 'text-[rgba(237,227,214,0.78)]' : 'text-navy'}`}>
               {t('projectDetail.exploreArea')} <ArrowRight size={14} />
             </Link>
           </div>

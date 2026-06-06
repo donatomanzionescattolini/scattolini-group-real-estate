@@ -2,7 +2,7 @@
 import ProjectCard from '../components/projects/ProjectCard';
 import Badge from '../components/ui/Badge';
 import ImageGallery from '../components/ui/ImageGallery';
-import { areas } from '../data/areas';
+import { areas, BANNER_EXTENSIONS } from '../data/areas';
 import { localize } from '../data/localize';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
@@ -21,7 +21,21 @@ export default function AreaDetailPage() {
   return (
     <div className="bg-section-bg">
       <section className="relative isolate overflow-hidden bg-deep">
-        <img src={area.image} alt={area.name} className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          src={area.bannerImage}
+          alt={area.name}
+          className="absolute inset-0 h-full w-full object-cover"
+          onError={(event) => {
+            // Banner values are extension-agnostic: if the current format is
+            // missing on S3, fall back through the remaining BANNER_EXTENSIONS.
+            const img = event.currentTarget;
+            const next = Number(img.dataset.extIndex ?? '0') + 1;
+            if (next < BANNER_EXTENSIONS.length) {
+              img.dataset.extIndex = String(next);
+              img.src = area.bannerImage.replace(/\.[a-z0-9]+$/i, `.${BANNER_EXTENSIONS[next]}`);
+            }
+          }}
+        />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.34),rgba(12,36,35,0.84))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">

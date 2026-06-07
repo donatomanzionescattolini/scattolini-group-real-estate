@@ -25,7 +25,7 @@ export default function TeamPreview() {
           {agents.slice(0, 10).map((agent) => {
             const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
             return (
-              <div key={agent.id} className="border border-[rgba(237,227,214,0.12)] bg-navy shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
+              <div key={agent.id} className="border border-[rgba(27,52,51,0.12)] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
                 {/* Photo */}
                 <div className="relative w-full bg-section-bg" style={{ paddingBottom: '100%' }}>
                   {agent.photo ? (
@@ -42,11 +42,11 @@ export default function TeamPreview() {
                 </div>
                 {/* Name */}
                 <div className="p-4">
-                  <h3 className="text-xl leading-none text-cream">
+                  <h3 className="text-xl leading-none text-navy">
                     {agent.firstName}
                     <span className="block">{agent.lastName}</span>
                   </h3>
-                  <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{localize(agent.role, lang)}</p>
+                  <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.6)]">{localize(agent.role, lang)}</p>
                 </div>
               </div>
             );

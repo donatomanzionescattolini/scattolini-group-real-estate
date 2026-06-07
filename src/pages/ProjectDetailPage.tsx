@@ -30,10 +30,10 @@ export default function ProjectDetailPage() {
   const hasDocs = Boolean(project.factsheetPdf || project.floorplansPdf);
 
   /**
-   * Compute a clean two-tone (light/dark) rhythm that stays consistent across every
-   * project, regardless of which optional sections (gallery/video/documents) render.
-   * The hero is always dark and the gallery + overview form one continuous light zone;
-   * the remaining sections then alternate so no two same-tone bands ever sit adjacent.
+   * Compute a clean two-tone (section-bg/white) rhythm that stays consistent across
+   * every project, regardless of which optional sections (gallery/video/documents) render.
+   * The hero + gallery + overview form a continuous light zone, and the remaining
+   * sections alternate between white and section-bg to keep transitions gentle.
    */
   type Tone = 'light' | 'dark';
   const tone: Record<'video' | 'documents' | 'related', Tone> = (() => {
@@ -48,20 +48,19 @@ export default function ProjectDetailPage() {
     return result;
   })();
 
-  const sectionBg = (t: Tone) => (t === 'dark' ? 'bg-deep' : 'bg-section-bg');
-  const headingClass = (t: Tone) => (t === 'dark' ? 'text-cream' : '');
-  const labelClass = (t: Tone) =>
-    t === 'dark' ? 'text-gold' : 'text-teal';
+  const sectionBg = (t: Tone) => (t === 'dark' ? 'bg-white' : 'bg-section-bg');
+  const headingClass = (t: Tone) => (t === 'dark' ? 'text-navy' : '');
+  const labelClass = (_t: Tone) => 'text-teal';
 
   return (
     <div className="bg-section-bg">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-deep">
+      <section className="relative isolate overflow-hidden bg-section-bg">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.36),rgba(12,36,35,0.82))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,227,214,0.52),rgba(237,227,214,0.88))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.68)]">
               <Link to="/" className="hover:text-gold">{t('projectDetail.breadcrumbHome')}</Link>
               <span>/</span>
               <Link to="/projects" className="hover:text-gold">{t('projectDetail.breadcrumbProjects')}</Link>
@@ -71,11 +70,11 @@ export default function ProjectDetailPage() {
               <span className="text-gold">{project.name}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Badge tone="light">{project.areaName}</Badge>
-              <Badge tone="light">{statusLabels[project.status]}</Badge>
+              <Badge tone="navy">{project.areaName}</Badge>
+              <Badge tone="navy">{statusLabels[project.status]}</Badge>
             </div>
-            <h1 className="mt-6 text-5xl text-amber-100 sm:text-6xl">{project.name}</h1>
-            <p className="mt-4 text-lg leading-8 text-[rgba(255,255,255,0.78)]">{localize(project.tagline, lang)}</p>
+            <h1 className="mt-6 text-5xl text-navy sm:text-6xl">{project.name}</h1>
+            <p className="mt-4 text-lg leading-8 text-[rgba(27,52,51,0.78)]">{localize(project.tagline, lang)}</p>
           </div>
         </div>
       </section>
@@ -249,7 +248,7 @@ export default function ProjectDetailPage() {
               <p className={`text-[11px] font-medium uppercase tracking-editorial ${labelClass(tone.related)}`}>{t('projectDetail.relatedProperties')}</p>
               <h2 className={`mt-4 text-4xl ${headingClass(tone.related)}`}>{t('projectDetail.moreProjectsIn')} {project.areaName}</h2>
             </div>
-            <Link to={`/areas/${project.areaId}`} className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial hover:text-gold ${tone.related === 'dark' ? 'text-[rgba(237,227,214,0.78)]' : 'text-navy'}`}>
+            <Link to={`/areas/${project.areaId}`} className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
               {t('projectDetail.exploreArea')} <ArrowRight size={14} />
             </Link>
           </div>

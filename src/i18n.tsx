@@ -132,8 +132,18 @@ const translations: Record<Lang, TranslationTree> = {
       marketOverview: 'Descripción del Mercado',
       whyBuyersWatch: 'Por qué los compradores observan',
       atAGlance: 'De un vistazo',
+      quickSnapshot: 'Resumen rápido para evaluar esta zona en segundos.',
       availableProjects: 'Proyectos disponibles',
+      launchPipeline: 'Pipeline activo',
+      deliveryReady: 'Listo para entrega',
+      galleryMoments: 'Momentos de galería',
       signatureCharacter: 'Carácter distintivo',
+      marketPulse: 'Pulso del mercado',
+      marketRead: {
+        pipelineStrong: 'Alta actividad de nuevos lanzamientos.',
+        pipelineBalanced: 'Mercado equilibrado entre lanzamientos y entregas.',
+        pipelineEstablished: 'Inventario consolidado con más opciones terminadas.',
+      },
       neighborhoodComparison: '¿Necesita una comparación de vecindarios?',
       speakWithTeam: 'Hable con nuestro equipo.',
       collection: 'Colección',
@@ -329,8 +339,18 @@ const translations: Record<Lang, TranslationTree> = {
       marketOverview: 'Market Overview',
       whyBuyersWatch: 'Why buyers watch',
       atAGlance: 'At a glance',
+      quickSnapshot: 'A quick read to evaluate this market in seconds.',
       availableProjects: 'Available projects',
+      launchPipeline: 'Active pipeline',
+      deliveryReady: 'Delivery ready',
+      galleryMoments: 'Gallery moments',
       signatureCharacter: 'Signature character',
+      marketPulse: 'Market pulse',
+      marketRead: {
+        pipelineStrong: 'Strong new-launch activity.',
+        pipelineBalanced: 'Balanced momentum between launches and deliveries.',
+        pipelineEstablished: 'Established inventory with more completed options.',
+      },
       neighborhoodComparison: 'Need a neighborhood comparison?',
       speakWithTeam: 'Speak with our team.',
       collection: 'Collection',
@@ -466,4 +486,3 @@ export function useTranslation(): TranslationContextValue {
   if (!ctx) throw new Error('useTranslation must be used inside TranslationProvider');
   return ctx;
 }
-

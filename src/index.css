@@ -107,6 +107,17 @@ body {
     color: var(--gold);
   }
 
+  .button-secondary-light {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-navy;
+    border: 1px solid rgba(27, 52, 51, 0.35);
+    background: transparent;
+  }
+
+  .button-secondary-light:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
   .input-field {
     @apply w-full bg-white px-4 py-3 text-sm text-charcoal outline-none placeholder:text-muted;
     border: 1px solid rgba(27, 52, 51, 0.15);

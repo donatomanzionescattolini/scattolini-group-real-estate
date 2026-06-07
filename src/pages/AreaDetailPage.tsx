@@ -15,14 +15,14 @@ const MARKET_READ_KEYS = {
 
 function getMarketReadKey(launchPipelineCount: number, deliveryReadyCount: number): keyof typeof MARKET_READ_KEYS {
   if (launchPipelineCount > deliveryReadyCount) {
-    return 'areaDetail.marketRead.pipelineStrong';
+    return 'pipelineStrong';
   }
 
   if (launchPipelineCount === deliveryReadyCount) {
-    return 'areaDetail.marketRead.pipelineBalanced';
+    return 'pipelineBalanced';
   }
 
-  return 'areaDetail.marketRead.pipelineEstablished';
+  return 'pipelineEstablished';
 }
 
 export default function AreaDetailPage() {

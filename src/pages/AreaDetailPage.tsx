@@ -17,6 +17,14 @@ export default function AreaDetailPage() {
   }
 
   const areaProjects = projects.filter((project) => project.areaId === area.id);
+  const launchPipelineCount = areaProjects.filter((project) => project.status !== 'completed').length;
+  const deliveryReadyCount = areaProjects.filter((project) => project.status === 'completed').length;
+  const galleryMoments = area.gallery?.length ?? 0;
+  const marketReadKey = launchPipelineCount > deliveryReadyCount
+    ? 'pipelineStrong'
+    : launchPipelineCount === deliveryReadyCount
+      ? 'pipelineBalanced'
+      : 'pipelineEstablished';
 
   return (
     <div className="bg-section-bg">
@@ -63,18 +71,43 @@ export default function AreaDetailPage() {
             <h2 className="mt-4 text-4xl">{t('areaDetail.whyBuyersWatch')} {area.name}</h2>
             <p className="mt-6 text-base leading-8 text-muted">{localize(area.description, lang)}</p>
           </div>
-          <div className="panel-surface p-8">
-            <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('areaDetail.atAGlance')}</p>
-            <div className="mt-6 space-y-5 text-sm text-[rgba(237,227,214,0.7)]">
-              <div className="flex items-center justify-between border-b border-[rgba(237,227,214,0.15)] pb-4">
-                <span>{t('areaDetail.availableProjects')}</span>
-                <span className="font-medium text-cream">{areaProjects.length}</span>
+          <div className="panel-surface relative overflow-hidden p-8">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(219,176,120,0.2),transparent_55%)]" />
+            <div className="relative">
+              <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('areaDetail.atAGlance')}</p>
+              <p className="mt-3 text-sm leading-6 text-[rgba(237,227,214,0.78)]">{t('areaDetail.quickSnapshot')}</p>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.availableProjects')}</p>
+                  <p className="mt-2 text-2xl text-cream">{areaProjects.length}</p>
+                </div>
+                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.launchPipeline')}</p>
+                  <p className="mt-2 text-2xl text-cream">{launchPipelineCount}</p>
+                </div>
+                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.deliveryReady')}</p>
+                  <p className="mt-2 text-2xl text-cream">{deliveryReadyCount}</p>
+                </div>
+                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.galleryMoments')}</p>
+                  <p className="mt-2 text-2xl text-cream">{galleryMoments}</p>
+                </div>
               </div>
-              <div className="flex items-center justify-between border-b border-[rgba(237,227,214,0.15)] pb-4">
-                <span>{t('areaDetail.signatureCharacter')}</span>
-                <span className="font-medium text-right text-cream">{localize(area.tagline, lang)}</span>
+
+              <div className="mt-6 space-y-4 border-t border-[rgba(237,227,214,0.15)] pt-5 text-sm text-[rgba(237,227,214,0.78)]">
+                <div className="flex items-start justify-between gap-4">
+                  <span>{t('areaDetail.signatureCharacter')}</span>
+                  <span className="max-w-[180px] text-right font-medium text-cream">{localize(area.tagline, lang)}</span>
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <span>{t('areaDetail.marketPulse')}</span>
+                  <span className="max-w-[180px] text-right font-medium text-cream">{t(`areaDetail.marketRead.${marketReadKey}`)}</span>
+                </div>
               </div>
-              <div className="pt-2 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">
+
+              <div className="mt-6 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">
                 {t('areaDetail.neighborhoodComparison')} <Link className="text-gold hover:text-cream" to="/contact">{t('areaDetail.speakWithTeam')}</Link>
               </div>
             </div>

@@ -35,10 +35,7 @@ export default function HeroSection() {
               {t('hero.exploreProjects')}
               <ArrowRight size={16} />
             </Link>
-            <Link
-              className="inline-flex items-center justify-center gap-2 border border-[rgba(27,52,51,0.35)] bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-navy hover:border-gold hover:text-gold"
-              to="/team"
-            >
+            <Link className="button-secondary-light" to="/team">
               {t('hero.meetTeam')}
             </Link>
           </div>

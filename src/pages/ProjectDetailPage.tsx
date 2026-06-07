@@ -35,22 +35,22 @@ export default function ProjectDetailPage() {
    * The hero + gallery + overview form a continuous light zone, and the remaining
    * sections alternate between white and section-bg to keep transitions gentle.
    */
-  type Tone = 'light' | 'dark';
-  const tone: Record<'video' | 'documents' | 'related', Tone> = (() => {
-    const result = {} as Record<'video' | 'documents' | 'related', Tone>;
-    let prev: Tone = 'light'; // the overview/body zone above is always light
+  type SurfaceTone = 'section' | 'white';
+  const tone: Record<'video' | 'documents' | 'related', SurfaceTone> = (() => {
+    const result = {} as Record<'video' | 'documents' | 'related', SurfaceTone>;
+    let prev: SurfaceTone = 'section'; // the overview/body zone above is always light
     for (const key of ['video', 'documents', 'related'] as const) {
       if (key === 'video' && !hasVideo) continue;
       if (key === 'documents' && !hasDocs) continue;
-      prev = prev === 'light' ? 'dark' : 'light';
+      prev = prev === 'section' ? 'white' : 'section';
       result[key] = prev;
     }
     return result;
   })();
 
-  const sectionBg = (t: Tone) => (t === 'dark' ? 'bg-white' : 'bg-section-bg');
-  const headingClass = (t: Tone) => (t === 'dark' ? 'text-navy' : '');
-  const labelClass = (_t: Tone) => 'text-teal';
+  const sectionBg = (t: SurfaceTone) => (t === 'white' ? 'bg-white' : 'bg-section-bg');
+  const headingClass = (t: SurfaceTone) => (t === 'white' ? 'text-navy' : '');
+  const labelClass = (_t: SurfaceTone) => 'text-teal';
 
   return (
     <div className="bg-section-bg">

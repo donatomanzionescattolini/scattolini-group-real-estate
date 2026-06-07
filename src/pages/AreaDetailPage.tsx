@@ -7,12 +7,13 @@ import { localize } from '../data/localize';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
 
-type MarketReadTranslationKey =
-  | 'areaDetail.marketRead.pipelineStrong'
-  | 'areaDetail.marketRead.pipelineBalanced'
-  | 'areaDetail.marketRead.pipelineEstablished';
+const MARKET_READ_KEYS = {
+  pipelineStrong: 'areaDetail.marketRead.pipelineStrong',
+  pipelineBalanced: 'areaDetail.marketRead.pipelineBalanced',
+  pipelineEstablished: 'areaDetail.marketRead.pipelineEstablished',
+} as const;
 
-function getMarketReadKey(launchPipelineCount: number, deliveryReadyCount: number): MarketReadTranslationKey {
+function getMarketReadKey(launchPipelineCount: number, deliveryReadyCount: number): keyof typeof MARKET_READ_KEYS {
   if (launchPipelineCount > deliveryReadyCount) {
     return 'areaDetail.marketRead.pipelineStrong';
   }
@@ -34,8 +35,17 @@ export default function AreaDetailPage() {
   }
 
   const areaProjects = projects.filter((project) => project.areaId === area.id);
-  const launchPipelineCount = areaProjects.filter((project) => project.status !== 'completed').length;
-  const deliveryReadyCount = areaProjects.filter((project) => project.status === 'completed').length;
+  const { launchPipelineCount, deliveryReadyCount } = areaProjects.reduce(
+    (counts, project) => {
+      if (project.status === 'completed') {
+        counts.deliveryReadyCount += 1;
+      } else {
+        counts.launchPipelineCount += 1;
+      }
+      return counts;
+    },
+    { launchPipelineCount: 0, deliveryReadyCount: 0 },
+  );
   const galleryCount = area.gallery?.length ?? 0;
   const marketReadKey = getMarketReadKey(launchPipelineCount, deliveryReadyCount);
 
@@ -116,7 +126,7 @@ export default function AreaDetailPage() {
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <span>{t('areaDetail.marketPulse')}</span>
-                  <span className="max-w-[180px] text-right font-medium text-cream">{t(marketReadKey)}</span>
+                  <span className="max-w-[180px] text-right font-medium text-cream">{t(MARKET_READ_KEYS[marketReadKey])}</span>
                 </div>
               </div>
 

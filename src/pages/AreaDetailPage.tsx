@@ -51,7 +51,7 @@ export default function AreaDetailPage() {
 
   return (
     <div className="bg-section-bg">
-      <section className="relative isolate overflow-hidden bg-deep">
+      <section className="relative isolate overflow-hidden bg-section-bg">
         <img
           src={area.bannerImage}
           alt={area.name}
@@ -67,12 +67,12 @@ export default function AreaDetailPage() {
             }
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.34),rgba(12,36,35,0.84))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,227,214,0.52),rgba(237,227,214,0.9))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
-            <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
-            <h1 className="mt-6 text-5xl text-amber-100 sm:text-6xl">{area.name}</h1>
-            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">{localize(area.tagline, lang)}</p>
+            <Badge tone="navy">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
+            <h1 className="mt-6 text-5xl text-navy sm:text-6xl">{area.name}</h1>
+            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(27,52,51,0.68)]">{localize(area.tagline, lang)}</p>
           </div>
         </div>
       </section>

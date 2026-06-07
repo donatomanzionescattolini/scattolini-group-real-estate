@@ -31,12 +31,12 @@ export default function BlogPostPage() {
   return (
     <div className="bg-section-bg">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-deep">
+      <section className="relative isolate overflow-hidden bg-section-bg">
         <img src={post.image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.42),rgba(12,36,35,0.85))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,227,214,0.58),rgba(237,227,214,0.9))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.72)]">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.68)]">
               <Link to="/" className="hover:text-gold">
                 {t('nav.home')}
               </Link>
@@ -46,10 +46,10 @@ export default function BlogPostPage() {
               </Link>
             </div>
             <div className="mt-8">
-              <Badge tone="light">{t(`blog.categories.${post.category}`)}</Badge>
+              <Badge tone="navy">{t(`blog.categories.${post.category}`)}</Badge>
             </div>
-            <h1 className="mt-6 text-4xl text-amber-100 sm:text-5xl">{title}</h1>
-            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-[rgba(255,255,255,0.78)]">
+            <h1 className="mt-6 text-4xl text-navy sm:text-5xl">{title}</h1>
+            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-[rgba(27,52,51,0.76)]">
               <span className="inline-flex items-center gap-2">
                 <UserRound size={16} className="text-gold" /> {post.author}
               </span>
@@ -125,4 +125,3 @@ export default function BlogPostPage() {
     </div>
   );
 }
-

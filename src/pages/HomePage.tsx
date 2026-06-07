@@ -17,7 +17,8 @@ export default function HomePage() {
       <AreasShowcase />
       <TeamPreview />
 
-      <section className="bg-white py-24">
+      <section className="bg-white py-24" style={{backgroundColor: "rgba(255,255,255,0.8), rgba(0,0,0,0.2)"}}>
+
         <div className="site-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
             <p className="editorial-label">{t('about.eyebrow')}</p>

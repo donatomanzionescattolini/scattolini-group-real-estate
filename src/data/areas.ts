@@ -346,7 +346,7 @@ export const areas: Area[] = [
     image: areaThumbnail('pembroke-pines'),
     projectCount: 0,
     bannerImage: areaBanner('pembroke-pines'),
-    gallery: areaGallery('pembroke-pines', 6),
+    gallery: areaGallery('pembroke-pines', 14),
   },
   {
     id: 'miami-design-district',

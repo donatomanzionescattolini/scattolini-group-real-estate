@@ -7,6 +7,23 @@ import { localize } from '../data/localize';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
 
+type MarketReadTranslationKey =
+  | 'areaDetail.marketRead.pipelineStrong'
+  | 'areaDetail.marketRead.pipelineBalanced'
+  | 'areaDetail.marketRead.pipelineEstablished';
+
+function getMarketReadKey(launchPipelineCount: number, deliveryReadyCount: number): MarketReadTranslationKey {
+  if (launchPipelineCount > deliveryReadyCount) {
+    return 'areaDetail.marketRead.pipelineStrong';
+  }
+
+  if (launchPipelineCount === deliveryReadyCount) {
+    return 'areaDetail.marketRead.pipelineBalanced';
+  }
+
+  return 'areaDetail.marketRead.pipelineEstablished';
+}
+
 export default function AreaDetailPage() {
   const { areaId } = useParams();
   const area = areas.find((entry) => entry.id === areaId);
@@ -19,12 +36,8 @@ export default function AreaDetailPage() {
   const areaProjects = projects.filter((project) => project.areaId === area.id);
   const launchPipelineCount = areaProjects.filter((project) => project.status !== 'completed').length;
   const deliveryReadyCount = areaProjects.filter((project) => project.status === 'completed').length;
-  const galleryMoments = area.gallery?.length ?? 0;
-  const marketReadKey = launchPipelineCount > deliveryReadyCount
-    ? 'pipelineStrong'
-    : launchPipelineCount === deliveryReadyCount
-      ? 'pipelineBalanced'
-      : 'pipelineEstablished';
+  const galleryCount = area.gallery?.length ?? 0;
+  const marketReadKey = getMarketReadKey(launchPipelineCount, deliveryReadyCount);
 
   return (
     <div className="bg-section-bg">
@@ -92,7 +105,7 @@ export default function AreaDetailPage() {
                 </div>
                 <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
                   <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.galleryMoments')}</p>
-                  <p className="mt-2 text-2xl text-cream">{galleryMoments}</p>
+                  <p className="mt-2 text-2xl text-cream">{galleryCount}</p>
                 </div>
               </div>
 
@@ -103,7 +116,7 @@ export default function AreaDetailPage() {
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <span>{t('areaDetail.marketPulse')}</span>
-                  <span className="max-w-[180px] text-right font-medium text-cream">{t(`areaDetail.marketRead.${marketReadKey}`)}</span>
+                  <span className="max-w-[180px] text-right font-medium text-cream">{t(marketReadKey)}</span>
                 </div>
               </div>
 

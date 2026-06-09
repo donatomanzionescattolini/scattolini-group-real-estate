@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { areas } from '../../data/areas';
 import { getPostById } from '../../data/blog';
 import { projects } from '../../data/projects';
-import { getTranslation, useTranslation } from '../../i18n';
+import { useTranslation } from '../../i18n';
 
 const ROUTE_KEYS: Record<string, string> = {
   '/': 'seo.home',
@@ -65,10 +65,3 @@ export default function PageMeta() {
 
   return null;
 }
-
-/** Non-hook helper for static fallbacks outside React. */
-function getDefaultPageTitle(lang: 'es' | 'en'): string {
-  return getTranslation('seo.home.title', lang);
-}
-
-export { getDefaultPageTitle };

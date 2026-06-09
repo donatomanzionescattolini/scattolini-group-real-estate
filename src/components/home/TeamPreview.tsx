@@ -52,6 +52,7 @@ export default function TeamPreview() {
                   </h3>
                   <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.6)]">{localize(agent.role, lang)}</p>
                 </div>
+                </div>
               </ScrollReveal>
             );
           })}

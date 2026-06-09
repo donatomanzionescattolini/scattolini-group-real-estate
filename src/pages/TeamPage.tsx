@@ -11,13 +11,13 @@ export default function TeamPage() {
   return (
     <div className="bg-section-bg">
       {/* Hero banner */}
-      <div className="relative isolate overflow-hidden" style={{ height: '480px' }}>
+      <div className="relative isolate overflow-hidden bg-deep">
         <img
           src={TEAM_HERO_BG}
           alt="Scattolini Group Associates"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="block h-auto w-full"
         />
-        <div className="absolute inset-0 bg-deep/50" />
+        <div className="pointer-events-none absolute inset-0 bg-deep/35" />
       </div>
 
       <section className="site-container py-20">

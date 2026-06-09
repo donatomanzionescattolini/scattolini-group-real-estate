@@ -12,7 +12,7 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
   const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
 
   return (
-    <article className="flex h-full flex-col items-start border border-[rgba(15,27,45,0.08)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
+    <article className="flex h-full flex-col items-start overflow-hidden border border-[rgba(15,27,45,0.14)] bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
       {/* Photo area */}
       <div className="relative w-full h-full bg-cream" style={{ paddingBottom: '100%' }}>
         {agent.photo ? (
@@ -37,7 +37,7 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
         <h3 className="text-3xl leading-none">
           {agent.firstName} <span className="block">{agent.lastName}</span>
         </h3>
-        <p className="mt-3 text-sm uppercase tracking-editorial text-muted">{localize(agent.role, lang)}</p>
+        <p className="mt-3 text-sm uppercase tracking-editorial text-navy/72">{localize(agent.role, lang)}</p>
         <a
           className="mt-6 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold"
           href={`mailto:hello@scattolinigroup.com?subject=Inquiry for ${agent.firstName} ${agent.lastName}`}

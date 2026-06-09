@@ -34,7 +34,7 @@ const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
             }
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(27,52,51,0.84)] via-[rgba(27,52,51,0.3)] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.88)] via-[rgba(12,36,35,0.3)] to-transparent" />
       </div>
       <div className="relative flex min-h-[380px] flex-col justify-end p-7 text-amber-100">
         <Badge tone="light">{area.projectCount} {t('areaCard.projects')}</Badge>

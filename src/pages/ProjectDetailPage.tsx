@@ -57,10 +57,10 @@ export default function ProjectDetailPage() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-section-bg">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,227,214,0.52),rgba(237,227,214,0.88))]" />
+        <div className="absolute inset-0 bg-deep/65" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.68)]">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">
               <Link to="/" className="hover:text-gold">{t('projectDetail.breadcrumbHome')}</Link>
               <span>/</span>
               <Link to="/projects" className="hover:text-gold">{t('projectDetail.breadcrumbProjects')}</Link>
@@ -70,11 +70,11 @@ export default function ProjectDetailPage() {
               <span className="text-gold">{project.name}</span>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Badge tone="navy">{project.areaName}</Badge>
-              <Badge tone="navy">{statusLabels[project.status]}</Badge>
+              <Badge tone="light">{project.areaName}</Badge>
+              <Badge tone="light">{statusLabels[project.status]}</Badge>
             </div>
-            <h1 className="mt-6 text-5xl text-navy sm:text-6xl">{project.name}</h1>
-            <p className="mt-4 text-lg leading-8 text-[rgba(27,52,51,0.78)]">{localize(project.tagline, lang)}</p>
+            <h1 className="mt-6 text-5xl text-cream sm:text-6xl">{project.name}</h1>
+            <p className="mt-4 text-lg leading-8 text-[rgba(237,227,214,0.82)]">{localize(project.tagline, lang)}</p>
           </div>
         </div>
       </section>

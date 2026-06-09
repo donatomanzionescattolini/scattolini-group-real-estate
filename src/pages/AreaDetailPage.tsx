@@ -67,12 +67,12 @@ export default function AreaDetailPage() {
             }
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,227,214,0.52),rgba(237,227,214,0.9))]" />
+        <div className="absolute inset-0 bg-deep/65" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
-            <Badge tone="navy">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
-            <h1 className="mt-6 text-5xl text-navy sm:text-6xl">{area.name}</h1>
-            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(27,52,51,0.68)]">{localize(area.tagline, lang)}</p>
+            <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
+            <h1 className="mt-6 text-5xl text-cream sm:text-6xl">{area.name}</h1>
+            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{localize(area.tagline, lang)}</p>
           </div>
         </div>
       </section>

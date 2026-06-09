@@ -4,6 +4,7 @@ import ErrorBoundary from './components/ui/ErrorBoundary';
 import PageLoader from './components/ui/PageLoader';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import SeoManager from './components/seo/SeoManager';
 import { TranslationProvider } from './i18n';
 import { Analytics } from '@vercel/analytics/react';
 const AreaDetailPage = lazy(() => import('./pages/AreaDetailPage'));
@@ -30,6 +31,7 @@ function AppShell() {
   return (
     <div className="min-h-screen bg-section-bg text-charcoal">
       <ScrollToTop />
+      <SeoManager />
       <Header />
       <main className="pt-24">
         <ErrorBoundary>

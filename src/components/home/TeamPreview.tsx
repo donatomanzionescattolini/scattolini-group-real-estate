@@ -2,6 +2,7 @@
 import { agents } from '../../data/agents';
 import { localize } from '../../data/localize';
 import { useTranslation } from '../../i18n';
+import ScrollReveal from '../ui/ScrollReveal';
 import SectionHeader from '../ui/SectionHeader';
 
 export default function TeamPreview() {
@@ -10,22 +11,25 @@ export default function TeamPreview() {
   return (
     <section className="bg-white">
       <div className="site-container py-24">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeader
-            eyebrow={t('teamPreview.eyebrow')}
-            title={t('teamPreview.title')}
-            description={t('teamPreview.description')}
-          />
-          <Link to="/team" className="text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
-            {t('teamPreview.meetAll')}
-          </Link>
-        </div>
+        <ScrollReveal>
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeader
+              eyebrow={t('teamPreview.eyebrow')}
+              title={t('teamPreview.title')}
+              description={t('teamPreview.description')}
+            />
+            <Link to="/team" className="text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold">
+              {t('teamPreview.meetAll')}
+            </Link>
+          </div>
+        </ScrollReveal>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-          {agents.slice(0, 10).map((agent) => {
+          {agents.slice(0, 10).map((agent, index) => {
             const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
             return (
-              <div key={agent.id} className="border border-[rgba(27,52,51,0.12)] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card overflow-hidden">
+              <ScrollReveal key={agent.id} delay={index * 50}>
+                <div className="overflow-hidden border border-[rgba(27,52,51,0.12)] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card">
                 {/* Photo */}
                 <div className="relative w-full bg-section-bg" style={{ paddingBottom: '100%' }}>
                   {agent.photo ? (
@@ -48,7 +52,7 @@ export default function TeamPreview() {
                   </h3>
                   <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.6)]">{localize(agent.role, lang)}</p>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

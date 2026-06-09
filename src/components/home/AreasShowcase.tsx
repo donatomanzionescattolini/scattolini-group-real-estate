@@ -1,6 +1,7 @@
 ﻿import { areas } from '../../data/areas';
 import { useTranslation } from '../../i18n';
 import AreaCard from '../areas/AreaCard';
+import ScrollReveal from '../ui/ScrollReveal';
 import SectionHeader from '../ui/SectionHeader';
 
 const spotlightAreas = ['brickell', 'miami-beach', 'edgewater', 'coral-gables', 'coconut-grove', 'sunny-isles', 'wynwood', 'downtown'];
@@ -15,14 +16,18 @@ export default function AreasShowcase() {
   return (
     <section className="bg-section-bg py-24">
       <div className="site-container">
-        <SectionHeader
-          eyebrow={t('areasShowcase.eyebrow')}
-          title={t('areasShowcase.title')}
-          description={t('areasShowcase.description')}
-        />
+        <ScrollReveal>
+          <SectionHeader
+            eyebrow={t('areasShowcase.eyebrow')}
+            title={t('areasShowcase.title')}
+            description={t('areasShowcase.description')}
+          />
+        </ScrollReveal>
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {showcaseAreas.map((area) => (
-            <AreaCard key={area.id} area={area} />
+          {showcaseAreas.map((area, index) => (
+            <ScrollReveal key={area.id} delay={index * 60}>
+              <AreaCard area={area} />
+            </ScrollReveal>
           ))}
         </div>
       </div>

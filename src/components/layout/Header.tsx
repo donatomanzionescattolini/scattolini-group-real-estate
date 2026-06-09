@@ -106,7 +106,7 @@ export default function Header() {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `text-xs font-medium uppercase tracking-editorial transition-colors ${isActive ? c.navActive : c.navIdle}`
+                  `text-xs font-medium uppercase tracking-editorial transition-colors ${isActive ? `${c.navActive} nav-link-active` : c.navIdle}`
                 }
               >
                 {item.label}

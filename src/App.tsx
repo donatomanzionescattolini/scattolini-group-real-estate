@@ -2,6 +2,7 @@
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import PageLoader from './components/ui/PageLoader';
+import PageMeta from './components/ui/PageMeta';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import { TranslationProvider } from './i18n';
@@ -30,6 +31,7 @@ function AppShell() {
   return (
     <div className="min-h-screen bg-section-bg text-charcoal">
       <ScrollToTop />
+      <PageMeta />
       <Header />
       <main className="pt-24">
         <ErrorBoundary>

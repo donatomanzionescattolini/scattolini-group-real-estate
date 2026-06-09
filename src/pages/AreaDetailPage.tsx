@@ -51,7 +51,7 @@ export default function AreaDetailPage() {
 
   return (
     <div className="bg-section-bg">
-      <section className="relative isolate overflow-hidden bg-section-bg">
+      <section className="relative isolate overflow-hidden bg-deep">
         <img
           src={area.bannerImage}
           alt={area.name}

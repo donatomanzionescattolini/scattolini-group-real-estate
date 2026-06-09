@@ -55,7 +55,7 @@ export default function ProjectDetailPage() {
   return (
     <div className="bg-section-bg">
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-section-bg">
+      <section className="relative isolate overflow-hidden bg-deep">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-deep/65" />
         <div className="site-container relative z-10 py-24 sm:py-32">

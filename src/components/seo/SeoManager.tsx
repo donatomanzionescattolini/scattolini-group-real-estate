@@ -30,6 +30,17 @@ const DEFAULT_COPY = {
   },
 } as const;
 
+interface SeoPageData {
+  title: string;
+  description: string;
+  type: 'website' | 'article';
+  image: string;
+  keywords: string;
+  article: null | {
+    publishedTime: string;
+  };
+}
+
 function ensureMetaByName(name: string): HTMLMetaElement {
   const existing = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
   if (existing) return existing;
@@ -73,15 +84,13 @@ export default function SeoManager() {
   const seo = useMemo(() => {
     const normalizedPath = normalizePath(pathname);
     const fallback = DEFAULT_COPY[lang];
-    const page = {
+    const page: SeoPageData = {
       title: fallback.title,
       description: fallback.description,
-      type: 'website' as 'website' | 'article',
+      type: 'website',
       image: DARK_LOGO_URL,
       keywords: fallback.keywords,
-      article: null as null | {
-        publishedTime: string;
-      },
+      article: null,
     };
 
     if (normalizedPath === '/projects') {

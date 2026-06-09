@@ -11,7 +11,14 @@ const SITE_URL = 'https://scattolinigroup.com';
 const DARK_LOGO_URL = 'https://pagina-mama.s3.amazonaws.com/assets2/logos/logo-dark-background-1.png';
 const COMPANY_PHONE = '+1-305-381-5120';
 const COMPANY_EMAIL = 'info@scattolinigroup.com';
-const COMPANY_ADDRESS = '12750 NW 17th Street, Suite 222, Miami, FL 33182, US';
+const COMPANY_ADDRESS = {
+  '@type': 'PostalAddress',
+  streetAddress: '12750 NW 17th Street, Suite 222',
+  addressLocality: 'Miami',
+  addressRegion: 'FL',
+  postalCode: '33182',
+  addressCountry: 'US',
+} as const;
 
 const DEFAULT_COPY = {
   es: {
@@ -157,7 +164,7 @@ export default function SeoManager() {
         : 'Contact Scattolini Group for advisory on buying, investing, and developments in South Florida.';
     }
 
-    const canonicalPath = normalizedPath === '/' ? '/' : `${normalizedPath}/`;
+    const canonicalPath = normalizedPath;
     return {
       ...page,
       canonical: `${SITE_URL}${canonicalPath}`,
@@ -214,14 +221,7 @@ export default function SeoManager() {
           url: SITE_URL,
           email: COMPANY_EMAIL,
           telephone: COMPANY_PHONE,
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: '12750 NW 17th Street, Suite 222',
-            addressLocality: 'Miami',
-            addressRegion: 'FL',
-            postalCode: '33182',
-            addressCountry: 'US',
-          },
+          address: COMPANY_ADDRESS,
           logo: {
             '@type': 'ImageObject',
             url: DARK_LOGO_URL,

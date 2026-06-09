@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, ReactNode, useCallback, useContext, useState } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -49,6 +49,49 @@ const translations: Record<Lang, TranslationTree> = {
       developments: 'Desarrollos',
       expertAgents: 'Agentes Expertos',
       yearsOfExcellence: 'Años de Excelencia',
+    },
+    seo: {
+      home: {
+        title: 'Scattolini Group | Bienes Raíces de Lujo en el Sur de Florida',
+        description: 'Firma boutique de bienes raíces en Miami y el Sur de Florida. Desarrollos de lujo, asesoría multilingüe y experiencia en los mercados más exclusivos.',
+      },
+      projects: {
+        title: 'Desarrollos | Scattolini Group',
+        description: 'Explore nuestro portafolio de desarrollos residenciales de lujo en Miami, Brickell, Miami Beach y el Sur de Florida.',
+      },
+      projectDetail: {
+        title: 'Desarrollo | Scattolini Group',
+        description: 'Detalles, amenidades y galería de un desarrollo de lujo en el Sur de Florida.',
+      },
+      areas: {
+        title: 'Mercados | Scattolini Group',
+        description: 'Descubra los vecindarios y mercados inmobiliarios más exclusivos del Sur de Florida.',
+      },
+      areaDetail: {
+        title: 'Mercado | Scattolini Group',
+        description: 'Proyectos, estilo de vida y oportunidades inmobiliarias en un mercado del Sur de Florida.',
+      },
+      team: {
+        title: 'Equipo | Scattolini Group',
+        description: 'Conozca a nuestro equipo multilingüe de agentes expertos en bienes raíces de lujo.',
+      },
+      contact: {
+        title: 'Contacto | Scattolini Group',
+        description: 'Contáctenos para asesoría personalizada sobre desarrollos, inversiones y residencias en el Sur de Florida.',
+      },
+      blog: {
+        title: 'Análisis de Mercado | Scattolini Group',
+        description: 'Perspectivas sobre el mercado inmobiliario del Sur de Florida para compradores e inversores internacionales.',
+      },
+      blogPost: {
+        title: 'Artículo | Scattolini Group',
+        description: 'Análisis y guías sobre bienes raíces de lujo en Miami y el Sur de Florida.',
+      },
+    },
+    errorBoundary: {
+      title: 'Algo salió mal',
+      description: 'Ocurrió un error inesperado. Por favor, inténtelo de nuevo.',
+      retry: 'Reintentar',
     },
     featuredProjects: {
       eyebrow: 'Colección Destacada',
@@ -195,6 +238,8 @@ const translations: Record<Lang, TranslationTree> = {
       placeholderMessage: 'Cuéntenos qué está buscando',
       defaultSubmit: 'Enviar Consulta',
       successMessage: 'Gracias — un asesor de Scattolini Group se pondrá en contacto en breve.',
+      sending: 'Enviando…',
+      errorMessage: 'No pudimos enviar su mensaje. Por favor llame al (305) 381-5120 o escríbanos a info@scattolinigroup.com.',
     },
     blog: {
       eyebrow: 'Análisis del Mercado',
@@ -256,6 +301,49 @@ const translations: Record<Lang, TranslationTree> = {
       developments: 'Developments',
       expertAgents: 'Expert Agents',
       yearsOfExcellence: 'Years of Excellence',
+    },
+    seo: {
+      home: {
+        title: 'Scattolini Group | South Florida Luxury Real Estate',
+        description: 'Boutique real estate advisory in Miami and South Florida. Luxury developments, multilingual service, and deep market expertise.',
+      },
+      projects: {
+        title: 'Developments | Scattolini Group',
+        description: 'Browse our portfolio of luxury residential developments across Miami, Brickell, Miami Beach, and South Florida.',
+      },
+      projectDetail: {
+        title: 'Development | Scattolini Group',
+        description: 'Details, amenities, and gallery for a luxury development in South Florida.',
+      },
+      areas: {
+        title: 'Markets | Scattolini Group',
+        description: 'Discover South Florida\'s most exclusive neighborhoods and real estate markets.',
+      },
+      areaDetail: {
+        title: 'Market | Scattolini Group',
+        description: 'Projects, lifestyle, and real estate opportunities in a South Florida market.',
+      },
+      team: {
+        title: 'Team | Scattolini Group',
+        description: 'Meet our multilingual team of expert luxury real estate advisors.',
+      },
+      contact: {
+        title: 'Contact | Scattolini Group',
+        description: 'Reach out for personalized guidance on developments, investments, and residences in South Florida.',
+      },
+      blog: {
+        title: 'Market Insights | Scattolini Group',
+        description: 'Perspectives on the South Florida real estate market for international buyers and investors.',
+      },
+      blogPost: {
+        title: 'Article | Scattolini Group',
+        description: 'Insights and guides on luxury real estate in Miami and South Florida.',
+      },
+    },
+    errorBoundary: {
+      title: 'Something went wrong',
+      description: 'An unexpected error occurred. Please try again.',
+      retry: 'Try again',
     },
     featuredProjects: {
       eyebrow: 'Featured Collection',
@@ -402,6 +490,8 @@ const translations: Record<Lang, TranslationTree> = {
       placeholderMessage: 'Tell us what you are looking for',
       defaultSubmit: 'Submit Inquiry',
       successMessage: 'Thank you — a Scattolini Group advisor will reach out shortly.',
+      sending: 'Sending…',
+      errorMessage: 'We could not send your message. Please call (305) 381-5120 or email info@scattolinigroup.com.',
     },
     blog: {
       eyebrow: 'Market Insights',
@@ -466,11 +556,36 @@ export function getTranslation(path: string, lang: Lang): string {
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
+const LANG_STORAGE_KEY = 'scattolini-lang';
+
+function readStoredLang(): Lang {
+  try {
+    const stored = localStorage.getItem(LANG_STORAGE_KEY);
+    if (stored === 'es' || stored === 'en') return stored;
+  } catch {
+    /* private browsing or storage blocked */
+  }
+  return 'es';
+}
+
 export function TranslationProvider({ children }: { children: ReactNode }) {
-  // New sessions start in Spanish per AGENTS.md
-  const [lang, setLang] = useState<Lang>('es');
+  const [lang, setLangState] = useState<Lang>(readStoredLang);
+
+  const setLang = useCallback((next: Lang) => {
+    setLangState(next);
+    try {
+      localStorage.setItem(LANG_STORAGE_KEY, next);
+    } catch {
+      /* ignore */
+    }
+    document.documentElement.lang = next;
+  }, []);
 
   const t = useCallback((path: string) => getTranslation(path, lang), [lang]);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   return (
     <TranslationContext.Provider value={{ lang, setLang, t }}>

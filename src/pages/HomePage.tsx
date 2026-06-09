@@ -4,10 +4,18 @@ import HeroSection from '../components/home/HeroSection';
 import StatsBar from '../components/home/StatsBar';
 import TeamPreview from '../components/home/TeamPreview';
 import InquiryForm from '../components/ui/InquiryForm';
+import ScrollReveal from '../components/ui/ScrollReveal';
+import { companyStats, formatStatValue } from '../data/stats';
 import { useTranslation } from '../i18n';
 
 export default function HomePage() {
   const { t } = useTranslation();
+
+  const aboutStats = [
+    { value: formatStatValue(companyStats.developments), label: t('about.statCuratedProjects') },
+    { value: formatStatValue(companyStats.neighborhoods), label: t('about.statMarketsServed') },
+    { value: String(companyStats.agents), label: t('about.statDedicatedAgents') },
+  ];
 
   return (
     <div>
@@ -17,55 +25,47 @@ export default function HomePage() {
       <AreasShowcase />
       <TeamPreview />
 
-      <section className="bg-white py-24" style={{backgroundColor: "rgba(255,255,255,0.8), rgba(0,0,0,0.2)"}}>
-
+      <section className="bg-gradient-to-b from-white to-section-bg py-24">
         <div className="site-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div>
+          <ScrollReveal>
             <p className="editorial-label">{t('about.eyebrow')}</p>
             <h2 className="mt-5 text-5xl text-navy">{t('about.heading')}</h2>
             <div className="mt-6 h-px w-24 bg-gold" />
 
-            {/* Elda's photo */}
             <div className="mt-8 flex items-start gap-6">
               <div className="flex-shrink-0">
                 <img
                   src="https://pagina-mama.s3.amazonaws.com/assets2/elda/elda.jpg"
                   alt="Elda Scattolini"
-                  className="h-32 w-32 rounded-full object-cover border-2 border-gold shadow-card"
+                  className="h-32 w-32 rounded-full border-2 border-gold object-cover shadow-card"
                 />
               </div>
               <div>
-                <p className="font-serif text-xl text-navy leading-snug">Elda Scattolini</p>
+                <p className="font-serif text-xl leading-snug text-navy">Elda Scattolini</p>
                 <p className="mt-1 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{t('about.ownerRole')}</p>
-                <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
-                  {t('about.description')}
-                </p>
+                <p className="mt-4 max-w-2xl text-base leading-8 text-muted">{t('about.description')}</p>
               </div>
             </div>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-3">
-              <div>
-                <p className="font-serif text-4xl text-navy">80</p>
-                <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{t('about.statCuratedProjects')}</p>
-              </div>
-              <div>
-                <p className="font-serif text-4xl text-navy">25+</p>
-                <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{t('about.statMarketsServed')}</p>
-              </div>
-              <div>
-                <p className="font-serif text-4xl text-navy">14</p>
-                <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{t('about.statDedicatedAgents')}</p>
-              </div>
+              {aboutStats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-serif text-4xl text-navy tabular-nums">{stat.value}</p>
+                  <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{stat.label}</p>
+                </div>
+              ))}
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div className="border border-[rgba(27,52,51,0.08)] bg-cream p-8 shadow-card sm:p-10">
-            <InquiryForm
-              title={t('about.formTitle')}
-              description={t('about.formDescription')}
-              submitLabel={t('about.formSubmit')}
-            />
-          </div>
+          <ScrollReveal delay={120}>
+            <div className="border border-[rgba(27,52,51,0.08)] bg-cream p-8 shadow-card sm:p-10">
+              <InquiryForm
+                title={t('about.formTitle')}
+                description={t('about.formDescription')}
+                submitLabel={t('about.formSubmit')}
+              />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

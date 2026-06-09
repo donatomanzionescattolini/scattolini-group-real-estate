@@ -108,7 +108,7 @@ const translations: Record<Lang, TranslationTree> = {
       eyebrow: 'Asesores',
       title: 'Nuestro Equipo',
       description: 'Una oficina multilingüe y orientada a las relaciones, con profundo conocimiento del mercado en los vecindarios de lujo más competitivos del Sur de Florida.',
-      meetAll: 'Conocer a los 14 agentes',
+      meetAll: 'Conocer a todo el equipo',
     },
     about: {
       eyebrow: 'Sobre Scattolini Group',
@@ -360,7 +360,7 @@ const translations: Record<Lang, TranslationTree> = {
       eyebrow: 'Advisors',
       title: 'Our Team',
       description: 'A multilingual, relationship-driven office with deep market fluency across South Florida\'s most competitive luxury neighborhoods.',
-      meetAll: 'Meet all 14 agents',
+      meetAll: 'Meet the full team',
     },
     about: {
       eyebrow: 'About Scattolini Group',

@@ -61,6 +61,23 @@ export default function PageMeta() {
       document.head.appendChild(meta);
     }
     meta.setAttribute('content', description);
+
+    const ogTags: Record<string, string> = {
+      'og:title': title,
+      'og:description': description,
+      'og:type': 'website',
+      'og:url': `${window.location.origin}${pathname}`,
+    };
+
+    Object.entries(ogTags).forEach(([property, content]) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('content', content);
+    });
   }, [pathname, params, lang, t]);
 
   return null;

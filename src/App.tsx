@@ -5,6 +5,7 @@ import PageLoader from './components/ui/PageLoader';
 import PageMeta from './components/ui/PageMeta';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import FloatingContact from './components/ui/FloatingContact';
 import { TranslationProvider } from './i18n';
 import { Analytics } from '@vercel/analytics/react';
 const AreaDetailPage = lazy(() => import('./pages/AreaDetailPage'));
@@ -52,6 +53,7 @@ function AppShell() {
         </ErrorBoundary>
       </main>
       <Footer />
+      <FloatingContact />
       <Analytics />
     </div>
   );

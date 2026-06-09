@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { companyStats, formatStatValue } from '../../data/stats';
+import { companyStats } from '../../data/stats';
 import { useCountUp } from '../../hooks/useCountUp';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { useTranslation } from '../../i18n';

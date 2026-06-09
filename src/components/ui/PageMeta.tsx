@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
+import { areas } from '../../data/areas';
+import { getPostById } from '../../data/blog';
+import { projects } from '../../data/projects';
 import { getTranslation, useTranslation } from '../../i18n';
 
 const ROUTE_KEYS: Record<string, string> = {
@@ -19,8 +22,25 @@ function resolveSeoKey(pathname: string): string {
   return 'seo.home';
 }
 
+function resolveDynamicTitle(pathname: string, params: Record<string, string | undefined>): string | null {
+  if (pathname.startsWith('/projects/') && params.projectId) {
+    const project = projects.find((entry) => entry.id === params.projectId);
+    if (project) return `${project.name} | Scattolini Group`;
+  }
+  if (pathname.startsWith('/areas/') && params.areaId) {
+    const area = areas.find((entry) => entry.id === params.areaId);
+    if (area) return `${area.name} | Scattolini Group`;
+  }
+  if (pathname.startsWith('/blog/') && params.postId) {
+    const post = getPostById(params.postId);
+    if (post) return `${post.title.en} | Scattolini Group`;
+  }
+  return null;
+}
+
 export default function PageMeta() {
   const { pathname } = useLocation();
+  const params = useParams();
   const { lang, t } = useTranslation();
 
   useEffect(() => {
@@ -29,7 +49,8 @@ export default function PageMeta() {
 
   useEffect(() => {
     const key = resolveSeoKey(pathname);
-    const title = t(`${key}.title`);
+    const dynamicTitle = resolveDynamicTitle(pathname, params);
+    const title = dynamicTitle ?? t(`${key}.title`);
     const description = t(`${key}.description`);
 
     document.title = title;
@@ -40,12 +61,14 @@ export default function PageMeta() {
       document.head.appendChild(meta);
     }
     meta.setAttribute('content', description);
-  }, [pathname, lang, t]);
+  }, [pathname, params, lang, t]);
 
   return null;
 }
 
 /** Non-hook helper for static fallbacks outside React. */
-export function getDefaultPageTitle(lang: 'es' | 'en'): string {
+function getDefaultPageTitle(lang: 'es' | 'en'): string {
   return getTranslation('seo.home.title', lang);
 }
+
+export { getDefaultPageTitle };

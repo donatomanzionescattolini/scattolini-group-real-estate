@@ -66,14 +66,14 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
       {lightboxIndex !== null && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.92)]" onClick={close}>
           <div className="absolute right-4 top-4 z-10">
-            <button type="button" onClick={close} className="rounded-full bg-[rgba(255,255,255,0.12)] p-2 text-amber-100 transition hover:bg-[rgba(255,255,255,0.24)]">
+            <button type="button" onClick={close} className="rounded-full bg-white/[0.12] p-2 text-amber-100 transition hover:bg-white/[0.24]">
               <X size={22} />
             </button>
           </div>
 
           <button
             type="button"
-            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.12)] p-2.5 text-amber-100 transition hover:bg-[rgba(255,255,255,0.24)]"
+            className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/[0.12] p-2.5 text-amber-100 transition hover:bg-white/[0.24]"
             onClick={(e) => { e.stopPropagation(); prev(); }}
           >
             <ChevronLeft size={24} />
@@ -88,13 +88,13 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 
           <button
             type="button"
-            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[rgba(255,255,255,0.12)] p-2.5 text-amber-100 transition hover:bg-[rgba(255,255,255,0.24)]"
+            className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/[0.12] p-2.5 text-amber-100 transition hover:bg-white/[0.24]"
             onClick={(e) => { e.stopPropagation(); next(); }}
           >
             <ChevronRight size={24} />
           </button>
 
-          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-[rgba(255,255,255,0.6)]">
+          <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-white/[0.6]">
             {lightboxIndex + 1} / {images.length}
           </span>
         </div>

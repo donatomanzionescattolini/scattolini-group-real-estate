@@ -24,7 +24,7 @@ export default function ProcessSteps() {
             <ScrollReveal key={step} delay={index * 100}>
               <div>
                 <p className="font-serif text-5xl text-gold">{String(index + 1).padStart(2, '0')}</p>
-                <div className="mt-4 h-px w-12 bg-[rgba(27,52,51,0.18)]" />
+                <div className="mt-4 h-px w-12 bg-navy/[0.18]" />
                 <h3 className="mt-5 text-xl text-navy">{t(`process.steps.${step}.title`)}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted">{t(`process.steps.${step}.description`)}</p>
               </div>

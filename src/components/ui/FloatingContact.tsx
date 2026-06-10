@@ -12,7 +12,7 @@ export default function FloatingContact() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
-        className="flex h-12 w-12 items-center justify-center rounded-full border border-[rgba(27,52,51,0.12)] bg-white text-navy shadow-card transition hover:-translate-y-0.5 hover:border-gold hover:text-gold"
+        className="flex h-12 w-12 items-center justify-center rounded-full border border-navy/[0.12] bg-white text-navy shadow-card transition hover:-translate-y-0.5 hover:border-gold hover:text-gold"
       >
         <MessageCircle size={20} />
       </a>
@@ -25,7 +25,7 @@ export default function FloatingContact() {
       </a>
       <Link
         to="/contact"
-        className="hidden rounded-full border border-[rgba(27,52,51,0.12)] bg-navy px-4 py-2 text-[10px] font-semibold uppercase tracking-editorial text-cream shadow-card transition hover:-translate-y-0.5 sm:inline-flex"
+        className="hidden rounded-full border border-navy/[0.12] bg-navy px-4 py-2 text-[10px] font-semibold uppercase tracking-editorial text-cream shadow-card transition hover:-translate-y-0.5 sm:inline-flex"
       >
         {t('floatingContact.cta')}
       </Link>

@@ -29,7 +29,7 @@ export default function TeamPreview() {
             const initials = `${agent.firstName.charAt(0)}${agent.lastName.charAt(0)}`.toUpperCase();
             return (
               <ScrollReveal key={agent.id} delay={index * 50}>
-                <div className="overflow-hidden border border-[rgba(27,52,51,0.12)] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card">
+                <div className="overflow-hidden border border-navy/[0.12] bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-card">
                 {/* Photo */}
                 <div className="relative w-full bg-section-bg" style={{ paddingBottom: '100%' }}>
                   {agent.photo ? (
@@ -50,7 +50,7 @@ export default function TeamPreview() {
                     {agent.firstName}
                     <span className="block">{agent.lastName}</span>
                   </h3>
-                  <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.6)]">{localize(agent.role, lang)}</p>
+                  <p className="mt-2 text-xs uppercase tracking-editorial text-navy/[0.6]">{localize(agent.role, lang)}</p>
                 </div>
                 </div>
               </ScrollReveal>

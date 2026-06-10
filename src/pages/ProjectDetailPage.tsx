@@ -57,10 +57,10 @@ export default function ProjectDetailPage() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-section-bg">
         <img src={project.image} alt={project.name} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.52),rgba(12,36,35,0.88))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(var(--deep)_/_0.52),rgb(var(--deep)_/_0.88))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-4xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.68)]">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-cream/[0.68]">
               <Link to="/" className="hover:text-gold">{t('projectDetail.breadcrumbHome')}</Link>
               <span>/</span>
               <Link to="/projects" className="hover:text-gold">{t('projectDetail.breadcrumbProjects')}</Link>
@@ -74,7 +74,7 @@ export default function ProjectDetailPage() {
               <Badge tone="light">{statusLabels[project.status]}</Badge>
             </div>
             <h1 className="mt-6 text-5xl text-cream sm:text-6xl">{project.name}</h1>
-            <p className="mt-4 text-lg leading-8 text-[rgba(237,227,214,0.78)]">{localize(project.tagline, lang)}</p>
+            <p className="mt-4 text-lg leading-8 text-cream/[0.78]">{localize(project.tagline, lang)}</p>
           </div>
         </div>
       </section>
@@ -98,12 +98,12 @@ export default function ProjectDetailPage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="panel-surface p-5">
                   <CalendarDays className="text-gold" size={18} />
-                  <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.delivery')}</p>
+                  <p className="mt-4 text-xs uppercase tracking-editorial text-cream/[0.7]">{t('projectDetail.delivery')}</p>
                   <p className="mt-2 text-2xl text-cream">{project.completionYear === 'Now' ? t('projectDetail.deliveryNow') : project.completionYear}</p>
                 </div>
                 <div className="panel-surface p-5">
                   <Layers3 className="text-gold" size={18} />
-                  <p className="mt-4 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{t('projectDetail.scale')}</p>
+                  <p className="mt-4 text-xs uppercase tracking-editorial text-cream/[0.7]">{t('projectDetail.scale')}</p>
                   <p className="mt-2 text-2xl text-cream">{project.units ? localize(project.units, lang) : null}</p>
                 </div>
               </div>
@@ -123,7 +123,7 @@ export default function ProjectDetailPage() {
                       {project.amenities.map((amenity) => {
                         const label = localize(amenity, lang);
                         return (
-                          <li key={label} className="border-b border-[rgba(237,227,214,0.14)] pb-4 text-sm text-[rgba(237,227,214,0.82)]">
+                          <li key={label} className="border-b border-cream/[0.14] pb-4 text-sm text-cream/[0.82]">
                             {label}
                           </li>
                         );
@@ -136,7 +136,7 @@ export default function ProjectDetailPage() {
                       {project.features.map((feature) => {
                         const label = localize(feature, lang);
                         return (
-                          <li key={label} className="border-b border-[rgba(237,227,214,0.14)] pb-4 text-sm text-[rgba(237,227,214,0.82)]">
+                          <li key={label} className="border-b border-cream/[0.14] pb-4 text-sm text-cream/[0.82]">
                             {label}
                           </li>
                         );
@@ -151,7 +151,7 @@ export default function ProjectDetailPage() {
               <div className="panel-surface p-8">
                 <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('projectDetail.contactAbout')}</p>
                 <h3 className="mt-4 text-3xl text-cream">{t('projectDetail.requestPresentation')}</h3>
-                <div className="mt-6 space-y-4 border-y border-[rgba(237,227,214,0.15)] py-6 text-sm text-[rgba(237,227,214,0.7)]">
+                <div className="mt-6 space-y-4 border-y border-cream/[0.15] py-6 text-sm text-cream/[0.7]">
                   <div className="flex items-center justify-between">
                     <span>{t('projectDetail.market')}</span>
                     <span className="font-medium text-cream">{project.areaName}</span>
@@ -185,7 +185,7 @@ export default function ProjectDetailPage() {
                 <source src={project.videoUrl} type="video/mp4" />
               </video>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity peer-paused:opacity-100">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[rgba(255,255,255,0.18)] backdrop-blur-sm">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/[0.18] backdrop-blur-sm">
                   <Play className="text-amber-100" size={28} fill="white" />
                 </div>
               </div>
@@ -206,16 +206,16 @@ export default function ProjectDetailPage() {
                   href={project.factsheetPdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.18)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
+                  className="group flex items-center gap-5 rounded-lg border border-navy/[0.18] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[rgba(237,227,214,0.12)] text-gold">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream/[0.12] text-gold">
                     <FileText size={22} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-cream">{t('projectDetail.factsheet')}</p>
-                    <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFactsheet')}</p>
+                    <p className="mt-1 text-xs text-cream/[0.7]">{t('projectDetail.downloadFactsheet')}</p>
                   </div>
-                  <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
+                  <Download size={16} className="shrink-0 text-cream/[0.7] transition group-hover:text-gold" />
                 </a>
               )}
               {project.floorplansPdf && (
@@ -223,16 +223,16 @@ export default function ProjectDetailPage() {
                   href={project.floorplansPdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-5 rounded-lg border border-[rgba(27,52,51,0.18)] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
+                  className="group flex items-center gap-5 rounded-lg border border-navy/[0.18] bg-navy p-6 shadow-card transition hover:border-gold hover:shadow-card"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[rgba(237,227,214,0.12)] text-gold">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-cream/[0.12] text-gold">
                     <Layers3 size={22} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-cream">{t('projectDetail.floorplans')}</p>
-                    <p className="mt-1 text-xs text-[rgba(237,227,214,0.7)]">{t('projectDetail.downloadFloorplans')}</p>
+                    <p className="mt-1 text-xs text-cream/[0.7]">{t('projectDetail.downloadFloorplans')}</p>
                   </div>
-                  <Download size={16} className="shrink-0 text-[rgba(237,227,214,0.7)] transition group-hover:text-gold" />
+                  <Download size={16} className="shrink-0 text-cream/[0.7] transition group-hover:text-gold" />
                 </a>
               )}
             </div>

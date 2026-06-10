@@ -67,12 +67,12 @@ export default function AreaDetailPage() {
             }
           }}
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,36,35,0.52),rgba(12,36,35,0.9))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(var(--deep)_/_0.52),rgb(var(--deep)_/_0.9))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
             <Badge tone="light">{area.projectCount} {t('areaDetail.projectsBadge')}</Badge>
             <h1 className="mt-6 text-5xl text-cream sm:text-6xl">{area.name}</h1>
-            <p className="mt-4 text-sm uppercase tracking-editorial text-[rgba(237,227,214,0.68)]">{localize(area.tagline, lang)}</p>
+            <p className="mt-4 text-sm uppercase tracking-editorial text-cream/[0.68]">{localize(area.tagline, lang)}</p>
           </div>
         </div>
       </section>
@@ -98,28 +98,28 @@ export default function AreaDetailPage() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(219,176,120,0.2),transparent_55%)]" />
             <div className="relative">
               <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('areaDetail.atAGlance')}</p>
-              <p className="mt-3 text-sm leading-6 text-[rgba(237,227,214,0.78)]">{t('areaDetail.quickSnapshot')}</p>
+              <p className="mt-3 text-sm leading-6 text-cream/[0.78]">{t('areaDetail.quickSnapshot')}</p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
-                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.availableProjects')}</p>
+                <div className="rounded-xl border border-cream/[0.15] bg-deep/[0.28] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-cream/[0.72]">{t('areaDetail.availableProjects')}</p>
                   <p className="mt-2 text-2xl text-cream">{areaProjects.length}</p>
                 </div>
-                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
-                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.launchPipeline')}</p>
+                <div className="rounded-xl border border-cream/[0.15] bg-deep/[0.28] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-cream/[0.72]">{t('areaDetail.launchPipeline')}</p>
                   <p className="mt-2 text-2xl text-cream">{launchPipelineCount}</p>
                 </div>
-                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
-                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.deliveryReady')}</p>
+                <div className="rounded-xl border border-cream/[0.15] bg-deep/[0.28] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-cream/[0.72]">{t('areaDetail.deliveryReady')}</p>
                   <p className="mt-2 text-2xl text-cream">{deliveryReadyCount}</p>
                 </div>
-                <div className="rounded-xl border border-[rgba(237,227,214,0.15)] bg-[rgba(12,36,35,0.28)] p-4">
-                  <p className="text-[11px] uppercase tracking-editorial text-[rgba(237,227,214,0.72)]">{t('areaDetail.galleryMoments')}</p>
+                <div className="rounded-xl border border-cream/[0.15] bg-deep/[0.28] p-4">
+                  <p className="text-[11px] uppercase tracking-editorial text-cream/[0.72]">{t('areaDetail.galleryMoments')}</p>
                   <p className="mt-2 text-2xl text-cream">{galleryCount}</p>
                 </div>
               </div>
 
-              <div className="mt-6 space-y-4 border-t border-[rgba(237,227,214,0.15)] pt-5 text-sm text-[rgba(237,227,214,0.78)]">
+              <div className="mt-6 space-y-4 border-t border-cream/[0.15] pt-5 text-sm text-cream/[0.78]">
                 <div className="flex items-start justify-between gap-4">
                   <span>{t('areaDetail.signatureCharacter')}</span>
                   <span className="max-w-[180px] text-right font-medium text-cream">{localize(area.tagline, lang)}</span>
@@ -130,7 +130,7 @@ export default function AreaDetailPage() {
                 </div>
               </div>
 
-              <div className="mt-6 text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">
+              <div className="mt-6 text-xs uppercase tracking-editorial text-cream/[0.7]">
                 {t('areaDetail.neighborhoodComparison')} <Link className="text-gold hover:text-cream" to="/contact">{t('areaDetail.speakWithTeam')}</Link>
               </div>
             </div>
@@ -148,8 +148,8 @@ export default function AreaDetailPage() {
               ))}
             </div>
           ) : (
-            <div className="mt-10 border border-[rgba(237,227,214,0.12)] bg-navy p-10 shadow-card">
-              <p className="max-w-3xl text-base leading-8 text-[rgba(237,227,214,0.78)]">
+            <div className="mt-10 border border-cream/[0.12] bg-navy p-10 shadow-card">
+              <p className="max-w-3xl text-base leading-8 text-cream/[0.78]">
                 {t('areaDetail.expandingMarket')}
               </p>
             </div>

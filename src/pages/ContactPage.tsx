@@ -26,12 +26,12 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="panel-surface p-8">
               {contactItems.map(({ icon: Icon, label, value }) => (
-                <div key={label} className="flex items-start gap-4 border-b border-[rgba(237,227,214,0.12)] py-5 last:border-none last:pb-0 first:pt-0">
+                <div key={label} className="flex items-start gap-4 border-b border-cream/[0.12] py-5 last:border-none last:pb-0 first:pt-0">
                   <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(201,168,76,0.18)] text-gold">
                     <Icon size={18} />
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-editorial text-[rgba(237,227,214,0.7)]">{label}</p>
+                    <p className="text-xs uppercase tracking-editorial text-cream/[0.7]">{label}</p>
                     <p className="mt-2 text-base text-cream">{value}</p>
                   </div>
                 </div>

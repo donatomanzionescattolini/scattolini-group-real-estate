@@ -21,7 +21,7 @@ function FilterPill({ active, onClick, children }: { active: boolean; onClick: (
       className={`px-4 py-3 text-xs font-semibold uppercase tracking-editorial ${
         active
           ? 'bg-navy text-amber-100 shadow-card'
-          : 'border border-[rgba(27,52,51,0.25)] bg-transparent text-muted hover:border-gold hover:text-navy'
+          : 'border border-navy/[0.25] bg-transparent text-muted hover:border-gold hover:text-navy'
       }`}
     >
       {children}

@@ -21,7 +21,7 @@ export default function HeroSection() {
         playsInline
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(12,36,35,0.9),rgba(12,36,35,0.68),rgba(12,36,35,0.42))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(110deg,rgb(var(--deep)_/_0.9),rgb(var(--deep)_/_0.68),rgb(var(--deep)_/_0.42))]" />
       <div className="site-container relative z-10 py-20 sm:py-28">
         <div className="max-w-5xl hero-enter">
           <p className="hero-enter-item text-[11px] font-medium uppercase tracking-editorial text-gold">{t('hero.eyebrow')}</p>
@@ -30,7 +30,7 @@ export default function HeroSection() {
               <span key={i}>{line}{i === 0 ? <br /> : null}</span>
             ))}
           </h1>
-          <p className="hero-enter-item mt-6 max-w-2xl text-lg leading-8 text-[rgba(237,227,214,0.84)]">
+          <p className="hero-enter-item mt-6 max-w-2xl text-lg leading-8 text-cream/[0.84]">
             {t('hero.description')}
           </p>
           <div className="hero-enter-item mt-10 flex flex-col gap-4 sm:flex-row">

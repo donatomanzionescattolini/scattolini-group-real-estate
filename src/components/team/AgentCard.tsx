@@ -37,7 +37,7 @@ const AgentCard = memo(function AgentCard({ agent }: AgentCardProps) {
         <h3 className="text-3xl leading-none">
           {agent.firstName} <span className="block">{agent.lastName}</span>
         </h3>
-        <p className="mt-3 text-sm uppercase tracking-editorial text-navy/72">{localize(agent.role, lang)}</p>
+        <p className="mt-3 text-sm uppercase tracking-editorial text-navy/[0.72]">{localize(agent.role, lang)}</p>
         <a
           className="mt-6 text-xs font-semibold uppercase tracking-editorial text-navy hover:text-gold"
           href={`mailto:hello@scattolinigroup.com?subject=Inquiry for ${agent.firstName} ${agent.lastName}`}

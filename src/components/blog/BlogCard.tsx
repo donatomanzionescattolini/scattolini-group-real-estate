@@ -20,7 +20,7 @@ const BlogCard = memo(function BlogCard({ post }: BlogCardProps) {
   });
 
   return (
-    <Link to={`/blog/${post.id}`} className="group relative block overflow-hidden border border-[rgba(27,52,51,0.08)] shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
+    <Link to={`/blog/${post.id}`} className="group relative block overflow-hidden border border-navy/[0.08] shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
       <div className="absolute inset-0">
         <img
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
@@ -28,7 +28,7 @@ const BlogCard = memo(function BlogCard({ post }: BlogCardProps) {
           alt={localize(post.title, lang)}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.88)] via-[rgba(12,36,35,0.3)] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep/[0.88] via-deep/[0.3] to-transparent" />
       </div>
 
       <div className="relative flex min-h-[340px] flex-col justify-end p-7">

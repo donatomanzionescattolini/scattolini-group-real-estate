@@ -1,5 +1,4 @@
 const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
-const FALLBACK_EMAIL = 'info@scattolinigroup.com';
 
 export interface SubmitLeadParams {
   /** Subject line for the notification email. */
@@ -8,33 +7,40 @@ export interface SubmitLeadParams {
   fromName: string;
   /** Extra fields sent to Web3Forms (email, phone, message, interest, etc). */
   fields: Record<string, string | undefined>;
-  /** Plain-text body used for the mailto fallback when no access key is configured. */
-  mailtoBody: string;
 }
 
 /**
- * Submits a lead via Web3Forms when VITE_WEB3FORMS_KEY is configured, otherwise
- * falls back to a pre-filled mailto link. Throws if the Web3Forms submission fails.
+ * Submits a lead by POSTing to Web3Forms, which delivers the message straight to
+ * the inbox registered to VITE_WEB3FORMS_KEY (info@scattolinigroup.com). No mail
+ * app is ever opened. Throws if the key is missing or the request fails, so the
+ * calling form can surface its error state.
  */
-export async function submitLead({ subject, fromName, fields, mailtoBody }: SubmitLeadParams): Promise<void> {
+export async function submitLead({ subject, fromName, fields }: SubmitLeadParams): Promise<void> {
   const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
-
-  if (accessKey) {
-    const response = await fetch(WEB3FORMS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: accessKey,
-        subject,
-        from_name: fromName,
-        ...fields,
-      }),
-    });
-
-    const result = await response.json();
-    if (!response.ok || !result.success) throw new Error('Submission failed');
-    return;
+  if (!accessKey) {
+    throw new Error('VITE_WEB3FORMS_KEY is not configured');
   }
 
-  window.location.href = `mailto:${FALLBACK_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailtoBody)}`;
+  // Strip undefined values so they aren't serialized as the string "undefined".
+  const cleanFields = Object.fromEntries(
+    Object.entries(fields).filter(([, value]) => value !== undefined && value !== ''),
+  );
+
+  const response = await fetch(WEB3FORMS_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      access_key: accessKey,
+      subject,
+      from_name: fromName,
+      // Route replies straight to the lead when we captured an email.
+      ...(cleanFields.email ? { replyto: cleanFields.email } : {}),
+      ...cleanFields,
+    }),
+  });
+
+  const result = await response.json();
+  if (!response.ok || !result.success) {
+    throw new Error(result?.message || 'Submission failed');
+  }
 }

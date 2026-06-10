@@ -50,7 +50,7 @@ export default function HomePage() {
               </div>
               <div>
                 <p className="font-serif text-xl leading-snug text-navy">Elda Scattolini</p>
-                <p className="mt-1 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{t('about.ownerRole')}</p>
+                <p className="mt-1 text-xs uppercase tracking-editorial text-navy/[0.54]">{t('about.ownerRole')}</p>
                 <p className="mt-4 max-w-2xl text-base leading-8 text-muted">{t('about.description')}</p>
               </div>
             </div>
@@ -59,14 +59,14 @@ export default function HomePage() {
               {aboutStats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-serif text-4xl text-navy tabular-nums">{stat.value}</p>
-                  <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.54)]">{stat.label}</p>
+                  <p className="mt-2 text-xs uppercase tracking-editorial text-navy/[0.54]">{stat.label}</p>
                 </div>
               ))}
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={120}>
-            <div className="border border-[rgba(27,52,51,0.08)] bg-cream p-8 shadow-card sm:p-10">
+            <div className="border border-navy/[0.08] bg-cream p-8 shadow-card sm:p-10">
               <InquiryForm
                 title={t('about.formTitle')}
                 description={t('about.formDescription')}

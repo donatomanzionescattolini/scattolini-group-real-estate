@@ -23,7 +23,7 @@ export default function Testimonials() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <ScrollReveal key={testimonial.id} delay={index * 100}>
-              <div className="flex h-full flex-col border border-[rgba(27,52,51,0.08)] bg-white p-8 shadow-soft">
+              <div className="flex h-full flex-col border border-navy/[0.08] bg-white p-8 shadow-soft">
                 <Quote className="text-gold" size={28} />
                 <div className="mt-4 flex gap-1 text-gold">
                   {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
@@ -31,9 +31,9 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <p className="mt-4 flex-1 text-sm leading-7 text-muted">{localize(testimonial.quote, lang)}</p>
-                <div className="mt-6 border-t border-[rgba(27,52,51,0.08)] pt-4">
+                <div className="mt-6 border-t border-navy/[0.08] pt-4">
                   <p className="text-sm font-semibold text-navy">{testimonial.name}</p>
-                  <p className="mt-1 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.5)]">
+                  <p className="mt-1 text-xs uppercase tracking-editorial text-navy/[0.5]">
                     {localize(testimonial.location, lang)}
                   </p>
                 </div>

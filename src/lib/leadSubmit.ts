@@ -11,7 +11,7 @@ export interface SubmitLeadParams {
 
 /**
  * Submits a lead by POSTing to Web3Forms, which delivers the message straight to
- * the inbox registered to VITE_WEB3FORMS_KEY (info@scattolinigroup.com). No mail
+ * the inbox registered to VITE_WEB3FORMS_KEY (information@scattolinigroup.com). No mail
  * app is ever opened. Throws if the key is missing or the request fails, so the
  * calling form can surface its error state.
  */

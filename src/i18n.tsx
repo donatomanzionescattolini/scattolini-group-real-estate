@@ -33,7 +33,7 @@ const translations: Record<Lang, TranslationTree> = {
       contact: 'Contacto',
       address: '12750 NW 17th Street, Suite 222, Miami, FL 33182',
       phone: '(305) 381-5120',
-      email: 'info@scattolinigroup.com',
+      email: 'information@scattolinigroup.com',
       hours: 'Lun – Vie: 9:00 AM – 5:00 PM',
       rights: 'Todos los derechos reservados',
       newsletter: {
@@ -257,7 +257,7 @@ const translations: Record<Lang, TranslationTree> = {
       defaultSubmit: 'Enviar Consulta',
       successMessage: 'Gracias — un asesor de Scattolini Group se pondrá en contacto en breve.',
       sending: 'Enviando…',
-      errorMessage: 'No pudimos enviar su mensaje. Por favor llame al (305) 381-5120 o escríbanos a info@scattolinigroup.com.',
+      errorMessage: 'No pudimos enviar su mensaje. Por favor llame al (305) 381-5120 o escríbanos a information@scattolinigroup.com.',
       interestLabel: 'Estoy interesado en',
       interestOptions: {
         buying: 'Comprar una propiedad',
@@ -359,7 +359,7 @@ const translations: Record<Lang, TranslationTree> = {
       submit: 'Enviarme el Informe',
       success: 'Gracias — le enviaremos el informe de mercado a su correo en breve.',
       sending: 'Enviando…',
-      error: 'No pudimos procesar su solicitud. Por favor inténtelo de nuevo o escríbanos a info@scattolinigroup.com.',
+      error: 'No pudimos procesar su solicitud. Por favor inténtelo de nuevo o escríbanos a information@scattolinigroup.com.',
     },
     leadModal: {
       eyebrow: 'Antes de Irse',
@@ -401,7 +401,7 @@ const translations: Record<Lang, TranslationTree> = {
       contact: 'Contact',
       address: '12750 NW 17th Street, Suite 222, Miami, FL 33182',
       phone: '(305) 381-5120',
-      email: 'info@scattolinigroup.com',
+      email: 'information@scattolinigroup.com',
       hours: 'Mon – Fri: 9:00 AM – 5:00 PM',
       rights: 'All rights reserved',
       newsletter: {
@@ -625,7 +625,7 @@ const translations: Record<Lang, TranslationTree> = {
       defaultSubmit: 'Submit Inquiry',
       successMessage: 'Thank you — a Scattolini Group advisor will reach out shortly.',
       sending: 'Sending…',
-      errorMessage: 'We could not send your message. Please call (305) 381-5120 or email info@scattolinigroup.com.',
+      errorMessage: 'We could not send your message. Please call (305) 381-5120 or email information@scattolinigroup.com.',
       interestLabel: 'I am interested in',
       interestOptions: {
         buying: 'Buying a property',
@@ -727,7 +727,7 @@ const translations: Record<Lang, TranslationTree> = {
       submit: 'Send Me the Report',
       success: 'Thank you — we will send the market report to your inbox shortly.',
       sending: 'Sending…',
-      error: 'We could not process your request. Please try again or email info@scattolinigroup.com.',
+      error: 'We could not process your request. Please try again or email information@scattolinigroup.com.',
     },
     leadModal: {
       eyebrow: 'Before You Go',

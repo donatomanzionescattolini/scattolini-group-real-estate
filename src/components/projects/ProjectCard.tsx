@@ -24,6 +24,11 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
           decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.88)] via-[rgba(12,36,35,0.3)] to-transparent" />
+        {project.priceFrom ? (
+          <div className="absolute right-4 top-4">
+            <Badge tone="gold">{t('projectCard.priceFrom')} {project.priceFrom}</Badge>
+          </div>
+        ) : null}
       </div>
 
       <div className="relative flex min-h-[380px] flex-col justify-end p-7">
@@ -34,6 +39,11 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
         <p className="mt-4 text-[11px] font-medium uppercase tracking-editorial text-gold">{t(`projectTypes.${project.type}`)}</p>
         <h3 className="mt-1 text-3xl text-white">{project.name}</h3>
         <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.72)]">{localize(project.tagline, lang)}</p>
+        {project.completionYear ? (
+          <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.55)]">
+            {t('projectDetail.delivery')} · {project.completionYear}
+          </p>
+        ) : null}
         <Link
           to={`/projects/${project.id}`}
           className="mt-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-[#EDE3D6] hover:text-white"

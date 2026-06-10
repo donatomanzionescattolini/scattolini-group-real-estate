@@ -165,6 +165,7 @@ body {
   .hero-enter .hero-enter-item:nth-child(2) { animation-delay: 280ms; }
   .hero-enter .hero-enter-item:nth-child(3) { animation-delay: 440ms; }
   .hero-enter .hero-enter-item:nth-child(4) { animation-delay: 600ms; }
+  .hero-enter .hero-enter-item:nth-child(5) { animation-delay: 760ms; }
 
   .nav-link-active {
     position: relative;
@@ -182,6 +183,14 @@ body {
     transform-origin: center;
     transition: transform 220ms ease;
   }
+
+  .modal-overlay {
+    animation: modal-fade 220ms ease forwards;
+  }
+
+  .modal-panel {
+    animation: modal-pop 320ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
 }
 
 @keyframes hero-fade-up {
@@ -191,10 +200,28 @@ body {
   }
 }
 
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-visible,
-  .hero-enter .hero-enter-item {
+  .hero-enter .hero-enter-item,
+  .modal-overlay,
+  .modal-panel {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

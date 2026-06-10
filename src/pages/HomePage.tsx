@@ -1,8 +1,12 @@
 import FeaturedProjects from '../components/home/FeaturedProjects';
 import AreasShowcase from '../components/home/AreasShowcase';
 import HeroSection from '../components/home/HeroSection';
+import MarketReportCTA from '../components/home/MarketReportCTA';
+import ProcessSteps from '../components/home/ProcessSteps';
 import StatsBar from '../components/home/StatsBar';
 import TeamPreview from '../components/home/TeamPreview';
+// import Testimonials from '../components/home/Testimonials';
+import WhyUs from '../components/home/WhyUs';
 import InquiryForm from '../components/ui/InquiryForm';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import { companyStats, formatStatValue } from '../data/stats';
@@ -22,8 +26,12 @@ export default function HomePage() {
       <HeroSection />
       <StatsBar />
       <FeaturedProjects />
+      <WhyUs />
+      <ProcessSteps />
       <AreasShowcase />
+      <MarketReportCTA />
       <TeamPreview />
+      {/* <Testimonials /> — placeholder content ready, kept hidden until real client testimonials are available */}
 
       <section className="bg-gradient-to-b from-white to-section-bg py-24">
         <div className="site-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
@@ -63,6 +71,7 @@ export default function HomePage() {
                 title={t('about.formTitle')}
                 description={t('about.formDescription')}
                 submitLabel={t('about.formSubmit')}
+                qualified
               />
             </div>
           </ScrollReveal>

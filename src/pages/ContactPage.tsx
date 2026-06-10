@@ -55,6 +55,7 @@ export default function ContactPage() {
               description={t('contactPage.formDescription')}
               submitLabel={t('contactPage.formSubmit')}
               theme="dark"
+              qualified
             />
           </div>
         </div>

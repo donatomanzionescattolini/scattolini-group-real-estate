@@ -1,7 +1,11 @@
 import { ArrowRight, Facebook, Instagram, Linkedin, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { areas } from '../../data/areas';
 import { useTranslation } from '../../i18n';
+import { submitLead } from '../../lib/leadSubmit';
+
+type NewsletterState = 'idle' | 'sending' | 'success' | 'error';
 
 const socialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/scattolinigroup/', icon: Instagram },
@@ -12,6 +16,26 @@ const socialLinks = [
 export default function Footer() {
   const featuredAreas = areas.slice(0, 6);
   const { t } = useTranslation();
+
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterState, setNewsletterState] = useState<NewsletterState>('idle');
+
+  const handleNewsletterSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setNewsletterState('sending');
+    try {
+      await submitLead({
+        subject: 'Newsletter Subscription',
+        fromName: newsletterEmail,
+        fields: { email: newsletterEmail, message: 'Newsletter subscription request' },
+        mailtoBody: `Email: ${newsletterEmail}\n\nNewsletter subscription request.`,
+      });
+      setNewsletterState('success');
+      setNewsletterEmail('');
+    } catch {
+      setNewsletterState('error');
+    }
+  };
 
   return (
     <footer>
@@ -60,6 +84,36 @@ export default function Footer() {
                     <Icon size={16} />
                   </a>
                 ))}
+              </div>
+
+              <div className="mt-8">
+                <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('footer.newsletter.title')}</p>
+                {newsletterState === 'success' ? (
+                  <p className="mt-3 text-sm text-[rgba(237,227,214,0.78)]">{t('footer.newsletter.success')}</p>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} className="mt-3 flex max-w-xs">
+                    <input
+                      type="email"
+                      required
+                      value={newsletterEmail}
+                      onChange={(event) => setNewsletterEmail(event.target.value)}
+                      placeholder={t('footer.newsletter.placeholder')}
+                      disabled={newsletterState === 'sending'}
+                      className="w-full border border-[rgba(237,227,214,0.2)] bg-[rgba(255,255,255,0.05)] px-4 py-3 text-sm text-cream outline-none placeholder:text-[rgba(237,227,214,0.45)] focus:border-gold disabled:opacity-60"
+                    />
+                    <button
+                      type="submit"
+                      aria-label={t('footer.newsletter.submit')}
+                      disabled={newsletterState === 'sending'}
+                      className="flex shrink-0 items-center justify-center border border-l-0 border-gold bg-gold px-4 text-navy transition hover:brightness-95 disabled:opacity-60"
+                    >
+                      <ArrowRight size={16} />
+                    </button>
+                  </form>
+                )}
+                {newsletterState === 'error' ? (
+                  <p className="mt-2 text-xs text-[#f3b8b8]">{t('footer.newsletter.error')}</p>
+                ) : null}
               </div>
             </div>
 

@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../../i18n';
+import PropertyFinder from './PropertyFinder';
 
 const VIDEO_SRC = 'https://pagina-mama.s3.amazonaws.com/assets2/video-homepage.mp4';
 const POSTER_SRC = 'https://pagina-mama.s3.amazonaws.com/assets2/desarrollos/AriaReserve/banner.jpg';
@@ -22,7 +23,7 @@ export default function HeroSection() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(12,36,35,0.9),rgba(12,36,35,0.68),rgba(12,36,35,0.42))]" />
       <div className="site-container relative z-10 py-20 sm:py-28">
-        <div className="max-w-3xl hero-enter">
+        <div className="max-w-5xl hero-enter">
           <p className="hero-enter-item text-[11px] font-medium uppercase tracking-editorial text-gold">{t('hero.eyebrow')}</p>
           <h1 className="hero-enter-item mt-6 text-5xl leading-tight text-cream sm:text-6xl lg:text-7xl">
             {t('hero.heading').split('\n').map((line, i) => (
@@ -41,6 +42,7 @@ export default function HeroSection() {
               {t('hero.meetTeam')}
             </Link>
           </div>
+          <PropertyFinder />
         </div>
       </div>
     </section>

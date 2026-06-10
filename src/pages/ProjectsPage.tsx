@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectFilter from '../components/projects/ProjectFilter';
 import SectionHeader from '../components/ui/SectionHeader';
@@ -7,8 +8,12 @@ import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
 
 export default function ProjectsPage() {
-  const [activeAreaId, setActiveAreaId] = useState('all');
+  const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
+
+  const activeAreaId = searchParams.get('area') ?? 'all';
+  const activeType = searchParams.get('type') ?? 'all';
+  const activeStatus = searchParams.get('status') ?? 'all';
 
   const areasWithProjects = useMemo(
     () => areas.filter((area) => projects.some((project) => project.areaId === area.id)),
@@ -16,9 +21,21 @@ export default function ProjectsPage() {
   );
 
   const visibleProjects = useMemo(() => {
-    const filtered = activeAreaId === 'all' ? projects : projects.filter((project) => project.areaId === activeAreaId);
+    const filtered = projects.filter((project) => {
+      if (activeAreaId !== 'all' && project.areaId !== activeAreaId) return false;
+      if (activeType !== 'all' && project.type !== activeType) return false;
+      if (activeStatus !== 'all' && project.status !== activeStatus) return false;
+      return true;
+    });
     return [...filtered].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || a.name.localeCompare(b.name));
-  }, [activeAreaId]);
+  }, [activeAreaId, activeType, activeStatus]);
+
+  const updateParam = (key: string, value: string) => {
+    const next = new URLSearchParams(searchParams);
+    if (value === 'all') next.delete(key);
+    else next.set(key, value);
+    setSearchParams(next, { replace: true });
+  };
 
   return (
     <div className="bg-section-bg">
@@ -30,7 +47,15 @@ export default function ProjectsPage() {
         />
 
         <div className="mt-12">
-          <ProjectFilter areas={areasWithProjects} activeAreaId={activeAreaId} onChange={setActiveAreaId} />
+          <ProjectFilter
+            areas={areasWithProjects}
+            activeAreaId={activeAreaId}
+            onAreaChange={(areaId) => updateParam('area', areaId)}
+            activeType={activeType}
+            onTypeChange={(type) => updateParam('type', type)}
+            activeStatus={activeStatus}
+            onStatusChange={(status) => updateParam('status', status)}
+          />
         </div>
 
         <div className="mt-6 flex items-center justify-between text-sm text-muted">

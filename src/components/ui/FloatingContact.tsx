@@ -8,7 +8,7 @@ export default function FloatingContact() {
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       <a
-        href="https://wa.me/13053815120"
+        href="https://wa.me/13056139338"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp"
@@ -17,7 +17,7 @@ export default function FloatingContact() {
         <MessageCircle size={20} />
       </a>
       <a
-        href="tel:+13053815120"
+        href="tel:+13056139338"
         aria-label={t('footer.phone')}
         className="flex h-12 w-12 items-center justify-center rounded-full border border-gold bg-gold text-navy shadow-card transition hover:-translate-y-0.5 hover:brightness-95"
       >

@@ -14,7 +14,7 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
   const { t, lang } = useTranslation();
 
   return (
-    <article className="group relative block overflow-hidden border border-[rgba(27,52,51,0.08)] shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
+    <article className="group relative block overflow-hidden border border-navy/[0.08] shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card">
       <div className="absolute inset-0">
         <img
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
@@ -23,7 +23,7 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
           loading="lazy"
           decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(12,36,35,0.88)] via-[rgba(12,36,35,0.3)] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep/[0.88] via-deep/[0.3] to-transparent" />
         {project.priceFrom ? (
           <div className="absolute right-4 top-4">
             <Badge tone="gold">{t('projectCard.priceFrom')} {project.priceFrom}</Badge>
@@ -38,9 +38,9 @@ const ProjectCard = memo(function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <p className="mt-4 text-[11px] font-medium uppercase tracking-editorial text-gold">{t(`projectTypes.${project.type}`)}</p>
         <h3 className="mt-1 text-3xl text-white">{project.name}</h3>
-        <p className="mt-2 text-sm leading-6 text-[rgba(255,255,255,0.72)]">{localize(project.tagline, lang)}</p>
+        <p className="mt-2 text-sm leading-6 text-white/[0.72]">{localize(project.tagline, lang)}</p>
         {project.completionYear ? (
-          <p className="mt-2 text-xs uppercase tracking-editorial text-[rgba(255,255,255,0.55)]">
+          <p className="mt-2 text-xs uppercase tracking-editorial text-white/[0.55]">
             {t('projectDetail.delivery')} · {project.completionYear}
           </p>
         ) : null}

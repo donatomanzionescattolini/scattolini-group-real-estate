@@ -28,8 +28,8 @@ export default function WhyUs() {
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {ITEMS.map(({ key, icon: Icon }, index) => (
             <ScrollReveal key={key} delay={index * 100}>
-              <div className="h-full border border-[rgba(27,52,51,0.08)] bg-white p-8 text-center shadow-soft">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center border border-[rgba(165,125,49,0.4)] bg-[rgba(165,125,49,0.08)] text-gold">
+              <div className="h-full border border-navy/[0.08] bg-white p-8 text-center shadow-soft">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center border border-gold/[0.4] bg-gold/[0.08] text-gold">
                   <Icon size={24} strokeWidth={1.5} />
                 </div>
                 <h3 className="mt-6 text-xl text-navy">{t(`whyUs.items.${key}.title`)}</h3>

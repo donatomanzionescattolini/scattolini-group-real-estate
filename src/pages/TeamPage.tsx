@@ -17,7 +17,7 @@ export default function TeamPage() {
           alt="Scattolini Group Associates"
           className="block h-auto w-full"
         />
-        <div className="pointer-events-none absolute inset-0 bg-deep/35" />
+        <div className="pointer-events-none absolute inset-0 bg-deep/[0.35]" />
       </div>
 
       <section className="site-container py-20">

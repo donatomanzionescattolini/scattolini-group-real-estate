@@ -5,18 +5,22 @@
 @tailwind utilities;
 
 :root {
-  /* ── Scattolini Group brand palette (per Brandbook) ── */
-  --navy: #1B3433;        /* Primary dark — deep green */
-  --teal: #1F595A;        /* Secondary */
-  --warm-brown: #8A6944;  /* Accent */
-  --gold: #A57D31;        /* Highlight */
-  --cream: #EDE3D7;       /* Warm cream — small accent blocks only */
-  --section-bg: #EDE3D6;  /* Barely-warm off-white for section/page backgrounds */
-  --deep: #0C2423;        /* Brandbook deepest green — darkest surfaces */
-  --stone: #566967;       /* Brandbook grey-green — subtle neutral */
-  --white: #ffffff;
-  --charcoal: #2c2c2c;
-  --muted: #7a6a57;
+  /* ── Scattolini Group brand palette (per Brandbook) ───────────────────────
+   * Stored as space-separated RGB channels so Tailwind can compose any opacity
+   * via the `/` modifier (e.g. bg-navy/12, text-cream/72). This is the single
+   * source of truth — every color in the app derives from these. */
+  --navy: 27 52 51;        /* #1B3433 — Primary dark, deep green */
+  --teal: 31 89 90;        /* #1F595A — Secondary */
+  --warm-brown: 138 105 68;/* #8A6944 — Accent */
+  --gold: 165 125 49;      /* #A57D31 — Highlight */
+  --cream: 237 227 215;    /* #EDE3D7 — Warm cream */
+  --section-bg: 237 227 214;/* #EDE3D6 — Barely-warm off-white for backgrounds */
+  --sand: 219 176 120;     /* #DBB078 — Warm sand tone */
+  --deep: 12 36 35;        /* #0C2423 — Brandbook deepest green, darkest surfaces */
+  --stone: 86 105 103;     /* #566967 — Brandbook grey-green, subtle neutral */
+  --white: 255 255 255;    /* #ffffff */
+  --charcoal: 44 44 44;    /* #2c2c2c */
+  --muted: 122 106 87;     /* #7a6a57 */
 }
 
 html {
@@ -27,8 +31,8 @@ body {
   margin: 0;
   min-width: 320px;
   font-family: 'Inter', sans-serif;
-  color: var(--charcoal);
-  background: var(--white);
+  color: rgb(var(--charcoal));
+  background: rgb(var(--white));
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,7 +43,7 @@ body {
 }
 
 *::selection {
-  background: rgba(165, 125, 49, 0.2);
+  background: rgb(var(--gold) / 0.2);
 }
 
 ::-webkit-scrollbar {
@@ -47,16 +51,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(27, 52, 51, 0.06);
+  background: rgb(var(--navy) / 0.06);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(27, 52, 51, 0.28);
+  background: rgb(var(--navy) / 0.28);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(27, 52, 51, 0.42);
+  background: rgb(var(--navy) / 0.42);
 }
 
 @layer base {
@@ -68,7 +72,7 @@ body {
   h6 {
     font-family: 'Playfair Display', serif;
     letter-spacing: -0.02em;
-    color: var(--navy);
+    color: rgb(var(--navy));
   }
 
   a,
@@ -86,46 +90,46 @@ body {
 
   .button-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-navy;
-    border: 1px solid var(--gold);
-    background: var(--gold);
+    border: 1px solid rgb(var(--gold));
+    background: rgb(var(--gold));
   }
 
   .button-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 22px 60px rgba(27, 52, 51, 0.12);
+    box-shadow: 0 22px 60px rgb(var(--navy) / 0.12);
     filter: brightness(0.97);
   }
 
   .button-secondary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-amber-100;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid rgb(var(--white) / 0.35);
     background: transparent;
   }
 
   .button-secondary:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: rgb(var(--gold));
+    color: rgb(var(--gold));
   }
 
   .button-secondary-light {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold uppercase tracking-editorial text-navy;
-    border: 1px solid rgba(27, 52, 51, 0.35);
+    border: 1px solid rgb(var(--navy) / 0.35);
     background: transparent;
   }
 
   .button-secondary-light:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: rgb(var(--gold));
+    color: rgb(var(--gold));
   }
 
   .input-field {
     @apply w-full bg-white px-4 py-3 text-sm text-charcoal outline-none placeholder:text-muted;
-    border: 1px solid rgba(27, 52, 51, 0.15);
+    border: 1px solid rgb(var(--navy) / 0.15);
   }
 
   .input-field:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 1px var(--gold);
+    border-color: rgb(var(--gold));
+    box-shadow: 0 0 0 1px rgb(var(--gold));
   }
 
   .textarea-field {
@@ -138,8 +142,8 @@ body {
 
   .panel-surface {
     @apply bg-navy text-cream;
-    border: 1px solid rgba(237, 227, 214, 0.12);
-    box-shadow: 0 22px 60px rgba(12, 36, 35, 0.28);
+    border: 1px solid rgb(var(--cream) / 0.12);
+    box-shadow: 0 22px 60px rgb(var(--deep) / 0.28);
   }
 
   .reveal {
@@ -178,7 +182,7 @@ body {
     right: 0;
     bottom: -6px;
     height: 1px;
-    background: var(--gold);
+    background: rgb(var(--gold));
     transform: scaleX(1);
     transform-origin: center;
     transition: transform 220ms ease;

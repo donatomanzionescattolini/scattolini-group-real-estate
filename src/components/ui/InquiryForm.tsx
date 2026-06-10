@@ -46,7 +46,7 @@ export default function InquiryForm({
 
   const inputClasses =
     theme === 'dark'
-      ? 'w-full border border-[rgba(255,255,255,0.16)] bg-[rgba(255,255,255,0.08)] px-4 py-3 text-sm text-amber-100 outline-none placeholder:text-[rgba(255,255,255,0.58)] focus:border-gold focus:ring-1 focus:ring-gold'
+      ? 'w-full border border-white/[0.16] bg-white/[0.08] px-4 py-3 text-sm text-amber-100 outline-none placeholder:text-white/[0.58] focus:border-gold focus:ring-1 focus:ring-gold'
       : 'input-field';
 
   const textareaClasses = `${inputClasses} ${compact ? 'min-h-[120px]' : 'min-h-[150px]'} resize-none`;
@@ -54,19 +54,6 @@ export default function InquiryForm({
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitState('submitting');
-
-    const mailtoBody = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      formData.phone ? `Phone: ${formData.phone}` : null,
-      qualified && formData.interest ? `Interest: ${formData.interest}` : null,
-      qualified && formData.timeline ? `Timeline: ${formData.timeline}` : null,
-      qualified && formData.budget ? `Budget: ${formData.budget}` : null,
-      '',
-      formData.message,
-    ]
-      .filter(Boolean)
-      .join('\n');
 
     try {
       await submitLead({
@@ -80,7 +67,6 @@ export default function InquiryForm({
           budget: qualified ? formData.budget : undefined,
           message: formData.message,
         },
-        mailtoBody,
       });
 
       setSubmitState('success');
@@ -96,7 +82,7 @@ export default function InquiryForm({
     <div>
       {title ? <h3 className={`text-3xl ${theme === 'dark' ? 'text-amber-100' : ''}`}>{title}</h3> : null}
       {description ? (
-        <p className={`mt-3 text-sm leading-6 ${theme === 'dark' ? 'text-[rgba(255,255,255,0.76)]' : 'text-muted'}`}>{description}</p>
+        <p className={`mt-3 text-sm leading-6 ${theme === 'dark' ? 'text-white/[0.76]' : 'text-muted'}`}>{description}</p>
       ) : null}
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
         <input

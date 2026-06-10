@@ -10,7 +10,7 @@ type SubmitState = 'idle' | 'sending' | 'success' | 'error';
 const SESSION_KEY = 'sg-lead-modal-shown';
 
 const fieldClass =
-  'w-full border border-[rgba(27,52,51,0.15)] bg-white px-4 py-3 text-sm text-charcoal outline-none placeholder:text-muted focus:border-gold focus:ring-1 focus:ring-gold';
+  'w-full border border-navy/[0.15] bg-white px-4 py-3 text-sm text-charcoal outline-none placeholder:text-muted focus:border-gold focus:ring-1 focus:ring-gold';
 
 export default function LeadCaptureModal() {
   const { t } = useTranslation();
@@ -61,7 +61,6 @@ export default function LeadCaptureModal() {
         subject: 'Personalized Property Match Request',
         fromName: name,
         fields: { name, email, message: 'Requested personalized property recommendations (exit-intent).' },
-        mailtoBody: `Name: ${name}\nEmail: ${email}\n\nRequested personalized property recommendations.`,
       });
       setSubmitState('success');
     } catch {
@@ -80,13 +79,13 @@ export default function LeadCaptureModal() {
         role="dialog"
         aria-modal="true"
         aria-label={t('leadModal.title')}
-        className="modal-panel relative w-full max-w-md border border-[rgba(27,52,51,0.08)] bg-cream p-8 shadow-card sm:p-10"
+        className="modal-panel relative w-full max-w-md border border-navy/[0.08] bg-cream p-8 shadow-card sm:p-10"
       >
         <button
           type="button"
           onClick={() => setOpen(false)}
           aria-label={t('leadModal.close')}
-          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-navy transition hover:bg-[rgba(27,52,51,0.06)] hover:text-gold"
+          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-navy transition hover:bg-navy/[0.06] hover:text-gold"
         >
           <X size={18} />
         </button>
@@ -130,7 +129,7 @@ export default function LeadCaptureModal() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="mt-4 w-full text-center text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.5)] transition hover:text-gold"
+              className="mt-4 w-full text-center text-xs uppercase tracking-editorial text-navy/[0.5] transition hover:text-gold"
             >
               {t('leadModal.dismiss')}
             </button>

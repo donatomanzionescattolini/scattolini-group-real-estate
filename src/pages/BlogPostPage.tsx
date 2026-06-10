@@ -33,10 +33,10 @@ export default function BlogPostPage() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-section-bg">
         <img src={post.image} alt={title} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(237,227,214,0.58),rgba(237,227,214,0.9))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(var(--cream)_/_0.58),rgb(var(--cream)_/_0.9))]" />
         <div className="site-container relative z-10 py-24 sm:py-32">
           <div className="max-w-3xl">
-            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-[rgba(27,52,51,0.68)]">
+            <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-editorial text-navy/[0.68]">
               <Link to="/" className="hover:text-gold">
                 {t('nav.home')}
               </Link>
@@ -49,7 +49,7 @@ export default function BlogPostPage() {
               <Badge tone="navy">{t(`blog.categories.${post.category}`)}</Badge>
             </div>
             <h1 className="mt-6 text-4xl text-navy sm:text-5xl">{title}</h1>
-            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-[rgba(27,52,51,0.76)]">
+            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm text-navy/[0.76]">
               <span className="inline-flex items-center gap-2">
                 <UserRound size={16} className="text-gold" /> {post.author}
               </span>
@@ -98,7 +98,7 @@ export default function BlogPostPage() {
             <div className="panel-surface p-8">
               <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('blog.ctaEyebrow')}</p>
               <h3 className="mt-4 text-3xl text-cream">{t('blog.ctaTitle')}</h3>
-              <p className="mt-4 text-sm leading-7 text-[rgba(237,227,214,0.72)]">{t('blog.ctaDescription')}</p>
+              <p className="mt-4 text-sm leading-7 text-cream/[0.72]">{t('blog.ctaDescription')}</p>
               <div className="mt-6">
                 <InquiryForm compact theme="dark" defaultMessage={`${t('blog.ctaDefaultMessage')} "${title}".`} submitLabel={t('blog.ctaSubmit')} />
               </div>

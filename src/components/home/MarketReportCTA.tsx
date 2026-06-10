@@ -7,7 +7,7 @@ import ScrollReveal from '../ui/ScrollReveal';
 type SubmitState = 'idle' | 'sending' | 'success' | 'error';
 
 const fieldClass =
-  'w-full border border-[rgba(237,227,214,0.25)] bg-[rgba(255,255,255,0.06)] px-4 py-3 text-sm text-cream outline-none transition placeholder:text-[rgba(237,227,214,0.5)] focus:border-gold';
+  'w-full border border-cream/[0.25] bg-white/[0.06] px-4 py-3 text-sm text-cream outline-none transition placeholder:text-cream/[0.5] focus:border-gold';
 
 export default function MarketReportCTA() {
   const { t } = useTranslation();
@@ -27,7 +27,6 @@ export default function MarketReportCTA() {
           email,
           message: 'Requested the South Florida Market Report.',
         },
-        mailtoBody: `Name: ${name}\nEmail: ${email}\n\nRequested the South Florida Market Report.`,
       });
       setState('success');
     } catch {
@@ -42,11 +41,11 @@ export default function MarketReportCTA() {
           <p className="text-[11px] font-medium uppercase tracking-editorial text-gold">{t('marketReport.eyebrow')}</p>
           <h2 className="mt-4 text-4xl text-cream sm:text-5xl">{t('marketReport.title')}</h2>
           <div className="mt-5 h-px w-20 bg-gold" />
-          <p className="mt-6 max-w-xl text-base leading-8 text-[rgba(237,227,214,0.8)]">{t('marketReport.description')}</p>
+          <p className="mt-6 max-w-xl text-base leading-8 text-cream/[0.8]">{t('marketReport.description')}</p>
         </ScrollReveal>
 
         <ScrollReveal delay={120}>
-          <div className="border border-[rgba(237,227,214,0.18)] bg-[rgba(12,36,35,0.35)] p-8 sm:p-10">
+          <div className="border border-cream/[0.18] bg-deep/[0.35] p-8 sm:p-10">
             {state === 'success' ? (
               <div className="flex flex-col items-center gap-3 py-8 text-center">
                 <Mail className="text-gold" size={28} />

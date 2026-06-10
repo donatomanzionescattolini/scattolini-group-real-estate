@@ -6,7 +6,7 @@ import { PROJECT_STATUSES, PROJECT_TYPES } from '../../data/projectFilters';
 import { useTranslation } from '../../i18n';
 
 const selectClass =
-  'w-full appearance-none border border-[rgba(237,227,214,0.22)] bg-[rgba(255,255,255,0.06)] px-4 py-3 pr-9 text-sm text-cream outline-none transition focus:border-gold';
+  'w-full appearance-none border border-cream/[0.22] bg-white/[0.06] px-4 py-3 pr-9 text-sm text-cream outline-none transition focus:border-gold';
 
 export default function PropertyFinder() {
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ export default function PropertyFinder() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="hero-enter-item mt-10 grid gap-4 border border-[rgba(237,227,214,0.18)] bg-[rgba(12,36,35,0.55)] p-5 backdrop-blur-sm sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end"
+      className="hero-enter-item mt-10 grid gap-4 border border-cream/[0.18] bg-deep/[0.55] p-5 backdrop-blur-sm sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-end"
     >
       <div>
         <label className="text-[10px] font-medium uppercase tracking-editorial text-gold" htmlFor="finder-area">
@@ -46,7 +46,7 @@ export default function PropertyFinder() {
               <option className="text-charcoal" key={area.id} value={area.id}>{area.name}</option>
             ))}
           </select>
-          <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-cream/60" />
+          <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-cream/[0.6]" />
         </div>
       </div>
 
@@ -66,7 +66,7 @@ export default function PropertyFinder() {
               <option className="text-charcoal" key={projectType} value={projectType}>{t(`projectTypes.${projectType}`)}</option>
             ))}
           </select>
-          <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-cream/60" />
+          <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-cream/[0.6]" />
         </div>
       </div>
 
@@ -86,7 +86,7 @@ export default function PropertyFinder() {
               <option className="text-charcoal" key={projectStatus} value={projectStatus}>{t(`projectDetail.statusLabels.${projectStatus}`)}</option>
             ))}
           </select>
-          <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-cream/60" />
+          <ChevronDown size={15} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-cream/[0.6]" />
         </div>
       </div>
 

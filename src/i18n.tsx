@@ -36,6 +36,14 @@ const translations: Record<Lang, TranslationTree> = {
       email: 'info@scattolinigroup.com',
       hours: 'Lun – Vie: 9:00 AM – 5:00 PM',
       rights: 'Todos los derechos reservados',
+      newsletter: {
+        title: 'Análisis de mercado, directo a su correo',
+        placeholder: 'Su correo electrónico',
+        submit: 'Suscribirse',
+        success: '¡Gracias! Ya está suscrito.',
+        sending: 'Enviando…',
+        error: 'No pudimos procesar su suscripción. Inténtelo de nuevo.',
+      },
     },
     hero: {
       eyebrow: 'Bienes Raíces de Lujo · Sur de Florida',
@@ -43,6 +51,13 @@ const translations: Record<Lang, TranslationTree> = {
       description: 'Scattolini Group es una firma boutique especializada en los vecindarios más destacados del Sur de Florida y desarrollos de lujo de nueva generación.',
       exploreProjects: 'Explorar Proyectos',
       meetTeam: 'Conocer al Equipo',
+      finder: {
+        title: 'Encuentre su Próxima Propiedad',
+        areaLabel: 'Vecindario',
+        typeLabel: 'Tipo de Propiedad',
+        statusLabel: 'Estado',
+        submit: 'Buscar Propiedades',
+      },
     },
     stats: {
       neighborhoods: 'Vecindarios',
@@ -136,6 +151,8 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectFilter: {
       allAreas: 'Todas las Áreas',
+      allTypes: 'Todos los Tipos',
+      allStatuses: 'Todos los Estados',
     },
     projectTypes: {
       luxury: 'Lujo',
@@ -145,6 +162,7 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectCard: {
       viewDetails: 'Ver Detalles',
+      priceFrom: 'Desde',
     },
     areaCard: {
       projects: 'proyectos',
@@ -240,6 +258,28 @@ const translations: Record<Lang, TranslationTree> = {
       successMessage: 'Gracias — un asesor de Scattolini Group se pondrá en contacto en breve.',
       sending: 'Enviando…',
       errorMessage: 'No pudimos enviar su mensaje. Por favor llame al (305) 381-5120 o escríbanos a info@scattolinigroup.com.',
+      interestLabel: 'Estoy interesado en',
+      interestOptions: {
+        buying: 'Comprar una propiedad',
+        selling: 'Vender una propiedad',
+        investing: 'Oportunidades de inversión',
+        renting: 'Alquilar una propiedad',
+      },
+      timelineLabel: 'Plazo estimado',
+      timelineOptions: {
+        immediate: 'Inmediatamente',
+        threeToSix: '3 – 6 meses',
+        sixToTwelve: '6 – 12 meses',
+        exploring: 'Solo explorando',
+      },
+      budgetLabel: 'Rango de presupuesto',
+      budgetOptions: {
+        under500: 'Menos de $500K',
+        between500And1m: '$500K – $1M',
+        between1mAnd3m: '$1M – $3M',
+        over3m: 'Más de $3M',
+        preferNotToSay: 'Prefiero no decir',
+      },
     },
     blog: {
       eyebrow: 'Análisis del Mercado',
@@ -263,6 +303,82 @@ const translations: Record<Lang, TranslationTree> = {
         neighborhood: 'Vecindarios',
         lifestyle: 'Estilo de Vida',
       },
+    },
+    whyUs: {
+      eyebrow: 'Por Qué Scattolini Group',
+      title: 'La Ventaja Boutique',
+      description: 'Cuatro razones por las que compradores e inversores internacionales eligen a Scattolini Group para navegar el mercado del Sur de Florida.',
+      items: {
+        multilingual: {
+          title: 'Servicio Multilingüe',
+          description: 'Nuestros asesores se comunican con fluidez en español, inglés, portugués e italiano, para que nada se pierda en la traducción.',
+        },
+        boutique: {
+          title: 'Atención Boutique, No Volumen',
+          description: 'Trabaja directamente con asesores senior que conocen cada propiedad personalmente — no con un call center ni un agente rotativo.',
+        },
+        marketExpertise: {
+          title: 'Profundo Conocimiento del Mercado',
+          description: 'Quince años de experiencia hiperlocal en los vecindarios más codiciados del Sur de Florida y en mercados emergentes.',
+        },
+        investorAccess: {
+          title: 'Acceso a Preconstrucción e Inversión',
+          description: 'Acceso anticipado a lanzamientos de preconstrucción, precios de desarrollador y oportunidades fuera del mercado.',
+        },
+      },
+    },
+    process: {
+      eyebrow: 'Cómo Funcionamos',
+      title: 'Su Camino Hacia el Sur de Florida',
+      description: 'Un proceso claro y sin presión, diseñado para acompañarle desde la primera conversación hasta el cierre.',
+      steps: {
+        step1: {
+          title: 'Cuéntenos sus Objetivos',
+          description: 'Una conversación inicial para entender su presupuesto, plazo y estilo de vida deseado.',
+        },
+        step2: {
+          title: 'Recomendaciones Curadas',
+          description: 'Recibirá una selección personalizada de propiedades y vecindarios que se ajustan a sus criterios.',
+        },
+        step3: {
+          title: 'Recorridos Privados y Llamadas',
+          description: 'Coordinamos visitas privadas, presentaciones virtuales y llamadas con desarrolladores cuando sea necesario.',
+        },
+        step4: {
+          title: 'Cierre con Confianza',
+          description: 'Le acompañamos en cada paso de la negociación, contratos y cierre — con total transparencia.',
+        },
+      },
+    },
+    marketReport: {
+      eyebrow: 'Recurso Gratuito',
+      title: 'Obtenga el Informe del Mercado del Sur de Florida',
+      description: 'Tendencias de precios, actividad de preconstrucción y perspectivas del mercado para compradores e inversores internacionales — directo a su correo.',
+      placeholderName: 'Su nombre',
+      placeholderEmail: 'Su correo electrónico',
+      submit: 'Enviarme el Informe',
+      success: 'Gracias — le enviaremos el informe de mercado a su correo en breve.',
+      sending: 'Enviando…',
+      error: 'No pudimos procesar su solicitud. Por favor inténtelo de nuevo o escríbanos a info@scattolinigroup.com.',
+    },
+    leadModal: {
+      eyebrow: 'Antes de Irse',
+      title: 'Reciba Recomendaciones Personalizadas',
+      description: 'Comparta sus datos de contacto y un asesor de Scattolini Group le enviará propiedades seleccionadas según sus intereses.',
+      submit: 'Recibir Recomendaciones',
+      success: 'Gracias — un asesor se pondrá en contacto en breve con recomendaciones personalizadas.',
+      sending: 'Enviando…',
+      error: 'No pudimos enviar su solicitud. Por favor inténtelo de nuevo.',
+      dismiss: 'No gracias, continuar explorando',
+      close: 'Cerrar',
+    },
+    testimonials: {
+      eyebrow: 'Historias de Clientes',
+      title: 'Lo Que Dicen Nuestros Clientes',
+      description: 'La confianza de compradores e inversores en todo el Sur de Florida y más allá.',
+    },
+    floatingContact: {
+      cta: 'Consulta Gratuita',
     },
   },
 
@@ -288,6 +404,14 @@ const translations: Record<Lang, TranslationTree> = {
       email: 'info@scattolinigroup.com',
       hours: 'Mon – Fri: 9:00 AM – 5:00 PM',
       rights: 'All rights reserved',
+      newsletter: {
+        title: 'Market insights, straight to your inbox',
+        placeholder: 'Your email address',
+        submit: 'Subscribe',
+        success: 'Thank you — you are subscribed.',
+        sending: 'Sending…',
+        error: 'We could not process your subscription. Please try again.',
+      },
     },
     hero: {
       eyebrow: 'Luxury Real Estate · South Florida',
@@ -295,6 +419,13 @@ const translations: Record<Lang, TranslationTree> = {
       description: 'Scattolini Group is a boutique advisory focused on South Florida\'s most compelling neighborhoods, branded towers, and next-generation luxury developments.',
       exploreProjects: 'Explore Projects',
       meetTeam: 'Meet Our Team',
+      finder: {
+        title: 'Find Your Next Property',
+        areaLabel: 'Neighborhood',
+        typeLabel: 'Property Type',
+        statusLabel: 'Status',
+        submit: 'Search Properties',
+      },
     },
     stats: {
       neighborhoods: 'Neighborhoods',
@@ -388,6 +519,8 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectFilter: {
       allAreas: 'All Areas',
+      allTypes: 'All Types',
+      allStatuses: 'All Statuses',
     },
     projectTypes: {
       luxury: 'Luxury',
@@ -397,6 +530,7 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectCard: {
       viewDetails: 'View Details',
+      priceFrom: 'From',
     },
     areaCard: {
       projects: 'projects',
@@ -492,6 +626,28 @@ const translations: Record<Lang, TranslationTree> = {
       successMessage: 'Thank you — a Scattolini Group advisor will reach out shortly.',
       sending: 'Sending…',
       errorMessage: 'We could not send your message. Please call (305) 381-5120 or email info@scattolinigroup.com.',
+      interestLabel: 'I am interested in',
+      interestOptions: {
+        buying: 'Buying a property',
+        selling: 'Selling a property',
+        investing: 'Investment opportunities',
+        renting: 'Renting a property',
+      },
+      timelineLabel: 'Timeline',
+      timelineOptions: {
+        immediate: 'Immediately',
+        threeToSix: '3 – 6 months',
+        sixToTwelve: '6 – 12 months',
+        exploring: 'Just exploring',
+      },
+      budgetLabel: 'Budget range',
+      budgetOptions: {
+        under500: 'Under $500K',
+        between500And1m: '$500K – $1M',
+        between1mAnd3m: '$1M – $3M',
+        over3m: '$3M+',
+        preferNotToSay: 'Prefer not to say',
+      },
     },
     blog: {
       eyebrow: 'Market Insights',
@@ -515,6 +671,82 @@ const translations: Record<Lang, TranslationTree> = {
         neighborhood: 'Neighborhoods',
         lifestyle: 'Lifestyle',
       },
+    },
+    whyUs: {
+      eyebrow: 'Why Scattolini Group',
+      title: 'The Boutique Advantage',
+      description: 'Four reasons international buyers and investors choose Scattolini Group to navigate the South Florida market.',
+      items: {
+        multilingual: {
+          title: 'Multilingual Service',
+          description: 'Our advisors communicate fluently in Spanish, English, Portuguese, and Italian, so nothing is lost in translation.',
+        },
+        boutique: {
+          title: 'Boutique Attention, Not Volume',
+          description: 'You work directly with senior advisors who know every listing personally — not a call center or rotating agent.',
+        },
+        marketExpertise: {
+          title: 'Deep Market Expertise',
+          description: 'Fifteen years of hyperlocal knowledge across South Florida\'s most sought-after neighborhoods and emerging markets.',
+        },
+        investorAccess: {
+          title: 'Pre-Construction & Investor Access',
+          description: 'Early access to pre-construction launches, developer pricing, and off-market opportunities.',
+        },
+      },
+    },
+    process: {
+      eyebrow: 'How It Works',
+      title: 'Your Path to South Florida',
+      description: 'A clear, pressure-free process designed to guide you from the first conversation through closing.',
+      steps: {
+        step1: {
+          title: 'Tell Us Your Goals',
+          description: 'An initial conversation to understand your budget, timeline, and desired lifestyle.',
+        },
+        step2: {
+          title: 'Curated Recommendations',
+          description: 'Receive a personalized selection of properties and neighborhoods matched to your criteria.',
+        },
+        step3: {
+          title: 'Private Tours & Calls',
+          description: 'We coordinate private showings, virtual walkthroughs, and developer calls as needed.',
+        },
+        step4: {
+          title: 'Close With Confidence',
+          description: 'We guide you through every step of negotiation, contracts, and closing — with full transparency.',
+        },
+      },
+    },
+    marketReport: {
+      eyebrow: 'Free Resource',
+      title: 'Get the South Florida Market Report',
+      description: 'Pricing trends, pre-construction activity, and market outlook for international buyers and investors — delivered to your inbox.',
+      placeholderName: 'Your name',
+      placeholderEmail: 'Your email',
+      submit: 'Send Me the Report',
+      success: 'Thank you — we will send the market report to your inbox shortly.',
+      sending: 'Sending…',
+      error: 'We could not process your request. Please try again or email info@scattolinigroup.com.',
+    },
+    leadModal: {
+      eyebrow: 'Before You Go',
+      title: 'Get Personalized Property Matches',
+      description: 'Share your details and a Scattolini Group advisor will send you a curated selection based on your interests.',
+      submit: 'Get Matches',
+      success: 'Thank you — an advisor will reach out shortly with personalized recommendations.',
+      sending: 'Sending…',
+      error: 'We could not send your request. Please try again.',
+      dismiss: 'No thanks, continue browsing',
+      close: 'Close',
+    },
+    testimonials: {
+      eyebrow: 'Client Stories',
+      title: 'What Our Clients Say',
+      description: 'Trusted by buyers and investors across South Florida and beyond.',
+    },
+    floatingContact: {
+      cta: 'Free Consultation',
     },
   },
 };

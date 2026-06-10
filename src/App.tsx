@@ -6,6 +6,7 @@ import PageMeta from './components/ui/PageMeta';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
 import FloatingContact from './components/ui/FloatingContact';
+import LeadCaptureModal from './components/ui/LeadCaptureModal';
 import { TranslationProvider } from './i18n';
 import { Analytics } from '@vercel/analytics/react';
 const AreaDetailPage = lazy(() => import('./pages/AreaDetailPage'));
@@ -54,6 +55,7 @@ function AppShell() {
       </main>
       <Footer />
       <FloatingContact />
+      <LeadCaptureModal />
       <Analytics />
     </div>
   );

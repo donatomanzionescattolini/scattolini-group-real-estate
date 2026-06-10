@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useTranslation } from '../../i18n';
+import { submitLead } from '../../lib/leadSubmit';
 
 interface InquiryFormProps {
   title?: string;
@@ -8,11 +9,15 @@ interface InquiryFormProps {
   theme?: 'light' | 'dark';
   compact?: boolean;
   defaultMessage?: string;
+  /** When true, renders Interest / Timeline / Budget selects to qualify the lead. */
+  qualified?: boolean;
 }
 
 type SubmitState = 'idle' | 'submitting' | 'success' | 'error';
 
-const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+const INTEREST_OPTIONS = ['buying', 'selling', 'investing', 'renting'] as const;
+const TIMELINE_OPTIONS = ['immediate', 'threeToSix', 'sixToTwelve', 'exploring'] as const;
+const BUDGET_OPTIONS = ['under500', 'between500And1m', 'between1mAnd3m', 'over3m', 'preferNotToSay'] as const;
 
 export default function InquiryForm({
   title,
@@ -21,16 +26,22 @@ export default function InquiryForm({
   theme = 'light',
   compact = false,
   defaultMessage = '',
+  qualified = false,
 }: InquiryFormProps) {
   const { t } = useTranslation();
   const resolvedSubmitLabel = submitLabel ?? t('inquiryForm.defaultSubmit');
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     name: '',
     email: '',
     phone: '',
+    interest: '',
+    timeline: '',
+    budget: '',
     message: defaultMessage,
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
   const [submitState, setSubmitState] = useState<SubmitState>('idle');
 
   const inputClasses =
@@ -44,41 +55,36 @@ export default function InquiryForm({
     event.preventDefault();
     setSubmitState('submitting');
 
-    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    const mailtoBody = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : null,
+      qualified && formData.interest ? `Interest: ${formData.interest}` : null,
+      qualified && formData.timeline ? `Timeline: ${formData.timeline}` : null,
+      qualified && formData.budget ? `Budget: ${formData.budget}` : null,
+      '',
+      formData.message,
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     try {
-      if (accessKey) {
-        const response = await fetch(WEB3FORMS_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: accessKey,
-            subject: `Inquiry from ${formData.name}`,
-            from_name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            message: formData.message,
-          }),
-        });
-
-        const result = await response.json();
-        if (!response.ok || !result.success) throw new Error('Submission failed');
-      } else {
-        const body = [
-          `Name: ${formData.name}`,
-          `Email: ${formData.email}`,
-          formData.phone ? `Phone: ${formData.phone}` : null,
-          '',
-          formData.message,
-        ]
-          .filter(Boolean)
-          .join('\n');
-
-        window.location.href = `mailto:info@scattolinigroup.com?subject=${encodeURIComponent(`Inquiry from ${formData.name}`)}&body=${encodeURIComponent(body)}`;
-      }
+      await submitLead({
+        subject: `Inquiry from ${formData.name}`,
+        fromName: formData.name,
+        fields: {
+          email: formData.email,
+          phone: formData.phone,
+          interest: qualified ? formData.interest : undefined,
+          timeline: qualified ? formData.timeline : undefined,
+          budget: qualified ? formData.budget : undefined,
+          message: formData.message,
+        },
+        mailtoBody,
+      });
 
       setSubmitState('success');
-      setFormData({ name: '', email: '', phone: '', message: defaultMessage });
+      setFormData(initialFormData);
     } catch {
       setSubmitState('error');
     }
@@ -119,6 +125,43 @@ export default function InquiryForm({
           onChange={(event) => setFormData((current) => ({ ...current, phone: event.target.value }))}
           disabled={isSubmitting}
         />
+        {qualified ? (
+          <div className="grid gap-4 sm:grid-cols-3">
+            <select
+              className={inputClasses}
+              value={formData.interest}
+              onChange={(event) => setFormData((current) => ({ ...current, interest: event.target.value }))}
+              disabled={isSubmitting}
+            >
+              <option className="text-charcoal" value="" disabled>{t('inquiryForm.interestLabel')}</option>
+              {INTEREST_OPTIONS.map((option) => (
+                <option className="text-charcoal" key={option} value={option}>{t(`inquiryForm.interestOptions.${option}`)}</option>
+              ))}
+            </select>
+            <select
+              className={inputClasses}
+              value={formData.timeline}
+              onChange={(event) => setFormData((current) => ({ ...current, timeline: event.target.value }))}
+              disabled={isSubmitting}
+            >
+              <option className="text-charcoal" value="" disabled>{t('inquiryForm.timelineLabel')}</option>
+              {TIMELINE_OPTIONS.map((option) => (
+                <option className="text-charcoal" key={option} value={option}>{t(`inquiryForm.timelineOptions.${option}`)}</option>
+              ))}
+            </select>
+            <select
+              className={inputClasses}
+              value={formData.budget}
+              onChange={(event) => setFormData((current) => ({ ...current, budget: event.target.value }))}
+              disabled={isSubmitting}
+            >
+              <option className="text-charcoal" value="" disabled>{t('inquiryForm.budgetLabel')}</option>
+              {BUDGET_OPTIONS.map((option) => (
+                <option className="text-charcoal" key={option} value={option}>{t(`inquiryForm.budgetOptions.${option}`)}</option>
+              ))}
+            </select>
+          </div>
+        ) : null}
         <textarea
           className={textareaClasses}
           placeholder={t('inquiryForm.placeholderMessage')}

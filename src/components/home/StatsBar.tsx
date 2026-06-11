@@ -8,12 +8,13 @@ function StatCell({ value, suffix, label, animate }: { value: number; suffix: st
   const count = useCountUp(value, { enabled: animate });
 
   return (
-    <div className="bg-deep/[0.78] px-6 py-8 text-center">
-      <p className="font-serif text-4xl text-gold tabular-nums">
+    <div className="group bg-deep/[0.78] px-6 py-9 text-center transition duration-500 hover:bg-deep/[0.88]">
+      <p className="font-serif text-5xl text-gold tabular-nums">
         {count}
         {suffix}
       </p>
-      <p className="mt-2 text-xs font-medium uppercase tracking-editorial text-cream/[0.78]">{label}</p>
+      <div className="mx-auto mt-3 h-px w-8 bg-gold/[0.4] transition-all duration-500 group-hover:w-14" />
+      <p className="mt-3 text-xs font-medium uppercase tracking-editorial text-cream/[0.78]">{label}</p>
     </div>
   );
 }

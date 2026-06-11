@@ -12,7 +12,7 @@ export default function HeroSection() {
   return (
     <section className="relative isolate flex min-h-[calc(100vh-6rem)] items-end overflow-hidden bg-section-bg">
       <video
-        className="absolute inset-0 h-full w-full object-cover"
+        className="kenburns absolute inset-0 h-full w-full object-cover"
         src={VIDEO_SRC}
         poster={POSTER_SRC}
         autoPlay
@@ -22,12 +22,20 @@ export default function HeroSection() {
         aria-hidden="true"
       />
       <div className="absolute inset-0 bg-[linear-gradient(110deg,rgb(var(--deep)_/_0.9),rgb(var(--deep)_/_0.68),rgb(var(--deep)_/_0.42))]" />
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-deep/[0.85] to-transparent" />
+      <div className="hero-grain absolute inset-0" aria-hidden="true" />
       <div className="site-container relative z-10 py-20 sm:py-28">
         <div className="max-w-5xl hero-enter">
           <p className="hero-enter-item text-[11px] font-medium uppercase tracking-editorial text-gold">{t('hero.eyebrow')}</p>
-          <h1 className="hero-enter-item mt-6 text-5xl leading-tight text-cream sm:text-6xl lg:text-7xl">
+          <h1 className="hero-enter-item mt-6 text-5xl leading-[1.05] text-cream sm:text-6xl lg:text-[5.25rem]">
             {t('hero.heading').split('\n').map((line, i) => (
-              <span key={i}>{line}{i === 0 ? <br /> : null}</span>
+              <span
+                key={i}
+                className={i === 1 ? 'bg-gradient-to-r from-gold via-sand to-gold bg-clip-text italic text-transparent' : undefined}
+              >
+                {line}
+                {i === 0 ? <br /> : null}
+              </span>
             ))}
           </h1>
           <p className="hero-enter-item mt-6 max-w-2xl text-lg leading-8 text-cream/[0.84]">

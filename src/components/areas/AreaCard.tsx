@@ -15,12 +15,15 @@ const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
   const { t, lang } = useTranslation();
 
   return (
-    <Link to={`/areas/${area.id}`} className="group relative block overflow-hidden border border-navy/[0.08] shadow-soft">
+    <Link
+      to={`/areas/${area.id}`}
+      className="group relative block overflow-hidden border border-navy/[0.08] shadow-soft transition duration-500 hover:-translate-y-1.5 hover:shadow-card"
+    >
       <div className="absolute inset-0">
         <img
           src={area.image}
           alt={area.name}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110"
           loading="lazy"
           decoding="async"
           onError={(event) => {
@@ -38,10 +41,12 @@ const AreaCard = memo(function AreaCard({ area }: AreaCardProps) {
       </div>
       <div className="relative flex min-h-[380px] flex-col justify-end p-7 text-amber-100">
         <Badge tone="light">{area.projectCount} {t('areaCard.projects')}</Badge>
+        <div className="mt-5 h-px w-10 bg-gold transition-all duration-500 group-hover:w-20" />
         <h3 className="mt-4 text-4xl text-amber-100">{area.name}</h3>
         <p className="mt-2 text-sm uppercase tracking-editorial text-white/[0.78]">{localize(area.tagline, lang)}</p>
         <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-editorial text-gold">
-          {t('areaCard.exploreMarket')} <ArrowRight size={14} />
+          <span className="link-underline">{t('areaCard.exploreMarket')}</span>
+          <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
         </span>
       </div>
     </Link>

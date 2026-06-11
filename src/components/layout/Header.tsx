@@ -93,11 +93,17 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 ${c.header} ${scrolled ? c.scrolledShadow : ''}`}>
+    <header className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-500 ${c.header} ${scrolled ? c.scrolledShadow : ''}`}>
       <div className="site-container">
-        <div className="flex h-24 items-center justify-between">
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-[4.5rem]' : 'h-24'}`}>
           <Link to="/" className="flex flex-col">
-            <span className={`font-serif text-[2rem] leading-none ${c.logo} sm:text-[2.2rem]`}>Scattolini Group</span>
+            <span
+              className={`font-serif leading-none transition-all duration-500 ${c.logo} ${
+                scrolled ? 'text-[1.6rem] sm:text-[1.75rem]' : 'text-[2rem] sm:text-[2.2rem]'
+              }`}
+            >
+              Scattolini Group
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">

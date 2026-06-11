@@ -7,9 +7,10 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
 // Official transparent brand logo (warm-brown mark, from the brand package).
 const LOGO_PATH = 'public/brand/logo.png';
-const NAVY = { r: 27, g: 52, b: 51, alpha: 1 };
-const GOLD = { r: 165, g: 125, b: 49 };
-const CREAM = { r: 237, g: 227, b: 215 };
+// Brandbook palette: navy #0E2D2F (546 C), accent #8A6944 (7559 C), cream #EDE3D6 (Warm Gray 2 C).
+const NAVY = { r: 14, g: 45, b: 47, alpha: 1 };
+const GOLD = { r: 138, g: 105, b: 68 };
+const CREAM = { r: 237, g: 227, b: 214 };
 
 mkdirSync('assets', { recursive: true });
 mkdirSync('public', { recursive: true });

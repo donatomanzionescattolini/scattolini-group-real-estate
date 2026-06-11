@@ -16,7 +16,7 @@ There is no separate mobile codebase — the native apps load the same built web
 |---|---|
 | App name | **Scattolini Group** |
 | Bundle / App ID | `com.scattolini.group` |
-| Brand color (theme/splash) | `#1B3433` (navy) |
+| Brand color (theme/splash) | `#0E2D2F` (navy) |
 
 ---
 
@@ -68,7 +68,7 @@ Source art is generated from the company logo:
 
 ```bash
 npm run icons                 # regenerates assets/ + public/ icons via sharp
-npx capacitor-assets generate --iconBackgroundColor "#1B3433" --splashBackgroundColor "#1B3433"
+npx capacitor-assets generate --iconBackgroundColor "#0E2D2F" --splashBackgroundColor "#0E2D2F"
 ```
 
 - `npm run icons` builds the PWA icons (`public/`) and the Capacitor source images (`assets/icon.png`, `assets/splash.png`, `assets/splash-dark.png`).

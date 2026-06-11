@@ -12,6 +12,7 @@ const ROUTE_KEYS: Record<string, string> = {
   '/team': 'seo.team',
   '/contact': 'seo.contact',
   '/blog': 'seo.blog',
+  '/privacy': 'seo.privacy',
 };
 
 function resolveSeoKey(pathname: string): string {

@@ -58,15 +58,12 @@ export default function Footer() {
         <div className="site-container py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div>
-              <div className="flex items-center gap-3">
-                <img
-                  src="https://pagina-mama.s3.amazonaws.com/assets2/logos/logo-transparent-background-1.png"
-                  alt="Scattolini Group"
-                  className="h-7 w-auto object-contain brightness-0 invert opacity-80"
-                />
-                <p className="font-serif text-3xl text-cream">Scattolini Group</p>
-              </div>
-              <div className="mt-3 h-px w-20 bg-gold" />
+              <img
+                src="/brand/logo-cream.png"
+                alt="Scattolini Group — Real Estate"
+                className="h-24 w-auto"
+              />
+              <div className="mt-4 h-px w-20 bg-gold" />
               <p className="mt-5 max-w-xs text-sm leading-7 text-cream/[0.72]">
                 {t('footer.tagline')}
               </p>
@@ -183,6 +180,7 @@ export default function Footer() {
       <div className="bg-deep">
         <div className="site-container flex flex-col items-center justify-between gap-3 py-5 text-xs uppercase tracking-editorial text-cream/[0.45] sm:flex-row">
           <span>© {new Date().getFullYear()} Scattolini Group. {t('footer.rights')}</span>
+          <Link to="/privacy" className="transition hover:text-gold">{t('footer.privacyLink')}</Link>
           <span className="hidden h-px w-8 bg-gold opacity-30 sm:block" />
           <span className="text-cream/[0.3]">Miami · South Florida</span>
         </div>

@@ -20,8 +20,8 @@ export default {
         muted: 'rgb(var(--muted) / <alpha-value>)',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['Henri Didot', 'Didot', 'serif'],
+        sans: ['Acumin Variable', 'Inter', 'sans-serif'],
       },
       boxShadow: {
         soft: '0 22px 60px rgb(var(--navy) / 0.08)',

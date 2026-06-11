@@ -27,11 +27,11 @@ export default function HeroSection() {
       <div className="site-container relative z-10 py-20 sm:py-28">
         <div className="max-w-5xl hero-enter">
           <p className="hero-enter-item text-[11px] font-medium uppercase tracking-editorial text-gold">{t('hero.eyebrow')}</p>
-          <h1 className="hero-enter-item mt-6 text-5xl leading-[1.05] text-cream sm:text-6xl lg:text-[5.25rem]">
+          <h1 className="hero-enter-item mt-6 text-4xl leading-snug text-cream sm:text-5xl lg:text-6xl">
             {t('hero.heading').split('\n').map((line, i) => (
               <span
                 key={i}
-                className={i === 1 ? 'bg-gradient-to-r from-gold via-sand to-gold bg-clip-text italic text-transparent' : undefined}
+                className={i === 1 ? 'bg-gradient-to-r from-gold via-sand to-gold bg-clip-text text-transparent' : undefined}
               >
                 {line}
                 {i === 0 ? <br /> : null}

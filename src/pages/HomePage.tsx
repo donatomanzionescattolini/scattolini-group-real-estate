@@ -37,7 +37,7 @@ export default function HomePage() {
         <div className="site-container grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <ScrollReveal>
             <p className="editorial-label">{t('about.eyebrow')}</p>
-            <h2 className="mt-5 text-5xl text-navy">{t('about.heading')}</h2>
+            <h2 className="mt-5 text-4xl text-navy">{t('about.heading')}</h2>
             <div className="mt-6 h-px w-24 bg-gold" />
 
             <div className="mt-8 flex items-start gap-6">

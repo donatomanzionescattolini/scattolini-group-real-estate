@@ -3,9 +3,10 @@
 // - public/  -> PWA web icons referenced by the manifest
 // Run via: node scripts/generate-icons.mjs
 import sharp from 'sharp';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
-const LOGO_URL = 'https://pagina-mama.s3.amazonaws.com/assets2/logos/logo-transparent-background-1.png';
+// Official transparent brand logo (warm-brown mark, from the brand package).
+const LOGO_PATH = 'public/brand/logo.png';
 const NAVY = { r: 27, g: 52, b: 51, alpha: 1 };
 const GOLD = { r: 165, g: 125, b: 49 };
 const CREAM = { r: 237, g: 227, b: 215 };
@@ -13,9 +14,7 @@ const CREAM = { r: 237, g: 227, b: 215 };
 mkdirSync('assets', { recursive: true });
 mkdirSync('public', { recursive: true });
 
-const res = await fetch(LOGO_URL);
-if (!res.ok) throw new Error(`Failed to fetch logo: ${res.status}`);
-const logoBuf = Buffer.from(await res.arrayBuffer());
+const logoBuf = readFileSync(LOGO_PATH);
 const logo = await sharp(logoBuf).trim().ensureAlpha().png().toBuffer();
 
 /** Repaint the logo silhouette in a solid color using its alpha as a mask. */

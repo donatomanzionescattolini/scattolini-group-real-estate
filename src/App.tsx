@@ -1,5 +1,6 @@
 ﻿import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { App as CapApp } from '@capacitor/app';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import PageLoader from './components/ui/PageLoader';
 import PageMeta from './components/ui/PageMeta';
@@ -9,12 +10,14 @@ import FloatingContact from './components/ui/FloatingContact';
 import LeadCaptureModal from './components/ui/LeadCaptureModal';
 import { TranslationProvider } from './i18n';
 import { Analytics } from '@vercel/analytics/react';
+
 const AreaDetailPage = lazy(() => import('./pages/AreaDetailPage'));
 const AreasPage = lazy(() => import('./pages/AreasPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const HomePage = lazy(() => import('./pages/HomePage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const TeamPage = lazy(() => import('./pages/TeamPage'));
@@ -30,6 +33,25 @@ function ScrollToTop() {
 }
 
 function AppShell() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const backButtonHandler = CapApp.addListener('backButton', ({ canGoBack }) => {
+      if (location.pathname === '/') {
+        CapApp.exitApp();
+      } else if (canGoBack) {
+        navigate(-1);
+      } else {
+        CapApp.exitApp();
+      }
+    });
+
+    return () => {
+      backButtonHandler.then(h => h.remove());
+    };
+  }, [location.pathname, navigate]);
+
   return (
     <div className="min-h-screen bg-section-bg text-charcoal">
       <ScrollToTop />
@@ -48,6 +70,7 @@ function AppShell() {
               <Route path="/blog/:postId" element={<BlogPostPage />} />
               <Route path="/team" element={<TeamPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPolicyPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

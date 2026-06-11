@@ -36,6 +36,7 @@ const translations: Record<Lang, TranslationTree> = {
       email: 'information@scattolinigroup.com',
       hours: 'Lun – Vie: 9:00 AM – 5:00 PM',
       rights: 'Todos los derechos reservados',
+      privacyLink: 'Política de Privacidad',
       newsletter: {
         title: 'Análisis de mercado, directo a su correo',
         placeholder: 'Su correo electrónico',
@@ -103,6 +104,10 @@ const translations: Record<Lang, TranslationTree> = {
       blogPost: {
         title: 'Artículo | Scattolini Group',
         description: 'Análisis y guías sobre bienes raíces de lujo en Miami y el Sur de Florida.',
+      },
+      privacy: {
+        title: 'Política de Privacidad | Scattolini Group',
+        description: 'Conozca cómo Scattolini Group recopila, utiliza y protege su información personal en nuestro sitio web y aplicación móvil.',
       },
     },
     errorBoundary: {
@@ -183,6 +188,11 @@ const translations: Record<Lang, TranslationTree> = {
       formTitle: 'Contáctenos',
       formDescription: 'Cuéntenos qué está explorando y lo conectaremos con el asesor y el siguiente paso adecuados.',
       formSubmit: 'Enviar Mensaje',
+    },
+    privacyPage: {
+      eyebrow: 'Legal',
+      title: 'Política de Privacidad',
+      description: 'Cómo Scattolini Group recopila, utiliza y protege su información en nuestro sitio web y aplicación móvil.',
     },
     teamPage: {
       eyebrow: 'Equipo',
@@ -405,6 +415,7 @@ const translations: Record<Lang, TranslationTree> = {
       email: 'information@scattolinigroup.com',
       hours: 'Mon – Fri: 9:00 AM – 5:00 PM',
       rights: 'All rights reserved',
+      privacyLink: 'Privacy Policy',
       newsletter: {
         title: 'Market insights, straight to your inbox',
         placeholder: 'Your email address',
@@ -472,6 +483,10 @@ const translations: Record<Lang, TranslationTree> = {
       blogPost: {
         title: 'Article | Scattolini Group',
         description: 'Insights and guides on luxury real estate in Miami and South Florida.',
+      },
+      privacy: {
+        title: 'Privacy Policy | Scattolini Group',
+        description: 'Learn how Scattolini Group collects, uses, and protects your personal information across our website and mobile app.',
       },
     },
     errorBoundary: {
@@ -552,6 +567,11 @@ const translations: Record<Lang, TranslationTree> = {
       formTitle: 'Contact our office',
       formDescription: 'Tell us what you are exploring and we will match you with the right advisor and next step.',
       formSubmit: 'Send Message',
+    },
+    privacyPage: {
+      eyebrow: 'Legal',
+      title: 'Privacy Policy',
+      description: 'How Scattolini Group collects, uses, and protects your information across our website and mobile app.',
     },
     teamPage: {
       eyebrow: 'Team',

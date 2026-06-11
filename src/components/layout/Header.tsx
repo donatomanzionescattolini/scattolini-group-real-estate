@@ -96,14 +96,12 @@ export default function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-500 ${c.header} ${scrolled ? c.scrolledShadow : ''}`}>
       <div className="site-container">
         <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-[4.5rem]' : 'h-24'}`}>
-          <Link to="/" className="flex flex-col">
-            <span
-              className={`font-serif leading-none transition-all duration-500 ${c.logo} ${
-                scrolled ? 'text-[1.6rem] sm:text-[1.75rem]' : 'text-[2rem] sm:text-[2.2rem]'
-              }`}
-            >
-              Scattolini Group
-            </span>
+          <Link to="/" className="flex items-center" aria-label="Scattolini Group — Real Estate">
+            <img
+              src="/brand/logo.png"
+              alt="Scattolini Group — Real Estate"
+              className={`w-auto transition-all duration-500 ${scrolled ? 'h-12' : 'h-16'}`}
+            />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">

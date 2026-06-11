@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.scattolini.group',
+  appId: 'com.scattolinigroup.app',
   appName: 'Scattolini Group',
   webDir: 'dist',
   backgroundColor: '#0E2D2F',

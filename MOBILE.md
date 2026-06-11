@@ -15,7 +15,7 @@ There is no separate mobile codebase — the native apps load the same built web
 | | |
 |---|---|
 | App name | **Scattolini Group** |
-| Bundle / App ID | `com.scattolini.group` |
+| Bundle / App ID | `com.scattolinigroup.app` |
 | Brand color (theme/splash) | `#0E2D2F` (navy) |
 
 ---

@@ -1,4 +1,4 @@
-package com.scattolini.group;
+package com.scattolinigroup.app;
 
 import com.getcapacitor.BridgeActivity;
 

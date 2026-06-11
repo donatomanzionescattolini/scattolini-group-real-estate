@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Scattolini Group</string>
     <string name="title_activity_main">Scattolini Group</string>
-    <string name="package_name">com.scattolini.group</string>
-    <string name="custom_url_scheme">com.scattolini.group</string>
+    <string name="package_name">com.scattolinigroup.app</string>
+    <string name="custom_url_scheme">com.scattolinigroup.app</string>
 </resources>

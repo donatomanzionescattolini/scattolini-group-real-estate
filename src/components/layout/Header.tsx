@@ -32,7 +32,7 @@ const NAV_STYLES: Record<NavTheme, {
   light: {
     header: 'border-b border-navy/[0.08] bg-white/[0.92] backdrop-blur',
     scrolledShadow: 'shadow-[0_10px_40px_rgb(var(--navy)_/_0.08)]',
-    logo: 'text-navy',
+    logo: 'text-warm-brown',
     navActive: 'text-gold',
     navIdle: 'text-muted hover:text-navy',
     toggleBorder: 'border-navy/[0.12]',
@@ -49,7 +49,7 @@ const NAV_STYLES: Record<NavTheme, {
   dark: {
     header: 'border-b border-cream/[0.1] bg-navy/[0.92] backdrop-blur',
     scrolledShadow: 'shadow-[0_10px_40px_rgb(var(--deep)_/_0.45)]',
-    logo: 'text-cream',
+    logo: 'text-warm-brown',
     navActive: 'text-gold',
     navIdle: 'text-cream/[0.72] hover:text-cream',
     toggleBorder: 'border-cream/[0.18]',
@@ -96,12 +96,19 @@ export default function Header() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-shadow duration-500 ${c.header} ${scrolled ? c.scrolledShadow : ''}`}>
       <div className="site-container">
         <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? 'h-[4.5rem]' : 'h-24'}`}>
-          <Link to="/" className="flex items-center" aria-label="Scattolini Group — Real Estate">
+          <Link to="/" className="flex items-center gap-3" aria-label="Scattolini Group — Real Estate">
             <img
-              src="/brand/logo.png"
-              alt="Scattolini Group — Real Estate"
-              className={`w-auto transition-all duration-500 ${scrolled ? 'h-12' : 'h-16'}`}
+              src="/brand/symbol.png"
+              alt=""
+              className={`w-auto transition-all duration-500 ${scrolled ? 'h-9' : 'h-12'}`}
             />
+            <span
+              className={`font-serif leading-none transition-all duration-500 ${c.logo} ${
+                scrolled ? 'text-[1.6rem] sm:text-[1.75rem]' : 'text-[2rem] sm:text-[2.2rem]'
+              }`}
+            >
+              Scattolini Group
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">

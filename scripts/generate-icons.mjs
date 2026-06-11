@@ -45,8 +45,48 @@ async function write(path, buf) {
   console.log(`wrote ${path} (${(buf.length / 1024).toFixed(1)} KB)`);
 }
 
+/** Crop the building mark off the top of the lockup (everything above the
+ * widest fully-transparent row band separating mark from wordmark). */
+async function extractSymbol(src) {
+  const meta = await sharp(src).metadata();
+  const alpha = await sharp(src).extractChannel(3).raw().toBuffer();
+  const bands = [];
+  let start = null;
+  for (let y = 0; y < meta.height; y++) {
+    let opaque = false;
+    for (let x = 0; x < meta.width; x++) {
+      if (alpha[y * meta.width + x] > 8) { opaque = true; break; }
+    }
+    if (!opaque) {
+      if (start === null) start = y;
+    } else if (start !== null) {
+      bands.push([start, y]);
+      start = null;
+    }
+  }
+  const gap = bands.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]))[0];
+  // Tight alpha-derived bounding box of the mark region (trim() misses the
+  // anti-aliased edges and leaves the full lockup width).
+  let minX = meta.width, maxX = 0;
+  for (let y = 0; y < gap[0]; y++) {
+    for (let x = 0; x < meta.width; x++) {
+      if (alpha[y * meta.width + x] > 8) {
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+      }
+    }
+  }
+  return sharp(src)
+    .extract({ left: minX, top: 0, width: maxX - minX + 1, height: gap[0] })
+    .png()
+    .toBuffer();
+}
+
 const goldLogo = await recolor(logo, GOLD);
 const creamLogo = await recolor(logo, CREAM);
+
+// ── Navbar mark (symbol only, transparent, original warm-brown) ──
+await write('public/brand/symbol.png', await extractSymbol(logo));
 
 // ── Capacitor native sources (@capacitor/assets reads these) ──
 await write('assets/icon.png', await compose({ size: 1024, bg: NAVY, logo: goldLogo, scale: 0.66 }));

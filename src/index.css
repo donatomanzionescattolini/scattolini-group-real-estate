@@ -82,7 +82,10 @@ body {
 }
 
 @layer base {
-  /* Brandbook: Didot for headings, always capitals with wide tracking. */
+  /* Brandbook: Didot for headings. Rendered in title case (as authored)
+   * rather than the brandbook's all-caps treatment for readability, and a
+   * slight text-stroke reinforces Henri Didot's hairline strokes, which all
+   * but vanish at text sizes. */
   h1,
   h2,
   h3,
@@ -90,16 +93,17 @@ body {
   h5,
   h6 {
     font-family: 'Henri Didot', Didot, 'Playfair Display', serif;
-    text-transform: uppercase;
     letter-spacing: 0.04em;
     line-height: 1.2;
     text-wrap: balance;
     color: rgb(var(--navy));
+    -webkit-text-stroke: 0.45px currentColor;
+    paint-order: stroke fill;
   }
 
-  /* Display headings (hero) get the full wide-tracking treatment. */
+  /* Display headings (hero) get slightly wider tracking. */
   h1 {
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
   }
 
   a,

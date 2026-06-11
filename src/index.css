@@ -27,14 +27,14 @@
    * Stored as space-separated RGB channels so Tailwind can compose any opacity
    * via the `/` modifier (e.g. bg-navy/12, text-cream/72). This is the single
    * source of truth — every color in the app derives from these. */
-  --navy: 27 52 51;        /* #1B3433 — Primary dark, deep green */
-  --teal: 31 89 90;        /* #1F595A — Secondary */
-  --warm-brown: 138 105 68;/* #8A6944 — Accent */
-  --gold: 165 125 49;      /* #A57D31 — Highlight */
-  --cream: 237 227 215;    /* #EDE3D7 — Warm cream */
+  --navy: 14 45 47;        /* #0E2D2F — Primary dark (Pantone 546 C) */
+  --teal: 31 89 90;        /* #1F595A — Secondary (Pantone 323 C) */
+  --warm-brown: 138 105 68;/* #8A6944 — Accent (Pantone 7559 C) */
+  --gold: 138 105 68;      /* #8A6944 — Highlight, same Pantone 7559 C accent */
+  --cream: 237 227 214;    /* #EDE3D6 — Warm cream (Pantone Warm Gray 2 C) */
   --section-bg: 237 227 214;/* #EDE3D6 — Barely-warm off-white for backgrounds */
-  --sand: 219 176 120;     /* #DBB078 — Warm sand tone */
-  --deep: 12 36 35;        /* #0C2423 — Brandbook deepest green, darkest surfaces */
+  --sand: 219 176 120;     /* #DBB078 — Gold-texture tint for shimmer accents */
+  --deep: 8 30 32;         /* #081E20 — Darker derivative of #0E2D2F for darkest surfaces */
   --stone: 86 105 103;     /* #566967 — Brandbook grey-green, subtle neutral */
   --white: 255 255 255;    /* #ffffff */
   --charcoal: 44 44 44;    /* #2c2c2c */

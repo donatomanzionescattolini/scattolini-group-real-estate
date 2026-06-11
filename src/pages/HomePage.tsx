@@ -1,7 +1,7 @@
 import FeaturedProjects from '../components/home/FeaturedProjects';
 import AreasShowcase from '../components/home/AreasShowcase';
 import HeroSection from '../components/home/HeroSection';
-import MarketReportCTA from '../components/home/MarketReportCTA';
+// import MarketReportCTA from '../components/home/MarketReportCTA';
 import ProcessSteps from '../components/home/ProcessSteps';
 import StatsBar from '../components/home/StatsBar';
 import TeamPreview from '../components/home/TeamPreview';
@@ -29,7 +29,7 @@ export default function HomePage() {
       <WhyUs />
       <ProcessSteps />
       <AreasShowcase />
-      <MarketReportCTA />
+      {/* <MarketReportCTA /> — hidden until the South Florida market report document actually exists */}
       <TeamPreview />
       {/* <Testimonials /> — placeholder content ready, kept hidden until real client testimonials are available */}
 

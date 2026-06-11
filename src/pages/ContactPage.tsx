@@ -27,7 +27,7 @@ export default function ContactPage() {
             <div className="panel-surface p-8">
               {contactItems.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-start gap-4 border-b border-cream/[0.12] py-5 last:border-none last:pb-0 first:pt-0">
-                  <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(201,168,76,0.18)] text-gold">
+                  <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-gold/[0.18] text-gold">
                     <Icon size={18} />
                   </div>
                   <div>

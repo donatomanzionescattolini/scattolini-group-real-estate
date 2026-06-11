@@ -15,8 +15,8 @@ export default defineConfig({
         description:
           'Boutique South Florida real estate: luxury developments, waterfront living, and market-led advisory.',
         lang: 'es',
-        theme_color: '#1B3433',
-        background_color: '#1B3433',
+        theme_color: '#0E2D2F',
+        background_color: '#0E2D2F',
         display: 'standalone',
         orientation: 'portrait',
         scope: '/',

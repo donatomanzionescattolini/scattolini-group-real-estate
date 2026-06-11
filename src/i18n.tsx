@@ -53,9 +53,11 @@ const translations: Record<Lang, TranslationTree> = {
       meetTeam: 'Conocer al Equipo',
       finder: {
         title: 'Encuentre su Próxima Propiedad',
+        searchLabel: 'Buscar',
+        searchPlaceholder: 'Nombre del proyecto o palabra clave…',
         areaLabel: 'Vecindario',
-        typeLabel: 'Tipo de Propiedad',
-        statusLabel: 'Estado',
+        propertyLabel: 'Propiedad',
+        allProperties: 'Todas las Propiedades',
         submit: 'Buscar Propiedades',
       },
     },
@@ -151,8 +153,7 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectFilter: {
       allAreas: 'Todas las Áreas',
-      allTypes: 'Todos los Tipos',
-      allStatuses: 'Todos los Estados',
+      searchPlaceholder: 'Buscar por nombre o vecindario…',
     },
     projectTypes: {
       luxury: 'Lujo',
@@ -421,9 +422,11 @@ const translations: Record<Lang, TranslationTree> = {
       meetTeam: 'Meet Our Team',
       finder: {
         title: 'Find Your Next Property',
+        searchLabel: 'Search',
+        searchPlaceholder: 'Project name or keyword…',
         areaLabel: 'Neighborhood',
-        typeLabel: 'Property Type',
-        statusLabel: 'Status',
+        propertyLabel: 'Property',
+        allProperties: 'All Properties',
         submit: 'Search Properties',
       },
     },
@@ -519,8 +522,7 @@ const translations: Record<Lang, TranslationTree> = {
     },
     projectFilter: {
       allAreas: 'All Areas',
-      allTypes: 'All Types',
-      allStatuses: 'All Statuses',
+      searchPlaceholder: 'Search by name or neighborhood…',
     },
     projectTypes: {
       luxury: 'Luxury',

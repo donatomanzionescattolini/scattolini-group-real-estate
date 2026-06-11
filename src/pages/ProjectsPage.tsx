@@ -7,13 +7,17 @@ import { areas } from '../data/areas';
 import { projects } from '../data/projects';
 import { useTranslation } from '../i18n';
 
+/** Lowercase and strip diacritics so "Áreas" matches "areas". */
+function normalize(value: string): string {
+  return value.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+}
+
 export default function ProjectsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const { t } = useTranslation();
 
   const activeAreaId = searchParams.get('area') ?? 'all';
-  const activeType = searchParams.get('type') ?? 'all';
-  const activeStatus = searchParams.get('status') ?? 'all';
+  const searchQuery = searchParams.get('q') ?? '';
 
   const areasWithProjects = useMemo(
     () => areas.filter((area) => projects.some((project) => project.areaId === area.id)),
@@ -21,18 +25,18 @@ export default function ProjectsPage() {
   );
 
   const visibleProjects = useMemo(() => {
+    const needle = normalize(searchQuery.trim());
     const filtered = projects.filter((project) => {
       if (activeAreaId !== 'all' && project.areaId !== activeAreaId) return false;
-      if (activeType !== 'all' && project.type !== activeType) return false;
-      if (activeStatus !== 'all' && project.status !== activeStatus) return false;
+      if (needle && !normalize(`${project.name} ${project.areaName}`).includes(needle)) return false;
       return true;
     });
     return [...filtered].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || a.name.localeCompare(b.name));
-  }, [activeAreaId, activeType, activeStatus]);
+  }, [activeAreaId, searchQuery]);
 
   const updateParam = (key: string, value: string) => {
     const next = new URLSearchParams(searchParams);
-    if (value === 'all') next.delete(key);
+    if (value === 'all' || value === '') next.delete(key);
     else next.set(key, value);
     setSearchParams(next, { replace: true });
   };
@@ -51,10 +55,8 @@ export default function ProjectsPage() {
             areas={areasWithProjects}
             activeAreaId={activeAreaId}
             onAreaChange={(areaId) => updateParam('area', areaId)}
-            activeType={activeType}
-            onTypeChange={(type) => updateParam('type', type)}
-            activeStatus={activeStatus}
-            onStatusChange={(status) => updateParam('status', status)}
+            searchQuery={searchQuery}
+            onSearchChange={(query) => updateParam('q', query)}
           />
         </div>
 

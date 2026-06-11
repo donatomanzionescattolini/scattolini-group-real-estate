@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { PROJECT_STATUSES, PROJECT_TYPES } from '../../data/projectFilters';
+import { Search } from 'lucide-react';
 import { Area } from '../../data/types';
 import { useTranslation } from '../../i18n';
 
@@ -7,10 +7,8 @@ interface ProjectFilterProps {
   areas: Area[];
   activeAreaId: string;
   onAreaChange: (areaId: string) => void;
-  activeType: string;
-  onTypeChange: (type: string) => void;
-  activeStatus: string;
-  onStatusChange: (status: string) => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
 }
 
 function FilterPill({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
@@ -29,19 +27,21 @@ function FilterPill({ active, onClick, children }: { active: boolean; onClick: (
   );
 }
 
-export default function ProjectFilter({
-  areas,
-  activeAreaId,
-  onAreaChange,
-  activeType,
-  onTypeChange,
-  activeStatus,
-  onStatusChange,
-}: ProjectFilterProps) {
+export default function ProjectFilter({ areas, activeAreaId, onAreaChange, searchQuery, onSearchChange }: ProjectFilterProps) {
   const { t } = useTranslation();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
+      <div className="relative max-w-md">
+        <input
+          type="search"
+          className="input-field pl-10"
+          placeholder={t('projectFilter.searchPlaceholder')}
+          value={searchQuery}
+          onChange={(event) => onSearchChange(event.target.value)}
+        />
+        <Search size={16} className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted" />
+      </div>
       <div className="flex flex-wrap gap-3">
         <FilterPill active={activeAreaId === 'all'} onClick={() => onAreaChange('all')}>
           {t('projectFilter.allAreas')}
@@ -49,26 +49,6 @@ export default function ProjectFilter({
         {areas.map((area) => (
           <FilterPill key={area.id} active={activeAreaId === area.id} onClick={() => onAreaChange(area.id)}>
             {area.name}
-          </FilterPill>
-        ))}
-      </div>
-      <div className="flex flex-wrap gap-3">
-        <FilterPill active={activeType === 'all'} onClick={() => onTypeChange('all')}>
-          {t('projectFilter.allTypes')}
-        </FilterPill>
-        {PROJECT_TYPES.map((type) => (
-          <FilterPill key={type} active={activeType === type} onClick={() => onTypeChange(type)}>
-            {t(`projectTypes.${type}`)}
-          </FilterPill>
-        ))}
-      </div>
-      <div className="flex flex-wrap gap-3">
-        <FilterPill active={activeStatus === 'all'} onClick={() => onStatusChange('all')}>
-          {t('projectFilter.allStatuses')}
-        </FilterPill>
-        {PROJECT_STATUSES.map((status) => (
-          <FilterPill key={status} active={activeStatus === status} onClick={() => onStatusChange(status)}>
-            {t(`projectDetail.statusLabels.${status}`)}
           </FilterPill>
         ))}
       </div>
